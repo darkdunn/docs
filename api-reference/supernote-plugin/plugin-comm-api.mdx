@@ -1,0 +1,344 @@
+---
+title: "PluginCommAPI"
+description: "与原生笔记应用交互的通用能力（贴纸、套索、几何图形、页面信息等）。"
+---
+
+## 导入
+
+```ts
+import { PluginCommAPI } from "rtn-supernote-plugin-core";
+```
+
+## 返回值约定
+
+多数异步接口返回 [`APIResponse<T>`](/api-reference/supernote-plugin/types#apiresponse)。通常只在 `success === true` 时读取 `result`。
+
+## createTrail
+
+创建一个新的笔划对象（Trail）。
+
+```ts
+static createTrail(
+  page: number,
+  num: number,
+  type: number
+): Promise<APIResponse<Trail>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `page` | `number` | 所在页码（从 1 开始） |
+| `num` | `number` | 笔划编号（从 0 开始） |
+| `type` | `number` | 数据类型，参考 [`TrailType`](/api-reference/supernote-plugin/types#trailtype) |
+
+**返回**
+
+- `APIResponse< Trail >`：见 [`APIResponse`](/api-reference/supernote-plugin/types#apiresponse) 与 [`Trail`](/api-reference/supernote-plugin/types#trail)
+- 成功时会在返回的 `Trail` 上补齐一些访问器字段（例如 `angles`、`contoursSrc`，以及笔划类型下的 `stroke.*` 访问器）
+
+## recycleTrail
+
+回收 Trail 对象并释放原生缓存。
+
+```ts
+static recycleTrail(uuid: string): void;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `uuid` | `string` | Trail 的 UUID（见 [`Trail.uuid`](/api-reference/supernote-plugin/types#trail)） |
+
+## clearTrailCache
+
+清除 Trail 的 Android 本地缓存。一旦清除，旧的 Trail 对象将无法使用。
+
+```ts
+static clearTrailCache(): void;
+```
+
+## saveStickerByLasso
+
+保存套索中的笔划为贴纸。
+
+```ts
+static saveStickerByLasso(path: string): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `path` | `string` | 贴纸保存路径 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示保存成功
+
+## getStickerSize
+
+获取贴纸尺寸。
+
+```ts
+static getStickerSize(path: string): Promise<APIResponse<Size>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `path` | `string` | 贴纸路径 |
+
+**返回**
+
+- `APIResponse<Size>`：`result` 为 [`Size`](/api-reference/supernote-plugin/types#size)
+
+## generateStickerThumbnail
+
+生成贴纸缩略图。
+
+```ts
+static generateStickerThumbnail(
+  stickerPath: string,
+  thumbnailPath: string,
+  size: Size
+): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `stickerPath` | `string` | 贴纸源文件路径 |
+| `thumbnailPath` | `string` | 缩略图输出路径（通常为 `.png`） |
+| `size` | [`Size`](/api-reference/supernote-plugin/types#size) | 缩略图尺寸（需与原图保持等比例） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示生成成功
+
+## convertTrail2Sticker
+
+笔划转换为贴纸。
+
+```ts
+static convertTrail2Sticker(
+  params: ConvertTrail2StickerParams
+): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+- `params`：见 [`ConvertTrail2StickerParams`](/api-reference/supernote-plugin/types#converttrail2stickerparams)
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示转换成功
+
+## insertSticker
+
+插入贴纸。
+
+```ts
+static insertSticker(path: string): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `path` | `string` | 贴纸路径 |
+
+## setLassoBoxState
+
+设置套索框状态。
+
+```ts
+static setLassoBoxState(state: number): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `state` | `number` | `0` 显示，`1` 隐藏，`2` 完全移除 |
+
+## getLassoRect
+
+获取套索框区域位置。
+
+```ts
+static getLassoRect(): Promise<APIResponse<Rect>>;
+```
+
+**返回**
+
+- `APIResponse<Rect>`：`result` 为 [`Rect`](/api-reference/supernote-plugin/types#rect)
+
+## updateLassoRect
+
+更新套索框区域位置。
+
+```ts
+static updateLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `rect` | [`Rect`](/api-reference/supernote-plugin/types#rect) | 套索框区域位置 |
+
+## setSlideBarStatus
+
+设置滑条是否可滑动。
+
+```ts
+static setSlideBarStatus(status: boolean): Promise<boolean>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `status` | `boolean` | `true` 可滑动，`false` 不可滑动 |
+
+## setSystemDormancyState
+
+设置系统休眠状态。
+
+```ts
+static setSystemDormancyState(enable: boolean): void;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `enable` | `boolean` | `true` 阻止系统休眠，`false` 开启休眠 |
+
+## setStatusBarAndSlideBarState
+
+设置下拉菜单与滑条的锁定状态。
+
+```ts
+static setStatusBarAndSlideBarState(isLock: boolean): void;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `isLock` | `boolean` | `true` 锁住不可用，`false` 解锁可用 |
+
+## getLassoData
+
+获取套索数据（笔划列表）。成功时会对返回的 trails 做一次转换，补齐访问器字段。
+
+```ts
+static getLassoData(): Promise<APIResponse<Trail[]>>;
+```
+
+**返回**
+
+- `APIResponse<Trail[]>`：`result` 的元素类型见 [`Trail`](/api-reference/supernote-plugin/types#trail)
+
+## getLassoDataTypeCounts
+
+获取套索数据类型数量统计。
+
+```ts
+static getLassoDataTypeCounts(): Promise<APIResponse<LassoTrailTypeNum>>;
+```
+
+**返回**
+
+- `APIResponse<LassoTrailTypeNum>`：`result` 见 [`LassoTrailTypeNum`](/api-reference/supernote-plugin/types#lassotrailtypenum)
+
+## deleteLassoData
+
+删除套索数据。
+
+```ts
+static deleteLassoData(): Promise<APIResponse<boolean>>;
+```
+
+## getCurrentPageNum
+
+获取当前页码。
+
+```ts
+static getCurrentPageNum(): Promise<APIResponse<number>>;
+```
+
+## getCurrentFilePath
+
+获取当前文件路径。
+
+```ts
+static getCurrentFilePath(): Promise<APIResponse<string>>;
+```
+
+## reloadFile
+
+重新加载当前笔记。
+
+```ts
+static reloadFile(): Promise<APIResponse<boolean>>;
+```
+
+## getLassoGeometries
+
+获取套索几何图形数据列表。
+
+```ts
+static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
+```
+
+**返回**
+
+- `APIResponse<Geometry[]>`：元素类型见 [`Geometry`](/api-reference/supernote-plugin/types#geometry)
+
+## insertGeometry
+
+插入几何图形。
+
+```ts
+static insertGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `geometry` | [`Geometry`](/api-reference/supernote-plugin/types#geometry) | 几何图形参数 |
+
+## modifyLassoGeometry
+
+修改套索几何图形。
+
+```ts
+static modifyLassoGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `geometry` | [`Geometry`](/api-reference/supernote-plugin/types#geometry) | 几何图形参数 |
+
+## getNoteSystemTemplates
+
+获取系统笔记模板列表。
+
+```ts
+static getNoteSystemTemplates(): Promise<Template[] | null | undefined>;
+```
+
+**返回**
+
+- `Template[]`：元素类型见 [`Template`](/api-reference/supernote-plugin/types#template)
+

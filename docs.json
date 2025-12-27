@@ -65,6 +65,13 @@
               "api-reference/endpoint/webhook",
               "api-reference/endpoint/java_testapi"
             ]
+          },
+          {
+            "group": "Supernote Plugin SDK",
+            "pages": [
+              "api-reference/supernote-plugin/plugin-comm-api",
+              "api-reference/supernote-plugin/types"
+            ]
           }
         ]
       }

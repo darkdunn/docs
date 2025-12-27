@@ -1,0 +1,226 @@
+---
+title: "数据类型（Supernote Plugin SDK）"
+description: "PluginCommAPI 等接口使用到的数据结构与常量。"
+---
+
+## APIResponse
+
+所有返回 `APIResponse<T>` 的接口，结构一致：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `success` | `boolean` | 接口调用是否成功 |
+| `result` | `T \| null` | 成功时为结果；失败时通常为 `null` |
+| `error` | `{ code: number; message: string } \| null` | 失败时为错误信息 |
+
+---
+
+## Point
+
+二维点坐标。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `x` | `number` | X 坐标 |
+| `y` | `number` | Y 坐标 |
+
+---
+
+## Rect
+
+矩形区域（左上/右下）。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `left` | `number` | 左边界 |
+| `top` | `number` | 上边界 |
+| `right` | `number` | 右边界 |
+| `bottom` | `number` | 下边界 |
+
+---
+
+## Size
+
+尺寸对象。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `width` | `number` | 宽度 |
+| `height` | `number` | 高度 |
+
+---
+
+## TrailType
+
+用于标识 `Trail` 的类型（常量定义）。
+
+| 常量 | 值 | 说明 |
+| --- | ---:| --- |
+| `TrailType.TRAIL_TYPE_STROKE` | `0` | 笔划（手写笔迹） |
+| `TrailType.TRAIL_TYPE_TITLE` | `100` | 标题 |
+| `TrailType.TRAIL_TYPE_PICTURE` | `200` | 图片（暂未使用） |
+| `TrailType.TRAIL_TYPE_TEXT` | `500` | 普通文本框 |
+| `TrailType.TRAIL_TYPE_TEXT_DIGEST_QUOTE` | `501` | 引用摘录文本框 |
+| `TrailType.TRAIL_TYPE_TEXT_DIGEST_CREATE` | `502` | 创建摘录文本框 |
+| `TrailType.TRAIL_TYPE_LINK` | `600` | 链接 |
+| `TrailType.TRAIL_TYPE_GEO` | `700` | 几何图形 |
+
+---
+
+## TrailPointDataType
+
+`TrailDataAccessor` 访问的点数据类型（枚举）。
+
+| 枚举值 | 数值 | 说明 |
+| --- | ---:| --- |
+| `TrailPointDataType.ANGLE_POINT` | `0` | 角度点 |
+| `TrailPointDataType.CONTOUR_POINT` | `1` | 轮廓点 |
+| `TrailPointDataType.STROKE_SAMPLE_POINT` | `2` | 笔划采样点 |
+| `TrailPointDataType.STROKE_PRESSURE_POINT` | `3` | 笔划压力点 |
+| `TrailPointDataType.ERASE_LINE_DATA` | `4` | 线擦数据 |
+| `TrailPointDataType.WRITE_FLAG` | `5` | 写标志 |
+| `TrailPointDataType.MARK_PEN_DIRECTION` | `6` | 马克笔方向 |
+| `TrailPointDataType.RECOGNITION_DATA_POINT` | `7` | 识别数据点 |
+
+---
+
+## TrailDataAccessor
+
+大体量点数据的访问器。点数据通常由原生端缓存，JS 侧通过访问器按需取数。
+
+常用能力：
+
+| 方法 | 返回 | 说明 |
+| --- | --- | --- |
+| `size()` | `Promise<number>` | 获取数据长度 |
+| `get(index)` | `Promise<T \| null>` | 获取某个下标的数据 |
+| `getRange(startIndex, count)` | `Promise<T[]>` | 批量获取一段数据 |
+| `for await ... of accessor` | - | 异步迭代全部数据 |
+
+---
+
+## Stroke
+
+纯笔划数据（`Trail` 为笔划类型时，`trail.stroke` 存在）。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `penColor` | `number` | 笔颜色 |
+| `penType` | `number` | 笔类型 |
+| `points` | `TrailDataAccessor<Point>` | 采样点 |
+| `pressures` | `TrailDataAccessor<number>` | 压力数据 |
+| `eraseLineTrailNums` | `TrailDataAccessor<number>` | 线擦数据 |
+| `flagDraw` | `TrailDataAccessor<boolean>` | 写标志 |
+| `markPenDirection` | `TrailDataAccessor<Point>` | 马克笔方向 |
+| `recognPoints` | `TrailDataAccessor<RecognData>` | 识别点数据 |
+
+---
+
+## RecognData
+
+识别点数据。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `X` | `number` | X 坐标 |
+| `Y` | `number` | Y 坐标 |
+| `Flag` | `number` | 标记位 |
+| `timestamp` | `number` | 时间戳 |
+
+---
+
+## Geometry
+
+几何图形数据（用于插入/修改几何图形，或从套索获取几何图形列表）。
+
+常量（`type` 取值）：
+
+| 常量 | 值 |
+| --- | --- |
+| `Geometry.TYPE_STRAIGHT_LINE` | `straightLine` |
+| `Geometry.TYPE_CIRCLE` | `GEO_circle` |
+| `Geometry.TYPE_ELLIPSE` | `GEO_ellipse` |
+| `Geometry.TYPE_POLYGON` | `GEO_polygon` |
+
+字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `penColor` | `number` | 笔颜色 |
+| `penType` | `number` | 笔类型 |
+| `penWidth` | `number` | 笔宽度 |
+| `type` | `string` | 几何图形类型 |
+| `points` | `Point[]` | 多边形点坐标 |
+| `ellipseCenterPoint` | `Point \| null` | 椭圆中心点 |
+| `ellipseMajorAxisRadius` | `number` | 椭圆长轴半径 |
+| `ellipseMinorAxisRadius` | `number` | 椭圆短轴半径 |
+| `ellipseAngle` | `number` | 椭圆旋转角度 |
+
+---
+
+## LassoTrailTypeNum
+
+套索数据类型数量统计（`getLassoDataTypeCounts` 返回）。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `trailLinkNum` | `number` | 笔划链接数量 |
+| `textLinkNum` | `number` | 文字普通链接数量 |
+| `todoLinkNum` | `number` | 待办链接数量 |
+| `titleNum` | `number` | 标题数量 |
+| `bitmapNum` | `number` | 图片数量 |
+| `normalTextBoxNum` | `number` | 普通文本框数量 |
+| `digestTextBoxNum` | `number` | 不可编辑摘要文本框数量 |
+| `digestTextBoxEditableNum` | `number` | 可编辑摘要文本框数量 |
+| `geometryNum` | `number` | 几何图形总数量 |
+| `straightLineNum` | `number` | 直线数量 |
+| `circleNum` | `number` | 圆数量 |
+| `ellipseNum` | `number` | 椭圆数量 |
+| `trailNum` | `number` | 普通笔划数量 |
+
+---
+
+## Template
+
+系统笔记模板（`getNoteSystemTemplates` 返回）。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `name` | `string` | 模板名称 |
+| `vUri` | `string` | 竖屏模板 URI |
+| `hUri` | `string` | 横屏模板 URI |
+
+---
+
+## ConvertTrail2StickerParams
+
+`convertTrail2Sticker` 的参数对象。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `machineType` | `number` | 机器类型：`0` A5, `1` A6, `2` A6X, `3` A5X, `4` nomad, `5` Manta |
+| `trails` | [`Trail[]`](#trail) | 笔划数据 |
+| `stickerPath` | `string` | 输出路径（贴纸保存位置） |
+
+---
+
+## Trail
+
+笔记元素数据的基类。部分字段会在不同 `type` 下出现（例如 `stroke`、`geometry` 等）。
+
+常用字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uuid` | `string` | 通用唯一识别码 |
+| `type` | `number` | 笔划类型，通常参考 [`TrailType`](#trailtype) |
+| `pageNum` | `number` | 页码 |
+| `layerNum` | `number` | 图层码 |
+| `thickness` | `number` | 笔划粗细 |
+| `maxX` | `number` | 最大 X |
+| `maxY` | `number` | 最大 Y |
+| `angles` | [`TrailDataAccessor<Point>`](#traildataaccessor) | 角度点访问器 |
+| `contoursSrc` | [`TrailDataAccessor<Point[]>`](#traildataaccessor) | 轮廓点访问器 |
+| `stroke` | [`Stroke \| null`](#stroke) | 笔划数据（仅 `type` 为笔划时存在） |
+| `geometry` | [`Geometry \| null`](#geometry) | 几何图形数据（仅几何类型时存在） |
+
