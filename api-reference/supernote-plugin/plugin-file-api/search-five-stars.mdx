@@ -1,0 +1,19 @@
+---
+title: "searchFiveStars"
+description: "搜索文件中五角星所在的页面，返回页码列表。"
+---
+
+```ts
+static searchFiveStars(filePath: string): Promise<APIResponse<number[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `filePath` | `string` | 文件路径 |
+
+**返回**
+
+- `APIResponse<number[]>`：`result` 为五角星所在页码数组
+

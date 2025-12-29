@@ -1,0 +1,20 @@
+---
+title: "getPageTrails"
+description: "获取页面笔划数据，包含普通笔划、链接、标题、文本框。"
+---
+
+```ts
+static getPageTrails(page: number, notePath: string): Promise<APIResponse<Trail[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `notePath` | `string` | 笔记路径 |
+
+**返回**
+
+- `APIResponse<Trail[]>`：元素类型见 [`Trail`](/api-reference/supernote-plugin/types/trail)
+

@@ -1,0 +1,20 @@
+---
+title: "getLayers"
+description: "获取页面图层数据。"
+---
+
+```ts
+static getLayers(notePath: string, page: number): Promise<APIResponse<Layer[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+
+**返回**
+
+- `APIResponse<Layer[]>`：`result` 为页面图层数据数组
+

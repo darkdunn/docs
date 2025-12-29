@@ -1,0 +1,21 @@
+---
+title: "PluginDocAPI"
+sidebarTitle: "概览"
+description: "文档相关接口总目录：每个方法单独一页，方便查找与引用。"
+---
+
+## 导入
+
+```ts
+import { PluginDocAPI } from "rtn-supernote-plugin-core";
+```
+
+## 返回值约定
+
+多数异步接口返回 [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response)。通常只在 `success === true` 时读取 `result`。
+
+## 方法列表
+
+- [getSelectedText](/api-reference/supernote-plugin/plugin-doc-api/get-selected-text)
+- [getCurrentDocText](/api-reference/supernote-plugin/plugin-doc-api/get-current-doc-text)
+- [getCurrentTotalPages](/api-reference/supernote-plugin/plugin-doc-api/get-current-total-pages)

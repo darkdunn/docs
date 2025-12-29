@@ -1,0 +1,21 @@
+---
+title: "insertKeyWord"
+description: "插入关键字。"
+---
+
+```ts
+static insertKeyWord(notePath: string, page: number, keyword: string): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页码（从 1 开始） |
+| `keyword` | `string` | 关键字 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示插入成功
+

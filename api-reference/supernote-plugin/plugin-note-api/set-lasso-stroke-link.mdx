@@ -1,0 +1,27 @@
+---
+title: "setLassoStrokeLink"
+description: "设置套索笔划为链接。"
+---
+
+```ts
+static setLassoStrokeLink(params: {
+  destPath: string;
+  destPage: number;
+  linkStyle: number;
+  linkType: number;
+}): Promise<APIResponse<number>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `params.destPath` | `string` | 目标文件路径；当 `linkType === 3` 时填写 URL |
+| `params.destPage` | `number` | 目标页码（通常仅 `linkType === 0` 时有效） |
+| `params.linkStyle` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
+| `params.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址 |
+
+**返回**
+
+- `APIResponse<number>`：`result` 为状态码（文档约定：`0` 成功，`-1` 失败，`-2` 目标文件需要升级）
+

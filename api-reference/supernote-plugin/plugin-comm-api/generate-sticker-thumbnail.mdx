@@ -1,0 +1,24 @@
+---
+title: "generateStickerThumbnail"
+description: "生成贴纸缩略图。"
+---
+
+```ts
+static generateStickerThumbnail(
+  stickerPath: string,
+  thumbnailPath: string,
+  size: Size
+): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `stickerPath` | `string` | 贴纸源文件路径 |
+| `thumbnailPath` | `string` | 缩略图输出路径（通常为 `.png`） |
+| `size` | [`Size`](/api-reference/supernote-plugin/types/size) | 缩略图尺寸（需与原图保持等比例） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示生成成功

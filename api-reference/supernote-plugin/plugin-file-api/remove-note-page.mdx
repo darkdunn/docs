@@ -1,0 +1,20 @@
+---
+title: "removeNotePage"
+description: "删除笔记指定页面。"
+---
+
+```ts
+static removeNotePage(notePath: string, page: number): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页码（从 1 开始） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示删除成功
+

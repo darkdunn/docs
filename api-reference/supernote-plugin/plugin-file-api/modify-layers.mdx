@@ -1,0 +1,21 @@
+---
+title: "modifyLayers"
+description: "修改页面图层数据（不存在的图层不会修改）。"
+---
+
+```ts
+static modifyLayers(notePath: string, page: number, layers: Layer[]): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `layers` | `Layer[]` | 已存在的图层数据数组 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示修改成功
+

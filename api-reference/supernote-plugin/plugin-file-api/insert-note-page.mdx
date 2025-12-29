@@ -1,0 +1,21 @@
+---
+title: "insertNotePage"
+description: "插入笔记指定页面。"
+---
+
+```ts
+static insertNotePage(params: { notePath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `params.notePath` | `string` | 笔记路径 |
+| `params.page` | `number` | 页码（从 1 开始） |
+| `params.template` | `string` | 页面模版名称 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示插入成功
+

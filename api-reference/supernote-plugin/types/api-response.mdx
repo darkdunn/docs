@@ -1,0 +1,13 @@
+---
+title: "APIResponse"
+description: "统一的接口返回包装结构。"
+---
+
+所有返回 `APIResponse<T>` 的接口，结构一致：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `success` | `boolean` | 接口调用是否成功 |
+| `result` | `T \| null` | 成功时为结果；失败时通常为 `null` |
+| `error` | `{ code: number; message: string } \| null` | 失败时为错误信息 |
+

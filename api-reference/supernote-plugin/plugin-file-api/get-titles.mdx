@@ -1,0 +1,20 @@
+---
+title: "getTitles"
+description: "获取标题数据。"
+---
+
+```ts
+static getTitles(notePath: string, pageList: number[]): Promise<APIResponse<TitleTrail[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `pageList` | `number[]` | 页码列表（从 1 开始） |
+
+**返回**
+
+- `APIResponse<TitleTrail[]>`：`result` 为标题数据数组
+

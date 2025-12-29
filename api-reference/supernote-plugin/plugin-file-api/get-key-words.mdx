@@ -1,0 +1,20 @@
+---
+title: "getKeyWords"
+description: "获取关键字。"
+---
+
+```ts
+static getKeyWords(notePath: string, pageList: number[]): Promise<APIResponse<KeyWord[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `pageList` | `number[]` | 页码列表（从 1 开始） |
+
+**返回**
+
+- `APIResponse<KeyWord[]>`：`result` 为关键字数组
+

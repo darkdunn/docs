@@ -1,0 +1,43 @@
+---
+title: "modifyLassoText"
+description: "修改套索文本框。"
+---
+
+```ts
+static modifyLassoText(textBox: {
+  fontSize?: number;
+  fontPath?: string;
+  textContentFull: string;
+  textRect: Rect;
+  textDigestData?: string;
+  textAlign?: number;
+  textBold?: number;
+  textItalics?: number;
+  textFrameWidthType?: number;
+  textFrameWidth?: number;
+  textFrameStyle?: number;
+  textEditable?: number;
+}): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `textBox.textContentFull` | `string` | 文本内容（必填，非空） |
+| `textBox.textRect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | 文本框矩形（必填，需为非零面积） |
+| `textBox.fontSize` | `number` | 字体大小（可选；需为正数） |
+| `textBox.fontPath` | `string` | 字体路径（可选） |
+| `textBox.textDigestData` | `string` | 摘要数据（可选） |
+| `textBox.textAlign` | `number` | 对齐方式（可选） |
+| `textBox.textBold` | `number` | 加粗（可选） |
+| `textBox.textItalics` | `number` | 斜体（可选） |
+| `textBox.textFrameWidthType` | `number` | 边框宽度类型（可选） |
+| `textBox.textFrameWidth` | `number` | 边框宽度（可选） |
+| `textBox.textFrameStyle` | `number` | 边框样式（可选） |
+| `textBox.textEditable` | `number` | 是否可编辑（可选） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示修改成功
+

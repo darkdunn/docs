@@ -1,0 +1,21 @@
+---
+title: "deleteLayers"
+description: "删除图层数据。"
+---
+
+```ts
+static deleteLayers(notePath: string, page: number, layerIds: number[]): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `layerIds` | `number[]` | 需要删除的图层 ID 列表 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示删除成功
+

@@ -1,0 +1,20 @@
+---
+title: "getNotePageTemplate"
+description: "获取笔记指定页面的模版信息。"
+---
+
+```ts
+static getNotePageTemplate(notePath: string, page: number): Promise<APIResponse<NoteTemplateInfo>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页码（从 1 开始） |
+
+**返回**
+
+- `APIResponse<NoteTemplateInfo>`：`result` 为页面模版对象
+

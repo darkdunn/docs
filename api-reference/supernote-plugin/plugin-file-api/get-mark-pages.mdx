@@ -1,0 +1,19 @@
+---
+title: "getMarkPages"
+description: "获取 mark 文件页码列表（表示该文档有多少个 mark 页码）。"
+---
+
+```ts
+static getMarkPages(filePath: string): Promise<APIResponse<number[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `filePath` | `string` | 文件路径 |
+
+**返回**
+
+- `APIResponse<number[]>`：`result` 为 mark 页码数组
+

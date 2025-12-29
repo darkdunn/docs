@@ -1,0 +1,28 @@
+---
+title: "Geometry"
+description: "几何图形数据。"
+---
+
+常量（`type` 取值）：
+
+| 常量 | 值 |
+| --- | --- |
+| `Geometry.TYPE_STRAIGHT_LINE` | `straightLine` |
+| `Geometry.TYPE_CIRCLE` | `GEO_circle` |
+| `Geometry.TYPE_ELLIPSE` | `GEO_ellipse` |
+| `Geometry.TYPE_POLYGON` | `GEO_polygon` |
+
+字段：
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `penColor` | `number` | 笔颜色 |
+| `penType` | `number` | 笔类型 |
+| `penWidth` | `number` | 笔宽度 |
+| `type` | `string` | 几何图形类型 |
+| `points` | [`Point[]`](/api-reference/supernote-plugin/types/point) | 多边形点坐标 |
+| `ellipseCenterPoint` | [`Point \| null`](/api-reference/supernote-plugin/types/point) | 椭圆中心点 |
+| `ellipseMajorAxisRadius` | `number` | 椭圆长轴半径 |
+| `ellipseMinorAxisRadius` | `number` | 椭圆短轴半径 |
+| `ellipseAngle` | `number` | 椭圆旋转角度 |
+

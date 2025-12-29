@@ -1,0 +1,27 @@
+---
+title: "createNote"
+description: "创建笔记。"
+---
+
+```ts
+static createNote(params: {
+  notePath: string;
+  template: string;
+  mode: number;
+  isPortrait: boolean;
+}): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `params.notePath` | `string` | 笔记路径 |
+| `params.template` | `string` | 模版路径 |
+| `params.mode` | `number` | 创建模式：`0` 普通模式，`1` 识别布局 |
+| `params.isPortrait` | `boolean` | 是否竖屏 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示创建成功
+

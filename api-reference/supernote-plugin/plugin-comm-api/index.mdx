@@ -1,0 +1,42 @@
+---
+title: "PluginCommAPI"
+sidebarTitle: "概览"
+description: "接口总目录：每个方法单独一页，方便查找与引用。"
+---
+
+## 导入
+
+```ts
+import { PluginCommAPI } from "rtn-supernote-plugin-core";
+```
+
+## 返回值约定
+
+多数异步接口返回 [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response)。通常只在 `success === true` 时读取 `result`。
+
+## 方法列表
+
+- [createTrail](/api-reference/supernote-plugin/plugin-comm-api/create-trail)
+- [recycleTrail](/api-reference/supernote-plugin/plugin-comm-api/recycle-trail)
+- [clearTrailCache](/api-reference/supernote-plugin/plugin-comm-api/clear-trail-cache)
+- [saveStickerByLasso](/api-reference/supernote-plugin/plugin-comm-api/save-sticker-by-lasso)
+- [getStickerSize](/api-reference/supernote-plugin/plugin-comm-api/get-sticker-size)
+- [generateStickerThumbnail](/api-reference/supernote-plugin/plugin-comm-api/generate-sticker-thumbnail)
+- [convertTrail2Sticker](/api-reference/supernote-plugin/plugin-comm-api/convert-trail2-sticker)
+- [insertSticker](/api-reference/supernote-plugin/plugin-comm-api/insert-sticker)
+- [setLassoBoxState](/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state)
+- [getLassoRect](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect)
+- [updateLassoRect](/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect)
+- [setSlideBarStatus](/api-reference/supernote-plugin/plugin-comm-api/set-slide-bar-status)
+- [setSystemDormancyState](/api-reference/supernote-plugin/plugin-comm-api/set-system-dormancy-state)
+- [setStatusBarAndSlideBarState](/api-reference/supernote-plugin/plugin-comm-api/set-status-bar-and-slide-bar-state)
+- [getLassoData](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data)
+- [getLassoDataTypeCounts](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts)
+- [deleteLassoData](/api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data)
+- [getCurrentPageNum](/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num)
+- [getCurrentFilePath](/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path)
+- [reloadFile](/api-reference/supernote-plugin/plugin-comm-api/reload-file)
+- [getLassoGeometries](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries)
+- [insertGeometry](/api-reference/supernote-plugin/plugin-comm-api/insert-geometry)
+- [modifyLassoGeometry](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry)
+- [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-note-system-templates)

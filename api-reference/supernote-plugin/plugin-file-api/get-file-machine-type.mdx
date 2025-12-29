@@ -1,0 +1,19 @@
+---
+title: "getFileMachineType"
+description: "获取创建该笔记或旁注文件的机器类型。"
+---
+
+```ts
+static getFileMachineType(notePath: string): Promise<APIResponse<number>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 文件路径 |
+
+**返回**
+
+- `APIResponse<number>`：`result` 为机器型号：`0` A5，`1` A6，`2` A6X，`3` A5X，`4` nomad，`5` Manta
+

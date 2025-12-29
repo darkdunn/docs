@@ -1,0 +1,21 @@
+---
+title: "replaceTrails"
+description: "替换页面笔划数据。"
+---
+
+```ts
+static replaceTrails(notePath: string, page: number, trails: Trail[]): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `trails` | [`Trail[]`](/api-reference/supernote-plugin/types/trail) | 轨迹数据数组 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示替换成功
+

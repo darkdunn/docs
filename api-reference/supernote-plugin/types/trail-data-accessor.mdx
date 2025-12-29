@@ -1,0 +1,14 @@
+---
+title: "TrailDataAccessor"
+description: "大体量点数据的访问器。"
+---
+
+点数据通常由原生端缓存，JS 侧通过访问器按需取数。
+
+| 方法 | 返回 | 说明 |
+| --- | --- | --- |
+| `size()` | `Promise<number>` | 获取数据长度 |
+| `get(index)` | `Promise<T \| null>` | 获取某个下标的数据 |
+| `getRange(startIndex, count)` | `Promise<T[]>` | 批量获取一段数据 |
+| `for await ... of accessor` | - | 异步迭代全部数据 |
+

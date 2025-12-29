@@ -1,0 +1,25 @@
+---
+title: "createTrail"
+description: "创建一个新的笔划对象（Trail）。"
+---
+
+```ts
+static createTrail(
+  page: number,
+  num: number,
+  type: number
+): Promise<APIResponse<Trail>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `page` | `number` | 所在页码（从 1 开始） |
+| `num` | `number` | 笔划编号（从 0 开始） |
+| `type` | `number` | 数据类型，参考 [`TrailType`](/api-reference/supernote-plugin/types/trail-type) |
+
+**返回**
+
+- `APIResponse<Trail>`：见 [`APIResponse`](/api-reference/supernote-plugin/types/api-response) 与 [`Trail`](/api-reference/supernote-plugin/types/trail)
+- 成功时会在返回的 `Trail` 上补齐访问器字段（例如 `angles`、`contoursSrc`，以及笔划类型下的 `stroke.*` 访问器）

@@ -1,0 +1,31 @@
+---
+title: "modifyLassoLink"
+description: "修改链接数据。"
+---
+
+```ts
+static modifyLassoLink(modifyLink: {
+  destPath: string;
+  destPage?: number;
+  linkType: number;
+  style: number;
+  fullText: string;
+  showText: string;
+}): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `modifyLink.destPath` | `string` | 目标文件路径；当 `linkType === 3` 时填写 URL |
+| `modifyLink.destPage` | `number` | 目标页码（可选；当 `linkType === 0` 时必须为非负整数） |
+| `modifyLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址 |
+| `modifyLink.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
+| `modifyLink.fullText` | `string` | 完整文本 |
+| `modifyLink.showText` | `string` | 展示文本 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示修改成功
+

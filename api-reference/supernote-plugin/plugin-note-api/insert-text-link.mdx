@@ -1,0 +1,37 @@
+---
+title: "insertTextLink"
+description: "插入文字链接。"
+---
+
+```ts
+static insertTextLink(textLink: {
+  destPath: string;
+  destPage?: number;
+  style: number;
+  linkType: number;
+  rect: Rect;
+  fontSize: number;
+  fullText: string;
+  showText: string;
+  isItalic: number;
+}): Promise<APIResponse<number>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `textLink.destPath` | `string` | 目标文件路径；当 `linkType === 3` 时填写 URL |
+| `textLink.destPage` | `number` | 目标页码（可选；通常仅 `linkType === 0` 时有效） |
+| `textLink.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
+| `textLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址 |
+| `textLink.rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | 文本区域矩形（需为非零面积） |
+| `textLink.fontSize` | `number` | 字体大小（正数） |
+| `textLink.fullText` | `string` | 完整文本 |
+| `textLink.showText` | `string` | 展示文本 |
+| `textLink.isItalic` | `number` | 是否斜体：`0` 否，`1` 是 |
+
+**返回**
+
+- `APIResponse<number>`：调用结果
+

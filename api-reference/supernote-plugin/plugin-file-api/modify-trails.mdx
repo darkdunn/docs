@@ -1,0 +1,21 @@
+---
+title: "modifyTrails"
+description: "修改已存在的页面笔划数据（必须是已存在的数据，否则不会生效）。"
+---
+
+```ts
+static modifyTrails(notePath: string, page: number, trails: Trail[]): Promise<APIResponse<number[]>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `trails` | [`Trail[]`](/api-reference/supernote-plugin/types/trail) | 需要修改的轨迹数组（必须已存在） |
+
+**返回**
+
+- `APIResponse<number[]>`：`result` 为修改成功的轨迹索引列表
+

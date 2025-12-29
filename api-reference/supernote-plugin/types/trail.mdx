@@ -1,0 +1,21 @@
+---
+title: "Trail"
+description: "笔记元素数据基类。"
+---
+
+部分字段会在不同 `type` 下出现（例如 `stroke`、`geometry` 等）。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uuid` | `string` | 通用唯一识别码 |
+| `type` | `number` | 笔划类型，通常参考 [`TrailType`](/api-reference/supernote-plugin/types/trail-type) |
+| `pageNum` | `number` | 页码 |
+| `layerNum` | `number` | 图层码 |
+| `thickness` | `number` | 笔划粗细 |
+| `maxX` | `number` | 最大 X |
+| `maxY` | `number` | 最大 Y |
+| `angles` | [`TrailDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 角度点访问器 |
+| `contoursSrc` | [`TrailDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 轮廓点访问器 |
+| `stroke` | [`Stroke \| null`](/api-reference/supernote-plugin/types/stroke) | 笔划数据（仅 `type` 为笔划时存在） |
+| `geometry` | [`Geometry \| null`](/api-reference/supernote-plugin/types/geometry) | 几何图形数据（仅几何类型时存在） |
+

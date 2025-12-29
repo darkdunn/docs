@@ -1,0 +1,19 @@
+---
+title: "getNoteType"
+description: "获取笔记类型。"
+---
+
+```ts
+static getNoteType(notePath: string): Promise<APIResponse<number>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+
+**返回**
+
+- `APIResponse<number>`：`result` 为笔记类型：`0` 正常笔记，`1` 识别笔记
+

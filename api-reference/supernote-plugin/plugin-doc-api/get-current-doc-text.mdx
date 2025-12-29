@@ -1,0 +1,19 @@
+---
+title: "getCurrentDocText"
+description: "获取当前打开文档指定页面的文本内容。"
+---
+
+```ts
+static getCurrentDocText(page: number): Promise<APIResponse<string>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `page` | `number` | 页码（从 1 开始） |
+
+**返回**
+
+- `APIResponse<string>`：`result` 为文档指定页面的文本内容
+

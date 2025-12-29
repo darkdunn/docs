@@ -1,0 +1,20 @@
+---
+title: "getPageRotationType"
+description: "获取指定页面的旋转角度类型。"
+---
+
+```ts
+static getPageRotationType(notePath: string, page: number): Promise<APIResponse<number>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页码（从 1 开始） |
+
+**返回**
+
+- `APIResponse<number>`：`result` 为旋转角度类型（文档约定：`1000`/`2000`/`1090`/`2090`/`1180`/`2180`/`1270`/`2270`）
+

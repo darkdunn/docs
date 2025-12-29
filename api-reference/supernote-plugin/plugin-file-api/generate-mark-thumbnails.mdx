@@ -1,0 +1,27 @@
+---
+title: "generateMarkThumbnails"
+description: "生成 mark 文件缩略图。"
+---
+
+```ts
+static generateMarkThumbnails(
+  markPath: string,
+  page: number,
+  pngPath: string,
+  size: Size
+): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `markPath` | `string` | 文件路径 |
+| `page` | `number` | 页码（从 1 开始） |
+| `pngPath` | `string` | PNG 输出路径（需以 `.png` 结尾） |
+| `size` | [`Size`](/api-reference/supernote-plugin/types/size) | 生成的图片大小 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示生成成功
+

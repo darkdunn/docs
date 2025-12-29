@@ -1,0 +1,16 @@
+---
+title: "Stroke"
+description: "纯笔划数据（Trail 为笔划类型时存在）。"
+---
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `penColor` | `number` | 笔颜色 |
+| `penType` | `number` | 笔类型 |
+| `points` | [`TrailDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 采样点 |
+| `pressures` | [`TrailDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 压力数据 |
+| `eraseLineTrailNums` | [`TrailDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 线擦数据 |
+| `flagDraw` | [`TrailDataAccessor<boolean>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 写标志 |
+| `markPenDirection` | [`TrailDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 马克笔方向 |
+| `recognPoints` | [`TrailDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 识别点数据 |
+

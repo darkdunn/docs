@@ -1,0 +1,20 @@
+---
+title: "clearMarkTrails"
+description: "清除 mark 笔划数据。"
+---
+
+```ts
+static clearMarkTrails(filePath: string, page: number): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `filePath` | `string` | 文件路径 |
+| `page` | `number` | 页码（从 1 开始） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示清除成功
+

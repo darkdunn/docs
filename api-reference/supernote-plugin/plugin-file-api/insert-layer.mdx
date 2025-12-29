@@ -1,0 +1,21 @@
+---
+title: "insertLayer"
+description: "插入图层数据。"
+---
+
+```ts
+static insertLayer(notePath: string, page: number, layer: Layer): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 1 开始） |
+| `layer` | `Layer` | 需要插入的图层数据 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示插入成功
+

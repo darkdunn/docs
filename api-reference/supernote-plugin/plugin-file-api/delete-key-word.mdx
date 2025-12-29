@@ -1,0 +1,21 @@
+---
+title: "deleteKeyWord"
+description: "删除关键字。"
+---
+
+```ts
+static deleteKeyWord(notePath: string, page: number, index: number): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 删除关键字所在的页码（从 1 开始） |
+| `index` | `number` | 删除关键字的序列号（页内从 0 开始） |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示删除成功
+

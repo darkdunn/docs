@@ -1,0 +1,19 @@
+---
+title: "modifyLassoTitle"
+description: "修改套索的标题。"
+---
+
+```ts
+static modifyLassoTitle(params: { style: number }): Promise<APIResponse<boolean>>;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `params.style` | `number` | 标题样式：`0` 去掉标题属性，`1` 黑底标题，`2` 灰白标题，`3` 灰黑标题，`4` 阴影标题 |
+
+**返回**
+
+- `APIResponse<boolean>`：`result === true` 表示修改成功
+
