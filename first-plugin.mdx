@@ -212,6 +212,384 @@ PluginManager.registerButton(1, ['NOTE', 'DOC'], {
 
 上面代码注册的按钮名称为“Side Button”，点开插件图标就会多一个“Side Button”的按钮。
 
+### 套索工具栏按钮注册
+
+套索工具栏按钮注册也是调用的PluginManager.registerButton，代码如下：
+
+```ts wrap
+import { AppRegistry, Image } from 'react-native';
+import App from './App';
+import { name as appName } from './app.json';
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+AppRegistry.registerComponent(appName, () => App);
+
+PluginManager.init();
+
+PluginManager.registerButton(1, ['NOTE', 'DOC'], {
+  id: 100,
+  name: 'Side Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+});
+
+PluginManager.registerButton(2, ['NOTE', 'DOC'], {
+  id: 200,
+  name: 'Lasso Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+  editDataTypes: [0, 1, 2, 3, 4],
+  showType: 1,
+});
+```
+
+需要将第一个参数的Type改为2，这样就会在套索工具栏上注册一个按钮。
+
+第三个参数和工具栏按钮注册不太一样，数据说明如下：
+
+```text
+{
+  id：按钮ID，唯一性，定义好之后不可变，由插件自己定义
+  name: 按钮名称
+  icon：按钮图标，绝对路径或uri值，可以通过React Native官方的Image获取URI路径
+  editDataTypes：当前套索的数据类型数组，只有满足列表内的类型才会在套索工具条上出现对应插件按钮
+    0：手写笔迹
+    1：标题
+    2：图片
+    3：文字
+    4：链接
+    5：几何图形
+  showType：显示类型，0：不显示插件界面，1：显示插件界面，默认为1
+}
+```
+
+相比于工具栏按钮多了editDataTypes属性，editDataTypes是数组，可以设置多种数据类型。
+
+根据上面的代码，设置完之后，插件打包安装，套索笔划就会出现“Lasso Button"的按钮，如下图：
+
+![image](/images/devguide/devguide-9.png)
+
+### 划词按钮注册
+
+该按钮是文档特有的按钮，也是调用PluginManager.registerButton接口，代码如下：
+
+```ts wrap
+import { AppRegistry, Image } from 'react-native';
+import App from './App';
+import { name as appName } from './app.json';
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+AppRegistry.registerComponent(appName, () => App);
+
+PluginManager.init();
+
+PluginManager.registerButton(1, ['NOTE', 'DOC'], {
+  id: 100,
+  name: 'Side Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+});
+
+PluginManager.registerButton(2, ['NOTE', 'DOC'], {
+  id: 200,
+  name: 'Lasso Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+  editDataTypes: [0, 1, 2, 3, 4],
+  showType: 1,
+});
+
+PluginManager.registerButton(3, ['NOTE', 'DOC'], {
+  id: 300,
+  name: 'Selection Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+  showType: 1,
+});
+```
+
+需要加第一个参数改为3，就会在文档的划词工具栏上注册一个按钮。如下图所示：
+
+![image](/images/devguide/devguide-10.png)
+
+## 插件界面编写
+
+之前讲过插件项目创建成功后会自动生成两个文件：index.js和App.tsx，index.js是主程序的入口，App.tsx这是插件界面的入口，代码如下：
+
+```ts wrap
+import React from 'react';
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
+
+/**
+ * Plugin View
+ * Displays Hello World text in the center of the screen
+ */
+function App(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  return (
+    <View style={styles.container}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={isDarkMode ? '#000000' : '#ffffff'}
+      />
+      <Text style={[styles.helloText, {color: isDarkMode ? '#ffffff' : '#000000'}]}>
+        Hello World
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+  },
+  helloText: {
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+});
+
+export default App;
+```
+
+以上代码在项目创建的时候已经自动生成，如果要改界面也是在这个文件上进行修改。
+
+当前App.tsx是一个很简单的界面，就是在屏幕中间显示“Hello World”字符，背景为白色，界面如下：
+
+![image](/images/devguide/devguide-11.png)
+
+要想显示上面的界面，只需要点击之前注册的“Side Button”或“Lasso Button”或“Selection Button”按钮就可以了。
+
+---
+title: '编写第一个Supernote插件'
+---
+
+接下来会讲解如何快速开发一个简单的Supernote插件，这个插件会在笔记、文档应用的工具栏和套索工具栏上分别注册一个按钮，还会在文档的
+划词工具栏上注册一个按钮，点击这三种按钮都会展示一张“Hello World”的插件界面。这三种按钮分别是三种插件入口。
+
+## 插件项目创建
+
+插件项目创建很简单，就是创建一个React Native项目。
+
+如果之前安装过旧的react-native-cli命令行工具，需要使用以下命令卸载：
+
+```bash wrap
+npm uninstall -g react-native-cli
+npm uninstall -g react-native
+npm uninstall -g react-native-cli
+npm uninstall -g react-native
+```
+
+再用以下命令重新安装react-native-cli命令行工具：
+
+```bash wrap
+npm install -g react-native-cli
+npm install -g react-native
+npm install -g react-native-cli
+npm install -g react-native
+```
+
+创建项目用以下命令：
+
+```bash wrap
+npx @react-native-community/cli init project_name --template @supernote-plugin/template --version 0.79.2
+```
+
+"project_name"是项目名称，可以换成自己创建的项目名称，其他不可替换。当前以项目“plugin”为例创建插件项目，运行命令如下：
+
+![image](/images/devguide/devguide-7.png)
+
+注：插件框架代码使用的React Native版本是0.79.2，所以插件项目也得用0.79.2，不能用其他版本，
+否则插件程序会无法运行
+
+大概几分钟之后会在命令运行目录生成一个“plugin”目录，这就是刚刚创建的插件项目，目录结构如下：
+
+```text
+plugin\
+|-- .bundle\\                          # Bundle configuration directory
+|   \\-- config
+|-- .eslintrc.js                       # ESLint configuration file
+|-- .gitignore                         # Git ignore file configuration
+|-- .prettierrc.js                     # Prettier code formatting configuration
+|-- .watchmanconfig                    # Watchman configuration file
+|-- *App.tsx                           # Main application component
+|-- Gemfile                            # Ruby dependency management file
+|-- README.md                          # Project documentation
+|-- __tests__\\                        # Test files directory
+|   \\-- App.test.tsx                  # App component test file
+|-- *android\\                         # Android platform related files
+|   |-- app\\                          # Android application configuration
+|   |   |-- build.gradle               # App-level Gradle build file
+|   |   |-- debug.keystore             # Debug signing file
+|   |   |-- proguard-rules.pro         # ProGuard obfuscation rules
+|   |   \\-- src\\                     # Android source code directory
+|   |       |-- debug\\                # Debug version configuration
+|   |       |   \\-- AndroidManifest.xml
+|   |       \\-- main\\                # Main source code
+|   |           |-- AndroidManifest.xml
+|   |           |-- java\\             # Java/Kotlin source code
+|   |           \\-- res\\             # Android resource files
+|   |-- build.gradle                   # Project-level Gradle build file
+|   |-- gradle\\                       # Gradle Wrapper
+|   |   \\-- wrapper\\
+|   |       |-- gradle-wrapper.jar
+|   |       \\-- gradle-wrapper.properties
+|   |-- gradle.properties              # Gradle properties configuration
+|   |-- gradlew                        # Gradle Wrapper script (Unix)
+|   |-- gradlew.bat                    # Gradle Wrapper script (Windows)
+|   \\-- settings.gradle               # Gradle settings file
+|-- app.json                           # React Native application configuration
+|-- babel.config.js                    # Babel transpiler configuration
+|-- buildPlugin.ps1                    # PowerShell build script
+|-- buildPlugin.sh                     # Shell build script
+|-- *index.js                          # Application entry point
+|-- ios\\                              # iOS platform related files
+|   |-- .xcode.env                     # Xcode environment configuration
+|   |-- Podfile                        # CocoaPods dependency management
+|   |-- plugin\\                       # iOS application directory
+|   |   |-- AppDelegate.swift          # iOS application delegate
+|   |   |-- Images.xcassets\\          # iOS image assets
+|   |   |   |-- AppIcon.appiconset\\   # Application icon set
+|   |   |   |   \\-- Contents.json
+|   |   |   \\-- Contents.json
+|   |   |-- Info.plist                 # iOS application info configuration
+|   |   |-- LaunchScreen.storyboard    # Launch screen
+|   |   \\-- PrivacyInfo.xcprivacy     # Privacy information configuration
+|   \\-- plugin.xcodeproj\\            # Xcode project file
+|       |-- project.pbxproj            # Project configuration
+|       \\-- xcshareddata\\            # Shared data
+|           \\-- xcschemes\\           # Build schemes
+|               \\-- plugin.xcscheme
+|-- jest.config.js                     # Jest testing framework configuration
+|-- metro.config.js                    # Metro bundler configuration
+|-- package-lock.json                  # npm dependency lock file
+|-- *package.json                      # Project dependencies and scripts configuration
+\\-- tsconfig.json                     # TypeScript configuration file
+```
+
+因为插件是基于React Native编写的，所以这是一个标准的React Native项目结构。
+以上带星号的文件和目录是插件开发主要会用到的文件目录，这些文件目录用处如下：
+
+**index.js**：插件的程序入口，后面会讲解这个文件该如何使用
+
+**App.tsx**：插件的界面入口，后面会讲解这个文件该如何使用
+
+**package.json**：主要用来添加第三方React Native库
+
+**android**：该目录是存放android本地代码的目录。如果需要开发复杂的插件，比如带Android本地代码和C/C++代码，
+需要用到该目录来编写android代码和C/C++代码
+
+创建完插件项目就需要导入rtn-supernote-plugin-core，这是插件框架模块库，我司会将相关库上传到npm上，通过以下命令可以添加该模块库。
+
+```bash wrap
+yarn add rtn-supernote-plugin-core
+```
+
+rtn-supernote-plugin-core库添加完之后就能调用Supernote插件的相关API，开发插件功能。
+可以使用VS Code等代码编辑器打开这个插件项目目录，编写插件代码。
+
+在插件代码中需要引用'rtn-supernote-plugin-core'这个库，所有接口都在rtn-supernote-plugin-core库中，
+只有引用对应的接口和类才能调用插件接口。
+
+## 插件初始化
+
+插件项目创建完之后会自动生成两个代码文件，index.js和App.tsx。来源是@supernote-plugin/template这个模板类，这个模板类是由我们公司提供的。
+
+先说下index.js文件，这是React Native程序的主入口，也是插件的主入口。插件运行的时候会首先运行index.js代码，
+所以插件初始化是在这里进行。需要调用PluginManager.init()对插件进行初始化，否则调用其他插件接口会无效，代码如下：
+
+```ts wrap
+import { AppRegistry, Image } from 'react-native';
+import App from './App';
+import { name as appName } from './app.json';
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+AppRegistry.registerComponent(appName, () => App);
+
+PluginManager.init();
+```
+
+代码很简单，首先通过 `import { PluginManager } from 'rtn-supernote-plugin-core'` 导入 PluginManager，
+然后在 AppRegistry.registerComponent 后调用 PluginManager.init 对插件初始化。
+
+其他代码都是在插件项目创建的时候React Native框架自动生成的，主要是通过AppRegistry.registerComponent注册一个插件的界面入口，而入口App对应的就是App.tsx文件。
+
+## 按钮注册
+
+插件有三种按钮，如下：
+1. 工具栏按钮，该按钮是显示在笔记和文档的工具栏上。
+2. 套索工具栏按钮，该按钮是套索笔画之后显示在套索工具栏上。
+3. 划词工具栏按钮，该按钮是文档特有的按钮，文档应用中选中一段文字会出现一条工具栏，该按钮就是显示在该工具栏上。
+
+只有注册了以上三种按钮才可以从笔记、文档应用进入对应的插件。
+
+### 工具栏按钮注册
+
+工具栏按钮注册需要在index.js中注册，而且得在AppRegistry.registerComponent和PluginManager.init后面，代码如下：
+
+```ts wrap
+import { AppRegistry, Image } from 'react-native';
+import App from './App';
+import { name as appName } from './app.json';
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+AppRegistry.registerComponent(appName, () => App);
+
+PluginManager.init();
+
+PluginManager.registerButton(1, ['NOTE', 'DOC'], {
+  id: 100,
+  name: 'Side Button',
+  icon: Image.resolveAssetSource(
+    require('./assets/icon/icon.png'),
+  ).uri,
+  showType: 1,
+});
+```
+
+需要先调用PluginManager.init，再调用PluginManager.registerButton注册按钮，需要输入三个参数。
+
+第一个参数是Type，按钮的类型，1：表示工具栏按钮，2：表示套套索按钮，3：表示文档的划词工具栏按钮（文档特有按钮，笔记暂时不支持该按钮）。
+
+第二个参数是appTypes，是按钮支持的应用类型，是个数组，有两种类型，NOTE：表示该插件支持笔记应用，DOC：表示该插件支持文档应用。
+
+第三个参数是按钮的属性，数据说明如下：
+
+```text
+{
+  id：按钮ID，唯一性，定义好之后不可变，由插件自己定义
+  name: 按钮名称
+  icon：按钮图标路径，绝对路径或uri值，可以通过React Native官方的Image接口获取URI路径
+  showType：显示类型，0：不显示插件界面，1：显示插件界面，默认为1
+}
+```
+
+如果showType为1，点击按钮之后会在PluginCore中申请一个全屏View，插件界面会显示在该View上。
+
+如果showType为0，则不会显示界面，但是插件后台会收到消息，后台根据点击点击事件运行相应的代码逻辑。
+
+通过上面的方式注册按钮之后就会在笔记、文档的工具栏上显示一个插件按钮，如下图所示：
+
+![image](/images/devguide/devguide-8.png)
+
+上面代码注册的按钮名称为“Side Button”，点开插件图标就会多一个“Side Button”的按钮。
+
 ### 套索工具条按钮注册
 
 套索工具栏按钮注册也是调用的PluginManager.registerButton，代码如下：

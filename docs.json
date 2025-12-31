@@ -27,7 +27,16 @@
             "group": "开发指南",
             "pages": [
               "first-plugin",
+              {
+              "group": "学习基础知识",
+              "pages": [
+                "plugin-base/plugin-ui"
+              ]
+              },
+          
               "development"
+              
+              
             ]
           },
 

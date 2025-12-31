@@ -1,0 +1,65 @@
+---
+title: '插件界面'
+---
+
+上一章讲过如何开发第一个Supernote插件，那里面讲过有三种按钮打开插件界面，那么插件界面又是如何显示的呢？
+接下来会详细讲解插件界面的显示原理。
+
+## 插件界面显示
+
+之前的“插件系统工作原理”一章讲过插件事件的相应流程，如下图所示：
+
+![插件事件响应流程](/images/plugin-principle/principle-03.png)
+
+插件按钮点击之后，PluginHost APP就会接收到点击事件，根据不同的点击事件显示不同的插件界面。
+而这个插件界面是显示在PluginHost APP中的，那么PluginHost又是怎么做到显示不同插件的界面呢？
+
+这就要说到React Native加载界面的机制，React Native的代码重要是由JS/TS编写的，JS/TS编写的界面是无法直接显示在Android
+上面的。所以React Native中使用了ReactRootView这个关键组件，ReactRootView是承载和管理React Native应用的根视图，
+会将JS/TS的界面渲染到屏幕上。
+
+基于React Native这种界面渲染原理，PluginHost APP也声明了ReactRootView，所有的插件界面都是渲染在这个ReactRootView上。
+PluginHost会根据点击事件中的PluginID（插件唯一标识）来判断需要显示哪个插件，然后将其渲染在ReactRootView上。
+
+## 按钮事件监听
+
+上一小节讲了插件界面是如何渲染到屏幕上，接下来讲解插件按钮点击事件的监听。
+
+插件是可以注册多个按钮的，那么插件又该如何区分哪些按钮被点击了？根据不同的按钮点击处理不同的事务呢？
+
+这就需要监听按钮的点击事件，代码如下：
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+    * @description 监听原生按钮点击事件
+    * @param {object} event - 事件对象，包含按钮ID
+    */
+const buttonClickListener = PluginManager.registerButtonListener({
+    onButtonPress: event => {
+        console.log(event, '按钮点击事件');
+        // 处理按钮点击逻辑
+        console.log('按钮被点击，ID:', event.id);
+        
+    },
+});
+```
+通过PluginManager.registerButtonListener监听按钮点击事件，如果有按钮点击了，会回调一个event过来，event的数据结果如下：
+```ts wrap
+class ButtonEvent {
+
+  id: number = 0;// 按钮ID，注册按钮是申明的ID
+
+  name: string = '';// 按钮名称
+
+  icon: string = '';// 按钮图标，注册按钮时传入的图标路径
+
+}
+
+```
+重点需要关注的是id这个参数，这个是区分按钮用的，每一个按钮的id都是不一样，根据这个id才可以知道哪个按钮被点击了。
+所以注册按钮的时候不要申明重复的id。
+
+
+
