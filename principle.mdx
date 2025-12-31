@@ -1,0 +1,48 @@
+---
+title: "插件系统工作原理"
+description: "了解 Plugin / PluginHost / Supernote App 三模块关系与运行机制。"
+---
+
+## 插件运行机制
+
+插件框架主要分以下三个模块：
+
+- Plugin：由开发者开发的定制化插件，用来扩展笔记、文档的功能。
+- PluginHost：插件宿主应用，用来管理、加载开发者开发的插件。可以安装、卸载、加载插件，插件都是运行在该 App 上。
+- Supernote App：Supernote 设备的手写应用，包含笔记、文档等。是插件的使用方，会在对应的工具栏或套索工具条上显示正在运行的插件按钮。
+
+接下来详细讲述三个模块之间的关系和运行机制。
+
+## 插件安装流程
+
+整体插件安装流程如下图所示：
+
+![整体插件安装流程](/images/plugin-principle/principle-01.png)
+
+终端设置会有一个入口，选择需要安装的插件包之后会将其发送给 PluginHost App，PluginHost 接收到消息之后会解析插件包中配置文件，根据配置文件数据安装插件，拷贝代码文件和资源文件到插件运行目录。
+
+插件安装成功之后，就会初始化插件，并向笔记、文档注册插件按钮，如图所示：
+
+![插件初始化与按钮注册](/images/plugin-principle/principle-02.png)
+
+激活插件之后会执行 JS/TS 代码，在该代码中需要开发者自行编写注册按钮代码，注册成功之后会将按钮信息发送给笔记、文档应用，相关按钮会显示在笔记、文档中。
+
+## 插件事件响应流程
+
+插件安装运行成功之后，在笔记、文档应用上会显示其相关的插件按钮，点击按钮会向对应插件发送相关的事件，具体流程如下：
+
+![插件事件响应流程](/images/plugin-principle/principle-03.png)
+
+笔记、文档通过 Android 的 AIDL 机制向 PluginHost 发送事件消息，PluginHost 接收到消息之后会核对消息的内容，根据消息内容转发给对应插件。插件内部会注册相应的监听器用来监听不同的消息，根据接收到的不同的事件来触发不同的事务，调用功能接口。
+
+具体的功能调用接口如下：
+
+![功能调用接口与链路](/images/plugin-principle/principle-04.png)
+
+插件内容事务逻辑由插件负责。在插件内部可以通过 React Native 自带的 TurboModule 架构调用 Java 代码，再通过 Java 代码调用底层的 C/C++ 代码，暂时不支持直接调用 C/C++ 代码。
+
+此外插件可以通过我司提供 SDK 调用笔记/文档应用的接口，实现对笔记/文档的操作。
+
+## 相关文档
+
+- 本地开发与打包流程见 [development.mdx](file:///d:/code/09.plugin/Project/rtn-supernote-plugin-core/docs/development.mdx)
