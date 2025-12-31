@@ -23,7 +23,14 @@
               "development"
             ]
           },
-          
+          {
+            "group": "开发指南",
+            "pages": [
+              "first-plugin",
+              "development"
+            ]
+          },
+
           {
             "group": "Customization",
             "pages": [
