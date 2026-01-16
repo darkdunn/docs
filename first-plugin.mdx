@@ -753,3 +753,84 @@ export default App;
 ![image](/images/devguide/devguide-11.png)
 
 要想显示上面的界面，只需要点击之前注册的“Side Button”或“Lasso Button”按钮就可以了。
+
+
+### 插件打包
+
+之前讲过插件的简单编写流程，现在讲解怎么将编写的插件打包成插件安装包。
+
+在插件项目创建的时候会自动生成两个命令文件：buildPlugin.ps1和buildPlugin.sh。这两个文件也是从@supernote-plugin/template这个模板库中导入的。插件打包就是在插件项目的根目录的命令行窗口运行这两个命令文件，如下：
+
+Windows 运行以下命令：
+
+```bash wrap
+.\buildPlugin.ps1
+```
+
+Linux、macOS 运行以下命令：
+
+```bash wrap
+./buildPlugin.sh
+```
+
+第一次运行插件打包命令会在项目的根目录下生成一个PluginConfig.json文件，内容如下：
+
+```json wrap
+{
+  "name": "plugin",
+  "pluginKey": "plugin",
+  "pluginID": "98blcl1mp5fxamrm",
+  "iconPath": "",
+  "desc": "",
+  "versionCode": "1",
+  "versionName": "0.0.1",
+  "jsMainPath": "index"
+}
+```
+
+这是一个插件配置文件，第一次运行打包命令才会生成，之后不会再生成该文件，后续需要用户手动修改该文件的内容。PluginConfig.json的各个字段的解析如下：
+
+name：插件名称，可以手动修改
+
+pluginKey：插件的key值，需要和AppRegistry.registerComponent中的appkey保持一致，否则插件无法运行
+
+pluginID：插件ID，唯一ID，区分不同的插件。由打包命令随机生成，一旦生成不能修改，否则安装更改后的插件会出现第二个同样功能的插件
+
+iconPath：插件图标路径，是相对项目根目录的路径，需要用户手动填写。
+
+versionCode：插件版本号
+
+versionName：插件版本名称
+
+desc：插件功能描述
+
+jsMainPath：插件入口，填写的是插件程序入口文件名，这里是“index”，最好不要修改。
+
+author：插件作者，该字段需要用户自行添加，打包命令不会自动生成。
+
+打包命令运行完之后还会生成一个build目录，目录结构如下：
+
+```text
+build/
+├── generated/
+│   ├── PluginConfig.json
+│   ├── drawable-mdpi/
+│   │   └── assets_icon_icon.png
+│   └── plugin.bundle
+└── outputs/
+    └── plugin.snplg
+```
+
+generated目录内存放的是插件打包时生成的文件，最终会将这些文件打包进build\outputs\plugin.snplg这个插件安装包中。
+
+### 插件安装
+
+插件安装很简单，将上一节的插件包拷贝进SuperNote设备的MyStyle目录下。然后打开“设置->应用->管理插件”界面，如下图：
+
+![image](/images/devguide/devguide-12.png)
+
+然后点击右上角的“+”号，选择需要安装的插件包安装点击安装，如下图：
+
+![image](/images/devguide/devguide-13.png)
+
+安装完成之后，会在手写应用的侧边工具栏和套索工具栏上显示已安装插件注册的按钮。
