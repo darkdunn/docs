@@ -1,0 +1,19 @@
+---
+title: "registerButtonListener"
+description: "监听插件按钮点击事件。"
+---
+
+```ts
+registerButtonListener(buttonListener: ButtonListener): ButtonSubscription;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `buttonListener` | `ButtonListener` | 回调 `onButtonPress(event)` |
+
+**返回**
+
+- `ButtonSubscription`：订阅对象，调用 `remove()` 可注销监听
+

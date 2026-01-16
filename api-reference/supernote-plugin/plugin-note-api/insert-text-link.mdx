@@ -1,7 +1,10 @@
 ---
 title: "insertTextLink"
-description: "插入文字链接。"
+description: "在笔记应用中，向当前打开的笔记页的主图层插入文字链接。"
 ---
+<Note>
+链接只能插入到主图层，无法插入到其他图层。该接口支持笔记中的撤销还原操作
+</Note>
 
 ```ts
 static insertTextLink(textLink: {
@@ -21,17 +24,17 @@ static insertTextLink(textLink: {
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `textLink.destPath` | `string` | 目标文件路径；当 `linkType === 3` 时填写 URL |
-| `textLink.destPage` | `number` | 目标页码（可选；通常仅 `linkType === 0` 时有效） |
+| `textLink.destPath` | `string` | 目标文件路径；当 `linkType`为3是填写URL地址 |
+| `textLink.destPage` | `number` | 目标页码，可选；通常仅 `linkType`为0和2时才有效。 |
 | `textLink.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
-| `textLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址 |
+| `textLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 跳转文档，`3` 跳转图片，`4` 跳转网址，`6` 跳转摘录|
 | `textLink.rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | 文本区域矩形（需为非零面积） |
 | `textLink.fontSize` | `number` | 字体大小（正数） |
-| `textLink.fullText` | `string` | 完整文本 |
-| `textLink.showText` | `string` | 展示文本 |
+| `textLink.fullText` | `string` | 完整文本，只有是文本链接才需要修改该参数 |
+| `textLink.showText` | `string` | 展示文本，只有文本链接才需要修改该参数 |
 | `textLink.isItalic` | `number` | 是否斜体：`0` 否，`1` 是 |
 
 **返回**
 
-- `APIResponse<number>`：调用结果
-
+- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
+调用返回结果。`result`为0表示插入成功，`result`为-1表示插入失败，`result`为-2表示目标文件需要升级

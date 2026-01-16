@@ -1,14 +1,14 @@
 ---
-title: "createTrail"
-description: "创建一个新的笔划对象（Trail）。"
+title: "createElement"
+description: "创建一个新的元素对象（Element）。"
 ---
 
 ```ts
-static createTrail(
+static createElement(
   page: number,
   num: number,
   type: number
-): Promise<APIResponse<Trail>>;
+): Promise<APIResponse<Element>>;
 ```
 
 **参数**
@@ -21,5 +21,5 @@ static createTrail(
 
 **返回**
 
-- `APIResponse<Trail>`：见 [`APIResponse`](/api-reference/supernote-plugin/types/api-response) 与 [`Trail`](/api-reference/supernote-plugin/types/trail)
-- 成功时会在返回的 `Trail` 上补齐访问器字段（例如 `angles`、`contoursSrc`，以及笔划类型下的 `stroke.*` 访问器）
+- `APIResponse<Element>`：见 [`APIResponse`](/api-reference/supernote-plugin/types/api-response) 与 [`Element`](/api-reference/supernote-plugin/types/trail)
+- 成功时会在返回的 `Element` 上补齐访问器字段（例如 `angles`、`contoursSrc`，以及笔划类型下的 `stroke.*` 访问器）

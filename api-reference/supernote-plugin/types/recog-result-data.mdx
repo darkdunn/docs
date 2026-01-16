@@ -1,0 +1,18 @@
+---
+title: "RecogResultData"
+description: "元素识别结果数据结构。"
+---
+
+`RecogResultData` 通常作为 [`Element`](/api-reference/supernote-plugin/types/trail)
+的 `recognizeResult` 字段返回，用于描述识别到的类别与关键点位置信息。
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `predict_name` | `string` | 预测类别名称（默认 `others`） |
+| `up_left_point_x` | `number` | 左上角 X |
+| `up_left_point_y` | `number` | 左上角 Y |
+| `key_point_x` | `number` | 关键点 X |
+| `key_point_y` | `number` | 关键点 Y |
+| `down_right_point_x` | `number` | 右下角 X |
+| `down_right_point_y` | `number` | 右下角 Y |
+

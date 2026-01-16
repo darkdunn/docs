@@ -1,10 +1,10 @@
 ---
-title: "getPageTrails"
-description: "获取页面笔划数据，包含普通笔划、链接、标题、文本框。"
+title: "getElements"
+description: "获取页面元素数据，包含普通笔划、链接、标题、文本框。"
 ---
 
 ```ts
-static getPageTrails(page: number, notePath: string): Promise<APIResponse<Trail[]>>;
+static getElements(page: number, notePath: string): Promise<APIResponse<Element[]>>;
 ```
 
 **参数**
@@ -16,5 +16,5 @@ static getPageTrails(page: number, notePath: string): Promise<APIResponse<Trail[
 
 **返回**
 
-- `APIResponse<Trail[]>`：元素类型见 [`Trail`](/api-reference/supernote-plugin/types/trail)
+- `APIResponse<Element[]>`：元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
 

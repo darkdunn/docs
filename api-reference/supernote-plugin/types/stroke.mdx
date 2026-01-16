@@ -1,16 +1,20 @@
 ---
 title: "Stroke"
-description: "纯笔划数据（Trail 为笔划类型时存在）。"
+description: "纯笔划数据（Element 为笔划类型时存在）。"
 ---
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `penColor` | `number` | 笔颜色 |
 | `penType` | `number` | 笔类型 |
-| `points` | [`TrailDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 采样点 |
-| `pressures` | [`TrailDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 压力数据 |
-| `eraseLineTrailNums` | [`TrailDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 线擦数据 |
-| `flagDraw` | [`TrailDataAccessor<boolean>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 写标志 |
-| `markPenDirection` | [`TrailDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 马克笔方向 |
-| `recognPoints` | [`TrailDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 识别点数据 |
+| `points` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 采样点 |
+| `pressures` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 压力数据 |
+| `eraseLineTrailNums` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 线擦数据 |
+| `flagDraw` | [`ElementDataAccessor<boolean>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 写标志 |
+| `markPenDirection` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 马克笔方向 |
+| `recognPoints` | [`ElementDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 识别点数据，可以给MyScript等识别库，生成对应文字 |
+
+<Note>
+`points/pressures/eraseLineTrailNums/flagDraw/markPenDirection/recognPoints` 均为 [`ElementDataAccessor`](/api-reference/supernote-plugin/types/trail-data-accessor) 访问器对象，不是完整数组。需要通过 `size()/get()/getRange()` 等方法异步取数，避免一次性把大规模点集传到 RN 端导致内存问题。
+</Note>
 

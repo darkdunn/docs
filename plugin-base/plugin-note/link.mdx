@@ -1,0 +1,143 @@
+---
+title: '链接'
+---
+
+本章主要介绍如何使用插件接口在NOTE应用中插入、修改链接数据。
+
+## Text Link
+
+NOTE 链接有两种类型：第一种是文本链接；第二种是笔触链接。需要注意的是链接只能在主图层操作，不可插入其他图层。
+本节将详细介绍文本链接的创建方法。
+
+调用PluginNoteAPI.[`insertTextLink`](/api-reference/supernote-plugin/plugin-note-api/insert-text-link)
+这个接口，可以向当前打开笔记的当前页的主图层插入一个文本链接。
+
+
+```ts wrap
+import {PluginNoteAPI } from 'rtn-supernote-plugin-core';
+    // Create a TextLink object
+    const textLink = {
+      destPath: '/storage/emulated/0/Note/test.note', // Link Target Path
+      destPage: 2, //Target Page Number
+      style: 0,        // Link style: 0: solid underline, 1: solid border, 2: dashed border
+      linkType: 0,     // Link types: 0: Jump to note page, 1: Jump to note file, 2: Document, 3: Picture, 4: Website, 6: Excerpt link
+      rect: { left: 100, top: 100, right: 300, bottom: 150 }, // Link Display Region
+      fontSize: 49,
+      fullText: 'Show Text',
+      showText: 'Show Text',
+      isItalic: 1      // Italic: 0: italic, 1: not italic
+    };
+    PluginNoteAPI.insertTextLink(textLink)
+      .then(data => {
+        console.log('insertTextLink success:', data);
+      })
+      .catch(error => {
+        console.error('insertTextLink error:', error);
+      });
+```
+
+As shown in the code, insertTextLink passes in a [`TextLink`](/api-reference/supernote-plugin/types/text-link) object.
+After calling the insertTextLink interface according to the sample code, a text link will be inserted into the current page of the currently open note.
+
+If a link needs to jump to a specified page of a note, the linkType shall be set to 0.
+ If it needs to jump to a specified page of a document, the linkType shall also be set to 2.
+If the value of destPage is a negative number,
+it will jump to the current page or the first page of the document;
+ if the value of destPage is greater than or equal to 0,
+it will jump to the target page of the document.
+
+When the linkType is set to 4 (Website),
+the destPath shall be configured as a URL address, and the destPage can be set to 0 in this case.
+
+## Stroke Link
+
+笔画链接是将笔画设置为链接，其中笔画包括普通笔画和几何图形。
+要创建此类链接，必须先框选相应的笔触，否则无法设置链接。此外，必须只套索纯笔画和几何图形，不能包含文本框、标题等等元素。
+
+<Note>
+套索的笔画必须是主图层数据，其他图层无法创建链接。
+</Note>
+
+套索笔画和几何图形后，可以调用
+PluginNoteAPI.[`setLassoStrokeLink`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-stroke-link)
+接口将套索的元素设置为链接。样例代码如下：
+
+```ts wrap
+import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+
+PluginNoteAPI.setLassoStrokeLink({
+      destPath: '/storage/emulated/0/Note/test.note',
+      destPage: 12,
+      style: 1,
+      linkType: 2,
+    })
+    .then(data => {
+    console.log('setLassoStrokeLink success:', data);
+    })
+    .catch(error => {
+    console.error('setLassoStrokeLink error:', error);
+    });
+```
+
+如上述代码所示，setLassoStrokeLink传入的对象和TextLink很像，
+只是少了rect、fontSize、fullText、showText、isItalic这几个参数。因为笔画链接不需要这几个参数。
+
+## 修改套索链接
+
+链接需要套索之后才能修改，调用PluginNoteAPI.[`modifyLassoLink`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-link)接口，
+代码如下：
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+
+
+const modifyLassoLink = {
+    category: lassoLink.category,
+    dstPath: currentFilePath,
+    dstPage: 1,
+    linkType: 1,
+    style: 1,
+    fontSize: 45,
+    fontPath: lassoLink.fontPath,
+    showText: 'Show Text1',
+    fullText: 'Show Text1',
+};
+
+
+PluginNoteAPI.modifyLassoLink(modifyLassoLink)
+    .then(data => {
+    console.log('modifyLassoLink success:', data);
+    })
+    .catch(error => {
+    console.error('modifyLassoLink error:', error);
+    });
+```
+
+传递参数之前都讲解过，这里不再赘述。[`PluginNoteAPI.modifyLassoLink`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-link)
+这个接口既可以修改文本链接，也可以修改笔画链接。文本链接需要填写fontSize、fontPath、showText、fullText这些参数。
+而笔画链接不需要填写fontSize、fontPath、showText、fullText这些参数。
+
+接口[`PluginNoteAPI.modifyLassoLink`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-link)
+能够修改的是单个链接，所以如果套索了多个链接或套索了其他元素，调用该接口会失败。
+
+## 获取套索链接数据
+
+通过[`PluginNoteAPI.getLassoLink`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-link)
+获取连套索的链接数据。样例代码如下：
+```ts wrap
+import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+PluginNoteAPI.getLassoLink()
+    .then(data => {
+    console.log('getLassoLink success:', data);
+    })
+    .catch(error => {
+    console.error('getLassoLink error:', error);
+    });
+```
+
+如果套索中没有链接数据，那么返回的result数据为空，有链接数据会返回一个链接数组对象。
+详细解析请看[`PluginNoteAPI.getLassoLink`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-link)
+接口描述。
+
+

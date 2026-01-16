@@ -1,10 +1,10 @@
 ---
-title: "insertTrails"
-description: "插入笔记数据到页面中。"
+title: "insertElements"
+description: "插入元素数据到页面中。"
 ---
 
 ```ts
-static insertTrails(notePath: string, page: number, trails: Trail[]): Promise<APIResponse<boolean>>;
+static insertElements(notePath: string, page: number, elements: Element[]): Promise<APIResponse<boolean>>;
 ```
 
 **参数**
@@ -13,7 +13,7 @@ static insertTrails(notePath: string, page: number, trails: Trail[]): Promise<AP
 | --- | --- | --- |
 | `notePath` | `string` | 笔记路径 |
 | `page` | `number` | 页面索引（从 1 开始） |
-| `trails` | [`Trail[]`](/api-reference/supernote-plugin/types/trail) | 轨迹数据数组 |
+| `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | 元素数据数组 |
 
 **返回**
 

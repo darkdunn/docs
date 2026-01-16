@@ -1,0 +1,25 @@
+---
+title: "registerEventListener"
+description: "注册插件事件监听。"
+---
+
+```ts
+registerEventListener(
+  event: string,
+  registerType: number,
+  penUpListener: PluginEventListener
+): PluginEventSubscription;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `event` | `string` | 事件类型（参照 `EventType`，当前常用为 `event_pen_up`） |
+| `registerType` | `number` | 注册优先级：`0` 始终最前，`1` 普通排序，`2` 始终最后 |
+| `penUpListener` | `PluginEventListener` | 事件回调 |
+
+**返回**
+
+- `PluginEventSubscription`：订阅对象，调用 `remove()` 可注销监听
+

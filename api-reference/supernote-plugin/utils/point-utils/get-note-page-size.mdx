@@ -1,0 +1,20 @@
+---
+title: "getNotePageSize"
+description: "根据设备类型与方向推导页面像素尺寸。"
+---
+
+```ts
+static getNotePageSize(orientation: number, machineType: number): { width: number; height: number };
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `orientation` | `number` | 页面方向，见 `PointUtils.ROTATION_*` |
+| `machineType` | `number` | 机器类型，见 `PointUtils.MACHINE_TYPE_*` |
+
+**返回**
+
+- [`Size`](/api-reference/supernote-plugin/types/size)：页面像素尺寸
+

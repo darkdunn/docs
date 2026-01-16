@@ -2,12 +2,18 @@
 title: "getLassoLink"
 description: "获取套索链接数据。"
 ---
+<Note>
+必须套索之后调用该接口，返回会调用失败。
+
+建议在点击套索工具条按钮后进入的插件界面调用该接口。
+</Note>
 
 ```ts
-static getLassoLink(): Promise<APIResponse<LassoLink>>;
+static getLassoLink(): Promise<APIResponse<LassoLink[]>>;
 ```
 
 **返回**
 
-- `APIResponse<LassoLink>`：`result` 为套索链接数据
+- [`APIResponse<LassoLink[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为[`LassoLink`](/api-reference/supernote-plugin/types/lasso-link)对象数组。
 

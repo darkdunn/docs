@@ -19,7 +19,6 @@
               "index",
               "principle",
               "environment",
-              "quickstart",
               "development"
             ]
           },
@@ -28,18 +27,40 @@
             "pages": [
               "first-plugin",
               {
-              "group": "学习基础知识",
-              "pages": [
-                "plugin-base/plugin-ui"
-              ]
-              },
-          
-              "development"
-              
-              
+                "group": "学习基础知识",
+                "pages": [
+                  "plugin-base/coordinate-system",
+                  "plugin-base/plugin-ui",
+                  {
+                    "group": "笔记功能",
+                    "pages": [
+                      "plugin-base/plugin-note/link",
+                      "plugin-base/plugin-note/title",
+                      "plugin-base/plugin-note/textbox"
+                    ]
+                  },
+                  {
+                    "group": "文档功能",
+                    "pages": [
+                      "plugin-base/plugin-doc/translations"
+                    ]
+                  },
+                  {
+                    "group": "通用功能",
+                    "pages": [
+                      "plugin-base/plugin-comm/geometry"
+                    ]
+                  },
+                  {
+                    "group": "文件操作",
+                    "pages": [
+                      "plugin-base/file-op/element-op"
+                    ]
+                  }
+                ]
+              }
             ]
           },
-
           {
             "group": "Customization",
             "pages": [
@@ -174,6 +195,38 @@
                 ]
               },
               {
+                "group": "PluginManager",
+                "expanded": false,
+                "pages": [
+                  "api-reference/supernote-plugin/plugin-manager/index",
+                  "api-reference/supernote-plugin/plugin-manager/init",
+                  "api-reference/supernote-plugin/plugin-manager/add-plugin-life-listener",
+                  "api-reference/supernote-plugin/plugin-manager/register-button-listener",
+                  "api-reference/supernote-plugin/plugin-manager/register-config-button-listener",
+                  "api-reference/supernote-plugin/plugin-manager/register-lang-listener",
+                  "api-reference/supernote-plugin/plugin-manager/register-event-listener",
+                  "api-reference/supernote-plugin/plugin-manager/register-button",
+                  "api-reference/supernote-plugin/plugin-manager/unregister-button",
+                  "api-reference/supernote-plugin/plugin-manager/get-button-state",
+                  "api-reference/supernote-plugin/plugin-manager/set-button-state",
+                  "api-reference/supernote-plugin/plugin-manager/register-config-button",
+                  "api-reference/supernote-plugin/plugin-manager/get-plugin-dir-path",
+                  "api-reference/supernote-plugin/plugin-manager/get-plugin-name",
+                  "api-reference/supernote-plugin/plugin-manager/get-device-type",
+                  "api-reference/supernote-plugin/plugin-manager/close-plugin-view"
+                ]
+              },
+              {
+                "group": "Utils",
+                "expanded": false,
+                "pages": [
+                  "api-reference/supernote-plugin/utils/point-utils/index",
+                  "api-reference/supernote-plugin/utils/point-utils/android-point2-emr",
+                  "api-reference/supernote-plugin/utils/point-utils/emr-point2-android",
+                  "api-reference/supernote-plugin/utils/point-utils/get-note-page-size"
+                ]
+              },
+              {
                 "group": "类型",
                 "expanded": false,
                 "pages": [
@@ -187,11 +240,17 @@
                   "api-reference/supernote-plugin/types/trail-data-accessor",
                   "api-reference/supernote-plugin/types/stroke",
                   "api-reference/supernote-plugin/types/recogn-data",
+                  "api-reference/supernote-plugin/types/recog-result-data",
                   "api-reference/supernote-plugin/types/geometry",
                   "api-reference/supernote-plugin/types/lasso-trail-type-num",
                   "api-reference/supernote-plugin/types/template",
                   "api-reference/supernote-plugin/types/convert-trail2-sticker-params",
-                  "api-reference/supernote-plugin/types/trail"
+                  "api-reference/supernote-plugin/types/trail",
+                  "api-reference/supernote-plugin/types/text-link",
+                  "api-reference/supernote-plugin/types/link",
+                  "api-reference/supernote-plugin/types/lasso-link",
+                  "api-reference/supernote-plugin/types/title",
+                  "api-reference/supernote-plugin/types/text-box"
                 ]
               }
             ]
@@ -233,15 +292,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

@@ -1,0 +1,19 @@
+---
+title: "addPluginLifeListener"
+description: "监听插件生命周期。"
+---
+
+```ts
+addPluginLifeListener(listener: PluginLifeListener): PluginLifeSub;
+```
+
+**参数**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `listener` | `PluginLifeListener` | 生命周期回调（`onStart/onStop`） |
+
+**返回**
+
+- `PluginLifeSub`：订阅对象，调用 `remove()` 可注销监听
+
