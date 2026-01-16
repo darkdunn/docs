@@ -19,3 +19,24 @@ static insertKeyWord(notePath: string, page: number, keyword: string): Promise<A
 
 - `APIResponse<boolean>`：`result === true` 表示插入成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 插入关键字的示例。
+ */
+export async function exampleInsertKeyWord() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const keyword = 'TODO';
+
+  const res = await PluginFileAPI.insertKeyWord(notePath, page, keyword);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertKeyWord 调用失败');
+  }
+  return res.result;
+}
+```
+

@@ -18,3 +18,22 @@ static removeNotePage(notePath: string, page: number): Promise<APIResponse<boole
 
 - `APIResponse<boolean>`：`result === true` 表示删除成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 删除指定页面的示例。
+ */
+export async function exampleRemoveNotePage() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 2;
+  const res = await PluginFileAPI.removeNotePage(notePath, page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'removeNotePage 调用失败');
+  }
+  return res.result;
+}
+```
+

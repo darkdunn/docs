@@ -19,3 +19,23 @@ static insertLayer(notePath: string, page: number, layer: Layer): Promise<APIRes
 
 - `APIResponse<boolean>`：`result === true` 表示插入成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 插入图层的示例。
+ */
+export async function exampleInsertLayer() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const layer = { id: 100, name: '新图层', enable: true } as any;
+  const res = await PluginFileAPI.insertLayer(notePath, page, layer);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertLayer 调用失败');
+  }
+  return res.result;
+}
+```
+

@@ -22,3 +22,24 @@ static generateStickerThumbnail(
 **返回**
 
 - `APIResponse<boolean>`：`result === true` 表示生成成功
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 生成贴纸缩略图的示例。
+ */
+export async function exampleGenerateStickerThumbnail() {
+  const stickerPath = '/storage/emulated/0/Note/stickers/demo.png';
+  const thumbnailPath = '/storage/emulated/0/Note/stickers/demo_thumb.png';
+  const size = { width: 256, height: 256 };
+
+  const res = await PluginCommAPI.generateStickerThumbnail(stickerPath, thumbnailPath, size);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'generateStickerThumbnail 调用失败');
+  }
+  return res.result;
+}
+```

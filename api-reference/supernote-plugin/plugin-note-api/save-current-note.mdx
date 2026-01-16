@@ -11,3 +11,20 @@ static saveCurrentNote(): Promise<APIResponse<boolean>>;
 
 - `APIResponse<boolean>`：`result === true` 表示保存成功
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 保存当前笔记的示例。
+ */
+export async function exampleSaveCurrentNote() {
+  const res = await PluginNoteAPI.saveCurrentNote();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'saveCurrentNote 调用失败');
+  }
+  return res.result;
+}
+```
+

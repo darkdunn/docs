@@ -11,3 +11,16 @@ setButtonState(id: number, state: boolean): Promise<boolean>;
 
 - `Promise<boolean>`：设置结果
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 设置按钮状态的示例。
+ */
+export async function exampleSetButtonState() {
+  const ok = await PluginManager.setButtonState(1, false);
+  return ok;
+}
+```

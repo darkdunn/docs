@@ -17,3 +17,21 @@ static getCurrentDocText(page: number): Promise<APIResponse<string>>;
 
 - `APIResponse<string>`：`result` 为文档指定页面的文本内容
 
+## 示例
+
+```ts wrap
+import { PluginDocAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取当前文档某页文本的示例。
+ */
+export async function exampleGetCurrentDocText() {
+  const page = 1;
+  const res = await PluginDocAPI.getCurrentDocText(page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getCurrentDocText 调用失败');
+  }
+  return res.result;
+}
+```
+

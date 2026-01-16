@@ -7,3 +7,20 @@ description: "删除套索元素数据。"
 static deleteLassoElements(): Promise<APIResponse<boolean>>;
 ```
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 删除当前套索元素数据的示例。
+ */
+export async function exampleDeleteLassoElements() {
+  const res = await PluginCommAPI.deleteLassoElements();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'deleteLassoElements 调用失败');
+  }
+  return res.result;
+}
+```
+

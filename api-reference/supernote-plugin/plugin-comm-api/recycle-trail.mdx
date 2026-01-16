@@ -12,3 +12,16 @@ static recycleElement(uuid: string): void;
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `uuid` | `string` | Element 的 UUID（见 [`Element.uuid`](/api-reference/supernote-plugin/types/trail)） |
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 回收 Element 的示例。
+ */
+export async function exampleRecycleElement(uuid: string) {
+  PluginCommAPI.recycleElement(uuid);
+}
+```

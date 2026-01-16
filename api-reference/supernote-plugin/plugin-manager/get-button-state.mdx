@@ -11,3 +11,16 @@ getButtonState(id: number): Promise<boolean>;
 
 - `Promise<boolean>`：按钮状态，`true` 启用，`false` 禁用
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取按钮状态的示例。
+ */
+export async function exampleGetButtonState() {
+  const enabled = await PluginManager.getButtonState(1);
+  return enabled;
+}
+```

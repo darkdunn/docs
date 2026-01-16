@@ -19,3 +19,22 @@ static deleteLayers(notePath: string, page: number, layerIds: number[]): Promise
 
 - `APIResponse<boolean>`：`result === true` 表示删除成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 删除图层的示例。
+ */
+export async function exampleDeleteLayers() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const res = await PluginFileAPI.deleteLayers(notePath, page, [100, 101]);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'deleteLayers 调用失败');
+  }
+  return res.result;
+}
+```
+

@@ -9,3 +9,15 @@ async init(): Promise<void>;
 
 初始化插件。建议在插件启动时尽早调用一次（多次调用会被忽略）。
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 初始化插件环境的示例。
+ */
+export async function exampleInit() {
+  await PluginManager.init();
+}
+```

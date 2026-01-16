@@ -11,3 +11,16 @@ unregisterButton(id: number): Promise<boolean>;
 
 - `Promise<boolean>`：是否成功注销
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 注销按钮的示例。
+ */
+export async function exampleUnregisterButton() {
+  const ok = await PluginManager.unregisterButton(1);
+  return ok;
+}
+```

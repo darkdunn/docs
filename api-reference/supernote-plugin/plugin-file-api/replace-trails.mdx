@@ -19,3 +19,29 @@ static replaceElements(notePath: string, page: number, elements: Element[]): Pro
 
 - `APIResponse<boolean>`：`result === true` 表示替换成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI, type Element } from 'rtn-supernote-plugin-core';
+
+/**
+ * 读取页面元素并回写（替换）的示例。
+ */
+export async function exampleReplaceElements() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+
+  const listRes = await PluginFileAPI.getElements(page, notePath);
+  if (!listRes.success) {
+    throw new Error(listRes.error?.message ?? 'getElements 调用失败');
+  }
+
+  const elements = (listRes.result ?? []) as Element[];
+  const res = await PluginFileAPI.replaceElements(notePath, page, elements);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'replaceElements 调用失败');
+  }
+  return res.result;
+}
+```
+

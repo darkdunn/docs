@@ -23,3 +23,18 @@ registerEventListener(
 
 - `PluginEventSubscription`：订阅对象，调用 `remove()` 可注销监听
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 注册笔抬起事件监听的示例。
+ */
+export async function exampleRegisterEventListener() {
+  const sub = PluginManager.registerEventListener('event_pen_up', 1, (event) => {
+    void event;
+  });
+  return sub;
+}
+```

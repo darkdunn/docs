@@ -11,3 +11,20 @@ static getLassoText(): Promise<APIResponse<TextBox[]>>;
 
 - `APIResponse<TextBox[]>`：`result` 为文本框数组
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取套索文本框列表的示例。
+ */
+export async function exampleGetLassoText() {
+  const res = await PluginNoteAPI.getLassoText();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getLassoText 调用失败');
+  }
+  return res.result;
+}
+```
+

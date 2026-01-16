@@ -12,3 +12,31 @@ static modifyLassoGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `geometry` | [`Geometry`](/api-reference/supernote-plugin/types/geometry) | 几何图形参数 |
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI, type Geometry } from 'rtn-supernote-plugin-core';
+
+/**
+ * 修改套索中的一个几何图形的示例。
+ */
+export async function exampleModifyLassoGeometry() {
+  const listRes = await PluginCommAPI.getLassoGeometries();
+  if (!listRes.success) {
+    throw new Error(listRes.error?.message ?? 'getLassoGeometries 调用失败');
+  }
+
+  const geometries = (listRes.result ?? []) as Geometry[];
+  const first = geometries[0];
+  if (!first) {
+    return false;
+  }
+
+  const res = await PluginCommAPI.modifyLassoGeometry(first);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'modifyLassoGeometry 调用失败');
+  }
+  return res.result;
+}
+```

@@ -10,3 +10,20 @@ static getLassoRect(): Promise<APIResponse<Rect>>;
 **返回**
 
 - `APIResponse<Rect>`：`result` 为 [`Rect`](/api-reference/supernote-plugin/types/rect)
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI, type Rect } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取套索框矩形的示例。
+ */
+export async function exampleGetLassoRect(): Promise<Rect> {
+  const res = await PluginCommAPI.getLassoRect();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getLassoRect 调用失败');
+  }
+  return res.result;
+}
+```

@@ -17,3 +17,21 @@ static getFileMachineType(notePath: string): Promise<APIResponse<number>>;
 
 - `APIResponse<number>`：`result` 为机器型号：`0` A5，`1` A6，`2` A6X，`3` A5X，`4` nomad，`5` Manta
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取文件创建机型的示例。
+ */
+export async function exampleGetFileMachineType() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.getFileMachineType(notePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getFileMachineType 调用失败');
+  }
+  return res.result;
+}
+```
+

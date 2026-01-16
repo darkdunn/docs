@@ -18,3 +18,23 @@ static getElements(page: number, notePath: string): Promise<APIResponse<Element[
 
 - `APIResponse<Element[]>`：元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取某页元素列表的示例。
+ */
+export async function exampleGetElements() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+
+  const res = await PluginFileAPI.getElements(page, notePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getElements 调用失败');
+  }
+  return res.result;
+}
+```
+

@@ -18,3 +18,23 @@ static clearMarkElements(filePath: string, page: number): Promise<APIResponse<bo
 
 - `APIResponse<boolean>`：`result === true` 表示清除成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 清除某页 mark 元素的示例。
+ */
+export async function exampleClearMarkElements() {
+  const filePath = '/storage/emulated/0/Note/demo.pdf';
+  const page = 1;
+
+  const res = await PluginFileAPI.clearMarkElements(filePath, page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'clearMarkElements 调用失败');
+  }
+  return res.result;
+}
+```
+

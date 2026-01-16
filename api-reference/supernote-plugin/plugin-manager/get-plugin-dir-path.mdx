@@ -11,3 +11,16 @@ getPluginDirPath(): Promise<string | null | undefined>;
 
 - `Promise<string | null | undefined>`：插件目录路径
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取插件目录路径的示例。
+ */
+export async function exampleGetPluginDirPath() {
+  const dir = await PluginManager.getPluginDirPath();
+  return dir;
+}
+```

@@ -19,3 +19,24 @@ static generateNoteTemplatePng(notePath: string, page: number, pngPath: string):
 
 - `APIResponse<boolean>`：`result === true` 表示生成成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 生成页面背景模版 PNG 的示例。
+ */
+export async function exampleGenerateNoteTemplatePng() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const pngPath = '/storage/emulated/0/Note/out/template.png';
+
+  const res = await PluginFileAPI.generateNoteTemplatePng(notePath, page, pngPath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'generateNoteTemplatePng 调用失败');
+  }
+  return res.result;
+}
+```
+

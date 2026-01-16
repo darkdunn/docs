@@ -19,3 +19,24 @@ static deleteKeyWord(notePath: string, page: number, index: number): Promise<API
 
 - `APIResponse<boolean>`：`result === true` 表示删除成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 删除关键字的示例（按页内序号删除）。
+ */
+export async function exampleDeleteKeyWord() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const index = 0;
+
+  const res = await PluginFileAPI.deleteKeyWord(notePath, page, index);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'deleteKeyWord 调用失败');
+  }
+  return res.result;
+}
+```
+

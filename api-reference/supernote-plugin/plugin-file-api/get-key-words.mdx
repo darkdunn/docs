@@ -18,3 +18,21 @@ static getKeyWords(notePath: string, pageList: number[]): Promise<APIResponse<Ke
 
 - `APIResponse<KeyWord[]>`：`result` 为关键字数组
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取关键字列表的示例。
+ */
+export async function exampleGetKeyWords() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.getKeyWords(notePath, [1]);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getKeyWords 调用失败');
+  }
+  return res.result;
+}
+```
+

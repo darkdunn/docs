@@ -12,3 +12,38 @@ static updateLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | 套索框区域位置 |
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI, type Rect } from 'rtn-supernote-plugin-core';
+
+/**
+ * 更新套索框矩形的示例（按等比例缩放生成新矩形）。
+ */
+export async function exampleUpdateLassoRect() {
+  const current = await PluginCommAPI.getLassoRect();
+  if (!current.success) {
+    throw new Error(current.error?.message ?? 'getLassoRect 调用失败');
+  }
+
+  const rect = current.result as Rect;
+  const w = rect.right - rect.left;
+  const h = rect.bottom - rect.top;
+  const cx = rect.left + w / 2;
+  const cy = rect.top + h / 2;
+  const scale = 1.2;
+  const nextRect: Rect = {
+    left: cx - (w * scale) / 2,
+    top: cy - (h * scale) / 2,
+    right: cx + (w * scale) / 2,
+    bottom: cy + (h * scale) / 2,
+  };
+
+  const res = await PluginCommAPI.updateLassoRect(nextRect);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'updateLassoRect 调用失败');
+  }
+  return res.result;
+}
+```

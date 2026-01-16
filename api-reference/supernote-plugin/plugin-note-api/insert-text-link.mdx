@@ -38,3 +38,32 @@ static insertTextLink(textLink: {
 
 - [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
 调用返回结果。`result`为0表示插入成功，`result`为-1表示插入失败，`result`为-2表示目标文件需要升级
+
+## 示例
+
+```ts wrap
+import { PluginNoteAPI, type Rect } from 'rtn-supernote-plugin-core';
+
+/**
+ * 向当前打开的笔记页插入文本链接的示例。
+ */
+export async function exampleInsertTextLink() {
+  const rect: Rect = { left: 100, top: 100, right: 300, bottom: 160 };
+  const res = await PluginNoteAPI.insertTextLink({
+    destPath: '/storage/emulated/0/Note/demo.note',
+    destPage: 1,
+    style: 0,
+    linkType: 0,
+    rect,
+    fontSize: 32,
+    fullText: 'Full Text',
+    showText: 'Show Text',
+    isItalic: 0,
+  });
+
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertTextLink 调用失败');
+  }
+  return res.result;
+}
+```

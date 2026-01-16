@@ -17,3 +17,20 @@ addPluginLifeListener(listener: PluginLifeListener): PluginLifeSub;
 
 - `PluginLifeSub`：订阅对象，调用 `remove()` 可注销监听
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 监听插件生命周期的示例。
+ */
+export async function exampleAddPluginLifeListener() {
+  const sub = PluginManager.addPluginLifeListener({
+    onStart() {},
+    onStop() {},
+  } as any);
+
+  return sub;
+}
+```

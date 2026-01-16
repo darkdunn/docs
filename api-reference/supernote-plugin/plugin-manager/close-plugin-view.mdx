@@ -11,3 +11,16 @@ closePluginView(): Promise<boolean>;
 
 - `Promise<boolean>`：是否成功关闭
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 关闭插件界面的示例。
+ */
+export async function exampleClosePluginView() {
+  const ok = await PluginManager.closePluginView();
+  return ok;
+}
+```

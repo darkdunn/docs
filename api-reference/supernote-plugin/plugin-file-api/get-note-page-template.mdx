@@ -18,3 +18,22 @@ static getNotePageTemplate(notePath: string, page: number): Promise<APIResponse<
 
 - `APIResponse<NoteTemplateInfo>`：`result` 为页面模版对象
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取页面模版信息的示例。
+ */
+export async function exampleGetNotePageTemplate() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const res = await PluginFileAPI.getNotePageTemplate(notePath, page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getNotePageTemplate 调用失败');
+  }
+  return res.result;
+}
+```
+

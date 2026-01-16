@@ -11,3 +11,16 @@ registerConfigButton(): Promise<boolean>;
 
 - `Promise<boolean>`：是否注册成功
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 注册插件配置按钮的示例。
+ */
+export async function exampleRegisterConfigButton() {
+  const ok = await PluginManager.registerConfigButton();
+  return ok;
+}
+```

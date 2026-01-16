@@ -13,3 +13,21 @@ static insertSticker(path: string): Promise<APIResponse<boolean>>;
 | --- | --- | --- |
 | `path` | `string` | 贴纸路径 |
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 插入贴纸的示例。
+ */
+export async function exampleInsertSticker() {
+  const stickerPath = '/storage/emulated/0/Note/stickers/demo.png';
+  const res = await PluginCommAPI.insertSticker(stickerPath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertSticker 调用失败');
+  }
+  return res.result;
+}
+```
+

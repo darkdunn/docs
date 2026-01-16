@@ -17,3 +17,21 @@ static getMarkPages(filePath: string): Promise<APIResponse<number[]>>;
 
 - `APIResponse<number[]>`：`result` 为 mark 页码数组
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取 mark 页码列表的示例。
+ */
+export async function exampleGetMarkPages() {
+  const filePath = '/storage/emulated/0/Note/demo.pdf';
+  const res = await PluginFileAPI.getMarkPages(filePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getMarkPages 调用失败');
+  }
+  return res.result;
+}
+```
+

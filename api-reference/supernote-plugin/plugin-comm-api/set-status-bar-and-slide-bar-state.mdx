@@ -13,3 +13,16 @@ static setStatusBarAndSlideBarState(isLock: boolean): void;
 | --- | --- | --- |
 | `isLock` | `boolean` | `true` 锁住不可用，`false` 解锁可用 |
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 锁定/解锁下拉菜单与滑条的示例。
+ */
+export async function exampleSetStatusBarAndSlideBarState() {
+  PluginCommAPI.setStatusBarAndSlideBarState(true);
+}
+```
+

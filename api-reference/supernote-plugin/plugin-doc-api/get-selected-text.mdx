@@ -11,3 +11,20 @@ static getSelectedText(): Promise<APIResponse<string>>;
 
 - `APIResponse<string>`：`result` 为选中的文本内容
 
+## 示例
+
+```ts wrap
+import { PluginDocAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取当前选中文本的示例。
+ */
+export async function exampleGetSelectedText() {
+  const res = await PluginDocAPI.getSelectedText();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getSelectedText 调用失败');
+  }
+  return res.result;
+}
+```
+

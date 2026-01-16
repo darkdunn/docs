@@ -13,3 +13,16 @@ static setSystemDormancyState(enable: boolean): void;
 | --- | --- | --- |
 | `enable` | `boolean` | `true` 阻止系统休眠，`false` 开启休眠 |
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 控制系统休眠的示例。
+ */
+export async function exampleSetSystemDormancyState() {
+  PluginCommAPI.setSystemDormancyState(true);
+}
+```
+

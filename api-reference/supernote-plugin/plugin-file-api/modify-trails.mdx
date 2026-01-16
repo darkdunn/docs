@@ -19,3 +19,29 @@ static modifyElements(notePath: string, page: number, elements: Element[]): Prom
 
 - `APIResponse<number[]>`：`result` 为修改成功的元素索引列表
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI, type Element } from 'rtn-supernote-plugin-core';
+
+/**
+ * 拉取页面元素并提交修改的示例。
+ */
+export async function exampleModifyElements() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+
+  const listRes = await PluginFileAPI.getElements(page, notePath);
+  if (!listRes.success) {
+    throw new Error(listRes.error?.message ?? 'getElements 调用失败');
+  }
+
+  const elements = (listRes.result ?? []) as Element[];
+  const res = await PluginFileAPI.modifyElements(notePath, page, elements);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'modifyElements 调用失败');
+  }
+  return res.result;
+}
+```
+

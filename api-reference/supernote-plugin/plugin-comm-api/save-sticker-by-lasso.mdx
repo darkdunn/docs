@@ -17,3 +17,21 @@ static saveStickerByLasso(path: string): Promise<APIResponse<boolean>>;
 
 - `APIResponse<boolean>`：`result === true` 表示保存成功
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 将当前套索中的笔划保存为贴纸的示例。
+ */
+export async function exampleSaveStickerByLasso() {
+  const outPath = '/storage/emulated/0/Note/stickers/lasso.png';
+  const res = await PluginCommAPI.saveStickerByLasso(outPath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'saveStickerByLasso 调用失败');
+  }
+  return res.result;
+}
+```
+

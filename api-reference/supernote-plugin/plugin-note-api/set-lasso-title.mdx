@@ -25,3 +25,19 @@ static setLassoTitle(params: { style: number }): Promise<APIResponse<boolean>>;
 - [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
 `result`为true表示设置标题成功，为false表示设置标题失败。
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 设置套索标题样式的示例。
+ */
+export async function exampleSetLassoTitle() {
+  const res = await PluginNoteAPI.setLassoTitle({ style: 1 });
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'setLassoTitle 调用失败');
+  }
+  return res.result;
+}
+```

@@ -11,3 +11,18 @@ registerLangListener(langListener: PluginEventListener): PluginEventSubscription
 
 - `PluginEventSubscription`：订阅对象，调用 `remove()` 可注销监听
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 监听系统语言变化的示例。
+ */
+export async function exampleRegisterLangListener() {
+  const sub = PluginManager.registerLangListener((event) => {
+    void event;
+  });
+  return sub;
+}
+```

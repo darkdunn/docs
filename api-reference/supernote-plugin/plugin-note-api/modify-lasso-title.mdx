@@ -18,3 +18,19 @@ static modifyLassoTitle(params: { style: number }): Promise<APIResponse<boolean>
 - [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
 `result`为true表示修改成功，false表示插入失败
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 修改套索标题样式的示例。
+ */
+export async function exampleModifyLassoTitle() {
+  const res = await PluginNoteAPI.modifyLassoTitle({ style: 2 });
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'modifyLassoTitle 调用失败');
+  }
+  return res.result;
+}
+```

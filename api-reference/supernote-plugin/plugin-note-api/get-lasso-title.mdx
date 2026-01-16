@@ -18,3 +18,19 @@ static getLassoTitle(): Promise<APIResponse<Title[]>>;
 - [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response)：
 `result` 为[`Title`](/api-reference/supernote-plugin/types/title)对象数组。
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取当前套索标题数据的示例。
+ */
+export async function exampleGetLassoTitle() {
+  const res = await PluginNoteAPI.getLassoTitle();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getLassoTitle 调用失败');
+  }
+  return res.result;
+}
+```

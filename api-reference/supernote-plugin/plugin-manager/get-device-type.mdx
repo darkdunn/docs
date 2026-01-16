@@ -11,3 +11,16 @@ getDeviceType(): Promise<number>;
 
 - `Promise<number>`：设备类型：`0` A5，`1` A6，`2` A6X，`3` A5X，`4` A6X2，`5` A5X2
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取设备类型的示例。
+ */
+export async function exampleGetDeviceType() {
+  const deviceType = await PluginManager.getDeviceType();
+  return deviceType;
+}
+```

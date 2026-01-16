@@ -19,3 +19,21 @@ registerButton(type: number, appTypes: string[], button: Object): Promise<boolea
 
 - `Promise<boolean>`：是否注册成功
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 在套索工具条注册按钮的示例。
+ */
+export async function exampleRegisterButton() {
+  const ok = await PluginManager.registerButton(2, ['NOTE'], {
+    id: 1,
+    name: 'My Plugin',
+    icon: '',
+    enable: true,
+  });
+  return ok;
+}
+```

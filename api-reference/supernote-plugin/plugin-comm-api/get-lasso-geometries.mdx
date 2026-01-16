@@ -10,3 +10,20 @@ static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
 **返回**
 
 - `APIResponse<Geometry[]>`：元素类型见 [`Geometry`](/api-reference/supernote-plugin/types/geometry)
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取套索几何图形列表的示例。
+ */
+export async function exampleGetLassoGeometries() {
+  const res = await PluginCommAPI.getLassoGeometries();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getLassoGeometries 调用失败');
+  }
+  return res.result;
+}
+```

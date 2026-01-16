@@ -27,3 +27,27 @@ static generateNotePng(params: {
 
 - `APIResponse<boolean>`：`result === true` 表示生成成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 生成页面 PNG 的示例。
+ */
+export async function exampleGenerateNotePng() {
+  const res = await PluginFileAPI.generateNotePng({
+    notePath: '/storage/emulated/0/Note/demo.note',
+    page: 1,
+    times: 1,
+    pngPath: '/storage/emulated/0/Note/out/page.png',
+    type: 1,
+  });
+
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'generateNotePng 调用失败');
+  }
+  return res.result;
+}
+```
+

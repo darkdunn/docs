@@ -18,3 +18,23 @@ static getPageSize(notePath: string, page: number): Promise<APIResponse<Size>>;
 
 - `APIResponse<Size>`：`result` 为页面尺寸，见 [`Size`](/api-reference/supernote-plugin/types/size)
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取页面像素尺寸的示例。
+ */
+export async function exampleGetPageSize() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+
+  const res = await PluginFileAPI.getPageSize(notePath, page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getPageSize 调用失败');
+  }
+  return res.result;
+}
+```
+

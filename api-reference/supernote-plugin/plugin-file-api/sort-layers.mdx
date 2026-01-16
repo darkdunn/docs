@@ -19,3 +19,22 @@ static sortLayers(notePath: string, page: number, layerIds: number[]): Promise<A
 
 - `APIResponse<boolean>`：`result === true` 表示排序成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 排序图层的示例（传入期望的层级顺序）。
+ */
+export async function exampleSortLayers() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const res = await PluginFileAPI.sortLayers(notePath, page, [102, 101, 100]);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'sortLayers 调用失败');
+  }
+  return res.result;
+}
+```
+

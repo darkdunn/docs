@@ -18,3 +18,21 @@ static getTitles(notePath: string, pageList: number[]): Promise<APIResponse<Titl
 
 - `APIResponse<Title[]>`：`result` 为标题数据数组
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取指定页标题列表的示例。
+ */
+export async function exampleGetTitles() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.getTitles(notePath, [1, 2, 3]);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getTitles 调用失败');
+  }
+  return res.result;
+}
+```
+

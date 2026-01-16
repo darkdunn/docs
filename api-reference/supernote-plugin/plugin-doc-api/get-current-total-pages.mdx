@@ -11,3 +11,20 @@ static getCurrentTotalPages(): Promise<APIResponse<number>>;
 
 - `APIResponse<number>`：`result` 为文档总页数
 
+## 示例
+
+```ts wrap
+import { PluginDocAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取当前文档总页数的示例。
+ */
+export async function exampleGetCurrentTotalPages() {
+  const res = await PluginDocAPI.getCurrentTotalPages();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getCurrentTotalPages 调用失败');
+  }
+  return res.result;
+}
+```
+

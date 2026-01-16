@@ -12,25 +12,30 @@ description: "笔记/文档中“可见元素”的统一数据结构。"
 
 ## 类型常量
 
-元素类型建议参考 [`ElementType`](/api-reference/supernote-plugin/types/trail-type)：
+元素类型常量（`ElementType`）用于标识 `Element.type` 的取值范围。
 
-| 类型 | 值 | 说明 | 细分字段 |
-| --- | ---:| --- | --- |
-| 笔画 | `0` | 手写笔迹 | `stroke` |
-| 标题 | `100` | 标题元素 | `title` |
-| 文本框 | `500` | 普通文本框 | `textBox` |
-| 摘录引用文本框 | `501` | 引用摘录 | `textBox` |
-| 摘录创建文本框 | `502` | 在笔记中被创建为摘录 | `textBox` |
-| 链接 | `600` | 文本链接/笔画链接 | `link` |
-| 几何图形 | `700` | 几何图形 | `geometry` |
-| 五角星 | `800` | 五角星 | `fiveStar` |
+## ElementType
+
+下表中“常量”列省略了 `ElementType.` 前缀；在代码里使用时请补全为 `ElementType.XXX`。
+
+| 类型 | 常量 | 值 | 说明 | 细分字段 |
+| --- | --- | ---| --- | --- |
+| 笔画 | `TYPE_STROKE` | `0` | 笔划（手写笔迹） | `stroke` |
+| 标题 | `TYPE_TITLE` | `100` | 标题元素 | `title` |
+| 图片 | `TYPE_PICTURE` | `200` | 图片（当前暂未使用） | - |
+| 文本框 | `TYPE_TEXT` | `500` | 普通文本框 | `textBox` |
+| 摘录引用文本框 | `TYPE_TEXT_DIGEST_QUOTE` | `501` | 引用摘录 | `textBox` |
+| 摘录创建文本框 | `TYPE_TEXT_DIGEST_CREATE` | `502` | 在笔记中被创建为摘录 | `textBox` |
+| 链接 | `TYPE_LINK` | `600` | 文本链接/笔画链接 | `link` |
+| 几何图形 | `TYPE_GEO` | `700` | 几何图形 | `geometry` |
+| 五角星 | `TYPE_FIVE_STAR` | `800` | 五角星 | `fiveStar` |
 
 ## 字段
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `uuid` | `string` | 通用唯一识别码（元素唯一 ID） |
-| `type` | `number` | 元素类型，见 [`ElementType`](/api-reference/supernote-plugin/types/trail-type) |
+| `type` | `number` | 元素类型，见 [`ElementType`](/api-reference/supernote-plugin/types/trail#elementtype) |
 | `pageNum` | `number` | 页码 |
 | `layerNum` | `number` | 图层号（笔记中常见范围为 `0..3`） |
 | `thickness` | `number` | 笔划粗细（部分元素可能无意义） |
@@ -40,7 +45,7 @@ description: "笔记/文档中“可见元素”的统一数据结构。"
 | `angles` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 角度点，数据量太大，RN端持有的是索引，原始数据存在Android端 |
 | `status` | `number` | 元素状态值 |
 | `numInPage` | `number` | 元素在页内的序号（从 `0` 开始） |
-| `contoursSrc` | [`ElementDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 轮廓点，数据量太大，RN端持有的是索引，原始数据存在Android端 |
+| `contoursSrc` | [`ElementDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 轮廓点（像素坐标），数据量太大，RN端持有的是索引，原始数据存在Android端 |
 | `stroke` | [`Stroke \| null`](/api-reference/supernote-plugin/types/stroke) | 笔画数据（仅 `type === 0` 时存在） |
 | `title` | [`Title \| null`](/api-reference/supernote-plugin/types/title) | 标题数据（仅 `type === 100` 时存在） |
 | `textBox` | [`TextBox \| null`](/api-reference/supernote-plugin/types/text-box) | 文本框数据（仅文本框相关类型时存在） |

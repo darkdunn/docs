@@ -25,3 +25,25 @@ static createNote(params: {
 
 - `APIResponse<boolean>`：`result === true` 表示创建成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 创建笔记的示例。
+ */
+export async function exampleCreateNote() {
+  const res = await PluginFileAPI.createNote({
+    notePath: '/storage/emulated/0/Note/new.note',
+    template: '/storage/emulated/0/Note/template.note',
+    mode: 0,
+    isPortrait: true,
+  });
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'createNote 调用失败');
+  }
+  return res.result;
+}
+```
+

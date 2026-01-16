@@ -16,3 +16,21 @@ static getStickerSize(path: string): Promise<APIResponse<Size>>;
 **返回**
 
 - `APIResponse<Size>`：`result` 为 [`Size`](/api-reference/supernote-plugin/types/size)
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取贴纸尺寸的示例。
+ */
+export async function exampleGetStickerSize() {
+  const stickerPath = '/storage/emulated/0/Note/stickers/demo.png';
+  const res = await PluginCommAPI.getStickerSize(stickerPath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getStickerSize 调用失败');
+  }
+  return res.result;
+}
+```

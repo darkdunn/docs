@@ -7,3 +7,20 @@ description: "获取当前文件路径。"
 static getCurrentFilePath(): Promise<APIResponse<string>>;
 ```
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取当前文件路径的示例。
+ */
+export async function exampleGetCurrentFilePath() {
+  const res = await PluginCommAPI.getCurrentFilePath();
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getCurrentFilePath 调用失败');
+  }
+  return res.result;
+}
+```
+

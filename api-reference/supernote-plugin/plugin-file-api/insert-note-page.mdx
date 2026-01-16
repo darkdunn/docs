@@ -19,3 +19,25 @@ static insertNotePage(params: { notePath: string; page: number; template: string
 
 - `APIResponse<boolean>`：`result === true` 表示插入成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 插入新页面的示例。
+ */
+export async function exampleInsertNotePage() {
+  const res = await PluginFileAPI.insertNotePage({
+    notePath: '/storage/emulated/0/Note/demo.note',
+    page: 2,
+    template: 'style_blank',
+  });
+
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertNotePage 调用失败');
+  }
+  return res.result;
+}
+```
+

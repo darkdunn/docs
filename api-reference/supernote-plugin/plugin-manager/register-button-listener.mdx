@@ -17,3 +17,21 @@ registerButtonListener(buttonListener: ButtonListener): ButtonSubscription;
 
 - `ButtonSubscription`：订阅对象，调用 `remove()` 可注销监听
 
+## 示例
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+/**
+ * 监听按钮点击事件的示例。
+ */
+export async function exampleRegisterButtonListener() {
+  const sub = PluginManager.registerButtonListener({
+    onButtonPress(event) {
+      void event;
+    },
+  } as any);
+
+  return sub;
+}
+```

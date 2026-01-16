@@ -19,3 +19,23 @@ static clearLayerElements(notePath: string, page: number, layer: number): Promis
 
 - `APIResponse<boolean>`：`result === true` 表示清除成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 清除指定图层元素数据的示例。
+ */
+export async function exampleClearLayerElements() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const layer = 0;
+  const res = await PluginFileAPI.clearLayerElements(notePath, page, layer);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'clearLayerElements 调用失败');
+  }
+  return res.result;
+}
+```
+

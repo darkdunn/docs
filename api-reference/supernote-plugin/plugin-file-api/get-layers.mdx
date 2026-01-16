@@ -18,3 +18,22 @@ static getLayers(notePath: string, page: number): Promise<APIResponse<Layer[]>>;
 
 - `APIResponse<Layer[]>`：`result` 为页面图层数据数组
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取页面图层数据的示例。
+ */
+export async function exampleGetLayers() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+  const res = await PluginFileAPI.getLayers(notePath, page);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getLayers 调用失败');
+  }
+  return res.result;
+}
+```
+

@@ -19,3 +19,29 @@ static modifyLayers(notePath: string, page: number, layers: Layer[]): Promise<AP
 
 - `APIResponse<boolean>`：`result === true` 表示修改成功
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 修改页面图层数据的示例。
+ */
+export async function exampleModifyLayers() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const page = 1;
+
+  const listRes = await PluginFileAPI.getLayers(notePath, page);
+  if (!listRes.success) {
+    throw new Error(listRes.error?.message ?? 'getLayers 调用失败');
+  }
+
+  const layers = (listRes.result ?? []) as any[];
+  const res = await PluginFileAPI.modifyLayers(notePath, page, layers);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'modifyLayers 调用失败');
+  }
+  return res.result;
+}
+```
+

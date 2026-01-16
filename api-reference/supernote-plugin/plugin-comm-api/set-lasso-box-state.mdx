@@ -13,3 +13,20 @@ static setLassoBoxState(state: number): Promise<APIResponse<boolean>>;
 | --- | --- | --- |
 | `state` | `number` | `0` 显示，`1` 隐藏，`2` 完全移除 |
 
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 设置套索框状态的示例。
+ */
+export async function exampleSetLassoBoxState() {
+  const res = await PluginCommAPI.setLassoBoxState(1);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'setLassoBoxState 调用失败');
+  }
+  return res.result;
+}
+```
+

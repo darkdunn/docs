@@ -10,3 +10,17 @@ static getNoteSystemTemplates(): Promise<Template[] | null | undefined>;
 **返回**
 
 - `Template[]`：元素类型见 [`Template`](/api-reference/supernote-plugin/types/template)
+
+## 示例
+
+```ts wrap
+import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取系统模板列表的示例。
+ */
+export async function exampleGetNoteSystemTemplates() {
+  const templates = await PluginCommAPI.getNoteSystemTemplates();
+  return templates ?? [];
+}
+```

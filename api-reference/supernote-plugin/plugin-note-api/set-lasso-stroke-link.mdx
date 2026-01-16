@@ -25,3 +25,25 @@ static setLassoStrokeLink(params: {
 
 - `APIResponse<number>`：`result` 为状态码（文档约定：`0` 成功，`-1` 失败，`-2` 目标文件需要升级）
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 将套索笔划设置为“跳转到笔记页链接”的示例。
+ */
+export async function exampleSetLassoStrokeLink() {
+  const res = await PluginNoteAPI.setLassoStrokeLink({
+    destPath: '/storage/emulated/0/Note/demo.note',
+    destPage: 1,
+    style: 0,
+    linkType: 0,
+  });
+
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'setLassoStrokeLink 调用失败');
+  }
+  return res.result;
+}
+```

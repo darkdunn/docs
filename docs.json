@@ -30,6 +30,7 @@
                 "pages": [
                   "plugin-base/coordinate-system",
                   "plugin-base/plugin-ui",
+                  "plugin-base/lasso",
                   {
                     "group": "笔记功能",
                     "pages": [
@@ -234,8 +235,6 @@
                   "api-reference/supernote-plugin/types/point",
                   "api-reference/supernote-plugin/types/rect",
                   "api-reference/supernote-plugin/types/size",
-                  "api-reference/supernote-plugin/types/trail-type",
-                  "api-reference/supernote-plugin/types/trail-point-data-type",
                   "api-reference/supernote-plugin/types/trail-data-accessor",
                   "api-reference/supernote-plugin/types/stroke",
                   "api-reference/supernote-plugin/types/recogn-data",

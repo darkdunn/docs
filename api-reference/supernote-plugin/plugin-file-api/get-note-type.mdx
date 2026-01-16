@@ -17,3 +17,21 @@ static getNoteType(notePath: string): Promise<APIResponse<number>>;
 
 - `APIResponse<number>`：`result` 为笔记类型：`0` 正常笔记，`1` 识别笔记
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取笔记类型的示例。
+ */
+export async function exampleGetNoteType() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.getNoteType(notePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getNoteType 调用失败');
+  }
+  return res.result;
+}
+```
+

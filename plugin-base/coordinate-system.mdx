@@ -72,7 +72,7 @@ Supernote设备是墨水屏设备，和普通的Android设备是由区别的，�
 
 ## 如何在 SDK 中进行换算
 
-SDK 内置了 `PointUtils` 来做两种坐标的互转（基于页面像素尺寸推导映射比例，并做轴向变换）。
+SDK 内置了 [`PointUtils`](/api-reference/supernote-plugin/utils/point-utils) 来做两种坐标的互转（基于页面像素尺寸推导映射比例，并做轴向变换）。
 
 <Tip>
 如果你手上只有页面像素尺寸，直接把 `{ width, height }` 作为 `pageSize` 传入转换函数即可。
@@ -108,7 +108,7 @@ export async function emrToPixel(notePath: string, page: number, emrPoint: { x: 
 
 ## 映射范围与注意事项
 
-`PointUtils` 内部会根据 `pageSize` 推导 EMR 的最大坐标范围（不同机型/横竖屏不同）。当前实现支持的常见映射如下（来自 SDK 内置常量与映射表）：
+[`PointUtils`](/api-reference/supernote-plugin/utils/point-utils) 内部会根据 `pageSize` 推导 EMR 的最大坐标范围（不同机型/横竖屏不同）。当前实现支持的常见映射如下（来自 SDK 内置常量与映射表）：
 
 | 页面像素尺寸（pageSize） | EMR 最大范围（maxX, maxY） |
 | --- | --- |

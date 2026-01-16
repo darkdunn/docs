@@ -17,3 +17,21 @@ static searchFiveStars(filePath: string): Promise<APIResponse<number[]>>;
 
 - `APIResponse<number[]>`：`result` 为五角星所在页码数组
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 搜索文件中五角星所在页的示例。
+ */
+export async function exampleSearchFiveStars() {
+  const filePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.searchFiveStars(filePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'searchFiveStars 调用失败');
+  }
+  return res.result;
+}
+```
+

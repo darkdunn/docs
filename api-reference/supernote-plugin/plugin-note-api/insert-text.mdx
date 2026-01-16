@@ -38,3 +38,31 @@ static insertText(textBox: {
 - [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
 `result`为boolean型，表示是否插入成功
 
+## 示例
+
+```ts wrap
+import { PluginNoteAPI, type Rect } from 'rtn-supernote-plugin-core';
+
+/**
+ * 插入文本框的示例。
+ */
+export async function exampleInsertText() {
+  const textRect: Rect = { left: 100, top: 100, right: 320, bottom: 180 };
+  const res = await PluginNoteAPI.insertText({
+    textContentFull: 'Hello from plugin',
+    textRect,
+    fontSize: 32,
+    textAlign: 0,
+    textBold: 0,
+    textItalics: 0,
+    textFrameWidthType: 0,
+    textFrameStyle: 0,
+    textEditable: 0,
+  });
+
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'insertText 调用失败');
+  }
+  return res.result;
+}
+```

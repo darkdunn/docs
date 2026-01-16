@@ -17,3 +17,21 @@ static getNoteTotalPageNum(notePath: string): Promise<APIResponse<number>>;
 
 - `APIResponse<number>`：`result` 为笔记总页数
 
+## 示例
+
+```ts wrap
+import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+
+/**
+ * 获取笔记总页数的示例。
+ */
+export async function exampleGetNoteTotalPageNum() {
+  const notePath = '/storage/emulated/0/Note/demo.note';
+  const res = await PluginFileAPI.getNoteTotalPageNum(notePath);
+  if (!res.success) {
+    throw new Error(res.error?.message ?? 'getNoteTotalPageNum 调用失败');
+  }
+  return res.result;
+}
+```
+
