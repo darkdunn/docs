@@ -115,9 +115,7 @@
                   "api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state",
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect",
                   "api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect",
-                  "api-reference/supernote-plugin/plugin-comm-api/set-slide-bar-status",
-                  "api-reference/supernote-plugin/plugin-comm-api/set-system-dormancy-state",
-                  "api-reference/supernote-plugin/plugin-comm-api/set-status-bar-and-slide-bar-state",
+                  
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-data",
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts",
                   "api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data",
@@ -172,8 +170,6 @@
                   "api-reference/supernote-plugin/plugin-file-api/insert-key-word",
                   "api-reference/supernote-plugin/plugin-file-api/delete-key-word",
                   "api-reference/supernote-plugin/plugin-file-api/get-note-total-page-num",
-                  "api-reference/supernote-plugin/plugin-file-api/get-file-machine-type",
-                  "api-reference/supernote-plugin/plugin-file-api/get-page-rotation-type",
                   "api-reference/supernote-plugin/plugin-file-api/get-page-size",
                   "api-reference/supernote-plugin/plugin-file-api/generate-note-png",
                   "api-reference/supernote-plugin/plugin-file-api/search-five-stars",
@@ -240,15 +236,19 @@
                   "api-reference/supernote-plugin/types/recogn-data",
                   "api-reference/supernote-plugin/types/recog-result-data",
                   "api-reference/supernote-plugin/types/geometry",
-                  "api-reference/supernote-plugin/types/lasso-trail-type-num",
+                  
                   "api-reference/supernote-plugin/types/template",
-                  "api-reference/supernote-plugin/types/convert-trail2-sticker-params",
+                  "api-reference/supernote-plugin/types/key-word",
+                  "api-reference/supernote-plugin/types/layer",
+                  
                   "api-reference/supernote-plugin/types/trail",
                   "api-reference/supernote-plugin/types/text-link",
                   "api-reference/supernote-plugin/types/link",
                   "api-reference/supernote-plugin/types/lasso-link",
                   "api-reference/supernote-plugin/types/title",
-                  "api-reference/supernote-plugin/types/text-box"
+                  "api-reference/supernote-plugin/types/text-box",
+                  "api-reference/supernote-plugin/types/button-listener",
+                  "api-reference/supernote-plugin/types/button-subscription"
                 ]
               }
             ]

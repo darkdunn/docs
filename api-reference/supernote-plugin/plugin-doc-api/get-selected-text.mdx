@@ -1,7 +1,12 @@
 ---
 title: "getSelectedText"
-description: "获取选中的文本。"
+description: "获取文档应用中选中的文本内容。"
 ---
+
+
+<Note>
+必须选中文档的文本内容才能调用该接口，否则会调用失败。
+</Note>
 
 ```ts
 static getSelectedText(): Promise<APIResponse<string>>;
@@ -9,7 +14,7 @@ static getSelectedText(): Promise<APIResponse<string>>;
 
 **返回**
 
-- `APIResponse<string>`：`result` 为选中的文本内容
+- [`APIResponse<string>`](/api-reference/supernote-plugin/types/api-response)：`result` 为选中的文本内容
 
 ## 示例
 

@@ -1,9 +1,9 @@
 ---
 title: "getPageSize"
-description: "获取指定页面的尺寸（像素）。"
+description: "获取文件指定页面的尺寸（像素）。"
 ---
 
-```ts
+```ts wrap
 static getPageSize(notePath: string, page: number): Promise<APIResponse<Size>>;
 ```
 
@@ -11,12 +11,13 @@ static getPageSize(notePath: string, page: number): Promise<APIResponse<Size>>;
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页码（从 1 开始） |
+| `notePath` | `string` | 笔记/文档文件路径 |
+| `page` | `number` | 页码（从 0 开始） |
 
 **返回**
 
-- `APIResponse<Size>`：`result` 为页面尺寸，见 [`Size`](/api-reference/supernote-plugin/types/size)
+- [`APIResponse<Size>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为页面尺寸，见 [`Size`](/api-reference/supernote-plugin/types/size)
 
 ## 示例
 

@@ -3,7 +3,7 @@ title: "searchFiveStars"
 description: "搜索文件中五角星所在的页面，返回页码列表。"
 ---
 
-```ts
+```ts wrap
 static searchFiveStars(filePath: string): Promise<APIResponse<number[]>>;
 ```
 
@@ -11,11 +11,12 @@ static searchFiveStars(filePath: string): Promise<APIResponse<number[]>>;
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `filePath` | `string` | 文件路径 |
+| `filePath` | `string` | 笔记/文档文件路径 |
 
 **返回**
 
-- `APIResponse<number[]>`：`result` 为五角星所在页码数组
+- [`APIResponse<number[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为五角星所在页码数组
 
 ## 示例
 
@@ -34,4 +35,3 @@ export async function exampleSearchFiveStars() {
   return res.result;
 }
 ```
-

@@ -1,9 +1,9 @@
 ---
 title: "getNoteTotalPageNum"
-description: "获取笔记总页数。"
+description: "获取笔记文件总页数。"
 ---
 
-```ts
+```ts wrap
 static getNoteTotalPageNum(notePath: string): Promise<APIResponse<number>>;
 ```
 
@@ -11,11 +11,12 @@ static getNoteTotalPageNum(notePath: string): Promise<APIResponse<number>>;
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
+| `notePath` | `string` | 笔记文件路径 |
 
 **返回**
 
-- `APIResponse<number>`：`result` 为笔记总页数
+- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为笔记总页数
 
 ## 示例
 

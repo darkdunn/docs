@@ -1,9 +1,9 @@
 ---
 title: "getKeyWords"
-description: "获取关键字。"
+description: "获取笔记/文档文件的关键字。"
 ---
 
-```ts
+```ts wrap
 static getKeyWords(notePath: string, pageList: number[]): Promise<APIResponse<KeyWord[]>>;
 ```
 
@@ -11,12 +11,13 @@ static getKeyWords(notePath: string, pageList: number[]): Promise<APIResponse<Ke
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `pageList` | `number[]` | 页码列表（从 1 开始） |
+| `notePath` | `string` | 笔记/文档文件路径 |
+| `pageList` | `number[]` | 页码列表（从 0 开始） |
 
 **返回**
 
-- `APIResponse<KeyWord[]>`：`result` 为关键字数组
+- [`APIResponse<KeyWord[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为关键字数组（类型见 [KeyWord](/api-reference/supernote-plugin/types/key-word)）。
 
 ## 示例
 
@@ -35,4 +36,3 @@ export async function exampleGetKeyWords() {
   return res.result;
 }
 ```
-

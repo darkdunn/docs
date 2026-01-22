@@ -1,11 +1,17 @@
 ---
 title: "reloadFile"
-description: "重新加载当前笔记。"
+description: "重新加载当前笔记或文档文件。"
 ---
 
 ```ts
 static reloadFile(): Promise<APIResponse<boolean>>;
 ```
+
+
+**返回**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示加载成功
 
 ## 示例
 

@@ -1,9 +1,9 @@
 ---
 title: "getNoteType"
-description: "获取笔记类型。"
+description: "获取笔记文件类型。"
 ---
 
-```ts
+```ts wrap
 static getNoteType(notePath: string): Promise<APIResponse<number>>;
 ```
 
@@ -15,7 +15,8 @@ static getNoteType(notePath: string): Promise<APIResponse<number>>;
 
 **返回**
 
-- `APIResponse<number>`：`result` 为笔记类型：`0` 正常笔记，`1` 识别笔记
+- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为笔记类型：`0` 正常笔记，`1` 识别笔记
 
 ## 示例
 
@@ -34,4 +35,3 @@ export async function exampleGetNoteType() {
   return res.result;
 }
 ```
-

@@ -1,9 +1,9 @@
 ---
 title: "removeNotePage"
-description: "删除笔记指定页面。"
+description: "删除笔记文件指定页面。"
 ---
 
-```ts
+```ts wrap
 static removeNotePage(notePath: string, page: number): Promise<APIResponse<boolean>>;
 ```
 
@@ -11,12 +11,13 @@ static removeNotePage(notePath: string, page: number): Promise<APIResponse<boole
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页码（从 1 开始） |
+| `notePath` | `string` | 笔记文件路径 |
+| `page` | `number` | 要删除的页码（从 0 开始） |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示删除成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示删除成功
 
 ## 示例
 
@@ -36,4 +37,3 @@ export async function exampleRemoveNotePage() {
   return res.result;
 }
 ```
-

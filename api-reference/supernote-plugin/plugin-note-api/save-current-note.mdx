@@ -9,7 +9,7 @@ static saveCurrentNote(): Promise<APIResponse<boolean>>;
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示保存成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：`result === true` 表示保存成功
 
 ## 示例
 
@@ -27,4 +27,3 @@ export async function exampleSaveCurrentNote() {
   return res.result;
 }
 ```
-

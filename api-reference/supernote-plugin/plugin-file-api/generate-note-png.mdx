@@ -1,9 +1,9 @@
 ---
 title: "generateNotePng"
-description: "生成笔记指定页面的 PNG 图片。"
+description: "生成笔记文件指定页面的 PNG 图片。"
 ---
 
-```ts
+```ts wrap
 static generateNotePng(params: {
   notePath: string;
   page: number;
@@ -17,15 +17,16 @@ static generateNotePng(params: {
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `params.notePath` | `string` | 笔记路径 |
-| `params.page` | `number` | 页码（从 1 开始） |
-| `params.times` | `number` | 图片倍数（通常为 `1` 或 `2`） |
+| `params.notePath` | `string` | 笔记文件路径 |
+| `params.page` | `number` | 页码（从 0 开始） |
+| `params.times` | `number` | 图片放大倍数（通常为 `1` 或 `2`） |
 | `params.pngPath` | `string` | PNG 输出路径（需以 `.png` 结尾） |
 | `params.type` | `number` | 生成类型：`0` 透明底图片，`1` 白底图片 |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示生成成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示生成缩略图成功
 
 ## 示例
 
@@ -50,4 +51,3 @@ export async function exampleGenerateNotePng() {
   return res.result;
 }
 ```
-

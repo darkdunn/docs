@@ -3,7 +3,11 @@ title: "modifyLayers"
 description: "修改页面图层数据（不存在的图层不会修改）。"
 ---
 
-```ts
+<Note>
+只有笔记文件才有图层数据，其他文件没有图层数据。
+</Note>
+
+```ts wrap
 static modifyLayers(notePath: string, page: number, layers: Layer[]): Promise<APIResponse<boolean>>;
 ```
 
@@ -11,32 +15,45 @@ static modifyLayers(notePath: string, page: number, layers: Layer[]): Promise<AP
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页面索引（从 1 开始） |
-| `layers` | `Layer[]` | 已存在的图层数据数组 |
+| `notePath` | `string` | 笔记文件路径 |
+| `page` | `number` | 页面索引（从 0 开始） |
+| `layers` | [`Layer[]`](/api-reference/supernote-plugin/types/layer) | 已存在的图层数据数组 |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示修改成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示修改成功
 
 ## 示例
 
 ```ts wrap
-import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI, type Layer } from 'rtn-supernote-plugin-core';
 
 /**
  * 修改页面图层数据的示例。
  */
 export async function exampleModifyLayers() {
   const notePath = '/storage/emulated/0/Note/demo.note';
-  const page = 1;
+  const page = 0;
 
   const listRes = await PluginFileAPI.getLayers(notePath, page);
   if (!listRes.success) {
     throw new Error(listRes.error?.message ?? 'getLayers 调用失败');
   }
 
-  const layers = (listRes.result ?? []) as any[];
+  const layers = (listRes.result ?? []) as Layer[];
+  const customs = layers.filter((l) => l.layerId >= 1 && l.layerId <= 3);
+  const custom = customs[0];
+  if (custom) {
+    custom.name = '工作图层';
+    custom.isVisible = true;
+    custom.isCurrentLayer = true;
+  }
+  layers.forEach((l) => {
+    if (l !== custom) {
+      l.isCurrentLayer = false;
+    }
+  });
   const res = await PluginFileAPI.modifyLayers(notePath, page, layers);
   if (!res.success) {
     throw new Error(res.error?.message ?? 'modifyLayers 调用失败');
@@ -44,4 +61,3 @@ export async function exampleModifyLayers() {
   return res.result;
 }
 ```
-

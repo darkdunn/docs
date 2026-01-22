@@ -1,9 +1,13 @@
 ---
 title: "getTitles"
-description: "获取标题数据。"
+description: "获取笔记文件的标题数据。"
 ---
 
-```ts
+<Note>
+只有笔记文件才有标题数据，文档文件没有标题数据。
+</Note>
+
+```ts wrap
 static getTitles(notePath: string, pageList: number[]): Promise<APIResponse<Title[]>>;
 ```
 
@@ -12,11 +16,12 @@ static getTitles(notePath: string, pageList: number[]): Promise<APIResponse<Titl
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `notePath` | `string` | 笔记路径 |
-| `pageList` | `number[]` | 页码列表（从 1 开始） |
+| `pageList` | `number[]` | 页码列表（从 0 开始） |
 
 **返回**
 
-- `APIResponse<Title[]>`：`result` 为标题数据数组
+- [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为标题数据数组（类型见 [Title](/api-reference/supernote-plugin/types/title)）
 
 ## 示例
 
@@ -28,11 +33,10 @@ import { PluginFileAPI } from 'rtn-supernote-plugin-core';
  */
 export async function exampleGetTitles() {
   const notePath = '/storage/emulated/0/Note/demo.note';
-  const res = await PluginFileAPI.getTitles(notePath, [1, 2, 3]);
+  const res = await PluginFileAPI.getTitles(notePath, [0, 1, 2]);
   if (!res.success) {
     throw new Error(res.error?.message ?? 'getTitles 调用失败');
   }
   return res.result;
 }
 ```
-

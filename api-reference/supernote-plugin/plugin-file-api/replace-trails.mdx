@@ -1,9 +1,9 @@
 ---
 title: "replaceElements"
-description: "替换页面元素数据。"
+description: "替换指定页面元素数据。"
 ---
 
-```ts
+```ts wrap
 static replaceElements(notePath: string, page: number, elements: Element[]): Promise<APIResponse<boolean>>;
 ```
 
@@ -11,25 +11,25 @@ static replaceElements(notePath: string, page: number, elements: Element[]): Pro
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页面索引（从 1 开始） |
+| `notePath` | `string` | 笔记/文档文件路径 |
+| `page` | `number` | 页面索引（从 0 开始） |
 | `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | 元素数据数组 |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示替换成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：`result === true` 表示替换成功
 
 ## 示例
 
 ```ts wrap
-import { PluginFileAPI, type Element } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI, PluginCommAPI, ElementType, type Element } from 'rtn-supernote-plugin-core';
 
 /**
  * 读取页面元素并回写（替换）的示例。
  */
 export async function exampleReplaceElements() {
   const notePath = '/storage/emulated/0/Note/demo.note';
-  const page = 1;
+  const page = 0;
 
   const listRes = await PluginFileAPI.getElements(page, notePath);
   if (!listRes.success) {
@@ -37,11 +37,25 @@ export async function exampleReplaceElements() {
   }
 
   const elements = (listRes.result ?? []) as Element[];
-  const res = await PluginFileAPI.replaceElements(notePath, page, elements);
+
+  const createRes = await PluginCommAPI.createElement(ElementType.TYPE_TEXT);
+  if (!createRes.success) {
+    throw new Error(createRes.error?.message ?? 'createElement 调用失败');
+  }
+  const textEl = createRes.result as Element;
+  if (textEl.textBox) {
+    textEl.textBox.textContentFull = '替换后的页面内容';
+    textEl.textBox.fontSize = 16;
+    textEl.textBox.textBold = 1;
+    textEl.textBox.textAlign = 1;
+    textEl.textBox.textRect = { left: 100, top: 120, right: 600, bottom: 220 };
+  }
+
+  const newElements = [textEl];
+  const res = await PluginFileAPI.replaceElements(notePath, page, newElements);
   if (!res.success) {
     throw new Error(res.error?.message ?? 'replaceElements 调用失败');
   }
   return res.result;
 }
 ```
-

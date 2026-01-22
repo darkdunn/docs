@@ -3,6 +3,10 @@ title: "insertGeometry"
 description: "插入几何图形。"
 ---
 
+<Note>
+调用该接口会将几何图形插入到当前打开文件当前页当前图层。
+</Note>
+
 ```ts
 static insertGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 ```
@@ -12,6 +16,11 @@ static insertGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `geometry` | [`Geometry`](/api-reference/supernote-plugin/types/geometry) | 几何图形参数 |
+
+**返回**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示插入几何图形成功
 
 ## 示例
 

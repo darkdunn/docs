@@ -1,9 +1,9 @@
 ---
 title: "getLayers"
-description: "获取页面图层数据。"
+description: "获取笔记的页面图层数据。"
 ---
 
-```ts
+```ts wrap
 static getLayers(notePath: string, page: number): Promise<APIResponse<Layer[]>>;
 ```
 
@@ -11,12 +11,13 @@ static getLayers(notePath: string, page: number): Promise<APIResponse<Layer[]>>;
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页面索引（从 1 开始） |
+| `notePath` | `string` | 笔记文件路径 |
+| `page` | `number` | 页码（从 0 开始） |
 
 **返回**
 
-- `APIResponse<Layer[]>`：`result` 为页面图层数据数组
+- [`APIResponse<Layer[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为页面图层数据数组（类型见 [Layer](/api-reference/supernote-plugin/types/layer)）
 
 ## 示例
 
@@ -36,4 +37,3 @@ export async function exampleGetLayers() {
   return res.result;
 }
 ```
-

@@ -2,8 +2,11 @@
 title: "sortLayers"
 description: "对图层信息排序（最前面的图层在最顶端）。"
 ---
+<Note>
+只有笔记文件才有图层数据，其他文件没有图层数据。
+</Note>
 
-```ts
+```ts wrap
 static sortLayers(notePath: string, page: number, layerIds: number[]): Promise<APIResponse<boolean>>;
 ```
 
@@ -11,13 +14,14 @@ static sortLayers(notePath: string, page: number, layerIds: number[]): Promise<A
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `notePath` | `string` | 笔记路径 |
-| `page` | `number` | 页面索引（从 1 开始） |
-| `layerIds` | `number[]` | 需要排序的图层 ID 列表（顺序即层级顺序） |
+| `notePath` | `string` | 笔记文件路径 |
+| `page` | `number` | 页面索引（从 0 开始） |
+| `layerIds` | `number[]` | 需要排序的图层 ID （0-3）列表（顺序即层级顺序） |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示排序成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示排序成功
 
 ## 示例
 
@@ -30,11 +34,10 @@ import { PluginFileAPI } from 'rtn-supernote-plugin-core';
 export async function exampleSortLayers() {
   const notePath = '/storage/emulated/0/Note/demo.note';
   const page = 1;
-  const res = await PluginFileAPI.sortLayers(notePath, page, [102, 101, 100]);
+  const res = await PluginFileAPI.sortLayers(notePath, page, [2, 1, 0]);
   if (!res.success) {
     throw new Error(res.error?.message ?? 'sortLayers 调用失败');
   }
   return res.result;
 }
 ```
-

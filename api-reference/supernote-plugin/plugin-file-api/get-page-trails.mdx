@@ -1,9 +1,9 @@
 ---
 title: "getElements"
-description: "获取页面元素数据，包含普通笔划、链接、标题、文本框。"
+description: "获取页面元素数据，包含普通笔划、链接、标题、文本框、五角星。"
 ---
 
-```ts
+```ts wrap
 static getElements(page: number, notePath: string): Promise<APIResponse<Element[]>>;
 ```
 
@@ -11,12 +11,13 @@ static getElements(page: number, notePath: string): Promise<APIResponse<Element[
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `page` | `number` | 页面索引（从 1 开始） |
-| `notePath` | `string` | 笔记路径 |
+| `page` | `number` | 页面索引（从 0 开始） |
+| `notePath` | `string` | 笔记/文档文件路径 |
 
 **返回**
 
-- `APIResponse<Element[]>`：元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
+- [`APIResponse<Element[]>`](/api-reference/supernote-plugin/types/api-response)：
+元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
 
 ## 示例
 

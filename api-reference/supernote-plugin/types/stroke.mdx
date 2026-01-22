@@ -5,8 +5,8 @@ description: "纯笔划数据（Element 为笔划类型时存在）。"
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `penColor` | `number` | 笔颜色 |
-| `penType` | `number` | 笔类型 |
+| `penColor` | `number` | 笔颜色，0xFE:白色，0x9D:深灰，0xC9：浅灰，0xFE：白色 |
+| `penType` | `number` | 笔类型，10：针管笔，1：压力笔，11：马克笔 |
 | `points` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 采样点（EMR坐标） |
 | `pressures` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 压力数据（0-4096） |
 | `eraseLineTrailNums` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | 线擦数据 |

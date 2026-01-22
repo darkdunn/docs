@@ -2,11 +2,12 @@
 title: "createElement"
 description: "创建一个新的元素对象（Element）。"
 ---
+[`Element`](/api-reference/supernote-plugin/types/trail)里有一些字段数据量很大（例如笔画采样点、压力点、角度点、轮廓点等）。
+为了避免 RN 侧一次性承载大数据导致内存问题，SDK 采用了“访问器”设计，所以需要通过createElement创建。
+详细原因见[`Element`](/api-reference/supernote-plugin/types/trail)。
 
 ```ts
 static createElement(
-  page: number,
-  num: number,
   type: number
 ): Promise<APIResponse<Element>>;
 ```
@@ -15,13 +16,12 @@ static createElement(
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `page` | `number` | 所在页码（从 1 开始） |
-| `num` | `number` | 笔划编号（从 0 开始） |
 | `type` | `number` | 数据类型，参考 [`ElementType`](/api-reference/supernote-plugin/types/trail#elementtype) |
 
 **返回**
 
-- `APIResponse<Element>`：见 [`APIResponse`](/api-reference/supernote-plugin/types/api-response) 与 [`Element`](/api-reference/supernote-plugin/types/trail)
+- [`APIResponse<Element>`](/api-reference/supernote-plugin/types/api-response)：
+见 [`APIResponse`](/api-reference/supernote-plugin/types/api-response) 与 [`Element`](/api-reference/supernote-plugin/types/trail)
 - 成功时会在返回的 `Element` 上补齐访问器字段（例如 `angles`、`contoursSrc`，以及笔划类型下的 `stroke.*` 访问器）
 
 ## 示例
@@ -33,11 +33,8 @@ import { PluginCommAPI } from 'rtn-supernote-plugin-core';
  * 创建一个 Element 的示例。
  */
 export async function exampleCreateElement() {
-  const page = 1;
-  const num = 0;
-  const type = 0;
 
-  const res = await PluginCommAPI.createElement(page, num, type);
+  const res = await PluginCommAPI.createElement(0);
   if (!res.success) {
     throw new Error(res.error?.message ?? 'createElement 调用失败');
   }

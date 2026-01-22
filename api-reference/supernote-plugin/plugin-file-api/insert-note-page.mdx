@@ -1,9 +1,9 @@
 ---
 title: "insertNotePage"
-description: "插入笔记指定页面。"
+description: "向笔记文件插入新的页面。"
 ---
 
-```ts
+```ts wrap
 static insertNotePage(params: { notePath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
 ```
 
@@ -11,13 +11,14 @@ static insertNotePage(params: { notePath: string; page: number; template: string
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `params.notePath` | `string` | 笔记路径 |
-| `params.page` | `number` | 页码（从 1 开始） |
-| `params.template` | `string` | 页面模版名称 |
+| `params.notePath` | `string` | 笔记文件路径 |
+| `params.page` | `number` | 页码（从 0 开始） |
+| `params.template` | `string` | 模版来源：<br/>- 系统模版：通过 [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-note-system-templates) 获取，传递其中的模版名称（[Template](/api-reference/supernote-plugin/types/template) 的 `name`）即可创建；<br/>- 自定义模版：传递自定义模版的图片路径，根据图片文件创建笔记。 |
 
 **返回**
 
-- `APIResponse<boolean>`：`result === true` 表示插入成功
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true` 表示插入页面成功
 
 ## 示例
 
@@ -40,4 +41,3 @@ export async function exampleInsertNotePage() {
   return res.result;
 }
 ```
-

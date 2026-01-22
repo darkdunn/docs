@@ -3,13 +3,18 @@ title: "getLassoElements"
 description: "获取套索数据（元素列表）。成功时会补齐访问器字段。"
 ---
 
+<Note>
+套索元素之后才能调用这个接口，否则会调用失败。
+</Note>
+
 ```ts
 static getLassoElements(): Promise<APIResponse<Element[]>>;
 ```
 
 **返回**
 
-- `APIResponse<Element[]>`：`result` 的元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
+- [`APIResponse<Element[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 的元素类型见 [`Element`](/api-reference/supernote-plugin/types/trail)
 
 ## 示例
 

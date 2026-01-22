@@ -1,7 +1,7 @@
 ---
 title: "PluginCommAPI"
 sidebarTitle: "概览"
-description: "接口总目录：每个方法单独一页，方便查找与引用。"
+description: "通用接口，笔记和文档都可以调用的接口"
 ---
 
 ## 导入
@@ -12,7 +12,10 @@ import { PluginCommAPI } from "rtn-supernote-plugin-core";
 
 ## 返回值约定
 
+**返回**
+
 多数异步接口返回 [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response)。通常只在 `success === true` 时读取 `result`。
+`success === false` 时result为空，但会有error信息，展示失败原因。
 
 ## 方法列表
 
@@ -27,9 +30,6 @@ import { PluginCommAPI } from "rtn-supernote-plugin-core";
 - [setLassoBoxState](/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state)
 - [getLassoRect](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect)
 - [updateLassoRect](/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect)
-- [setSlideBarStatus](/api-reference/supernote-plugin/plugin-comm-api/set-slide-bar-status)
-- [setSystemDormancyState](/api-reference/supernote-plugin/plugin-comm-api/set-system-dormancy-state)
-- [setStatusBarAndSlideBarState](/api-reference/supernote-plugin/plugin-comm-api/set-status-bar-and-slide-bar-state)
 - [getLassoElements](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data)
 - [getLassoElementTypeCounts](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts)
 - [deleteLassoElements](/api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data)

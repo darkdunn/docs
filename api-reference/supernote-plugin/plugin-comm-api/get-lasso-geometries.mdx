@@ -3,13 +3,18 @@ title: "getLassoGeometries"
 description: "获取套索几何图形数据列表。"
 ---
 
+<Note>
+套索元素之后才能调用这个接口，否则会调用失败。
+</Note>
+
 ```ts
 static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
 ```
 
 **返回**
 
-- `APIResponse<Geometry[]>`：元素类型见 [`Geometry`](/api-reference/supernote-plugin/types/geometry)
+- [`APIResponse<Geometry[]>`](/api-reference/supernote-plugin/types/api-response)：
+`result`的几何图形类型信息见 [`Geometry`](/api-reference/supernote-plugin/types/geometry)
 
 ## 示例
 
