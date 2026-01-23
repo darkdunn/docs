@@ -54,18 +54,16 @@ import {PluginNoteAPI } from 'rtn-supernote-plugin-core';
       });
 ```
 
-As shown in the code, insertTextLink passes in a [`TextLink`](/api-reference/supernote-plugin/types/text-link) object.
-After calling the insertTextLink interface according to the sample code, a text link will be inserted into the current page of the currently open note.
 
-If a link needs to jump to a specified page of a note, the linkType shall be set to 0.
- If it needs to jump to a specified page of a document, the linkType shall also be set to 2.
-If the value of destPage is a negative number,
-it will jump to the current page or the first page of the document;
- if the value of destPage is greater than or equal to 0,
-it will jump to the target page of the document.
+如代码所示，insertTextLink 传入了一个 [`TextLink`](/api-reference/supernote-plugin/types/text-link) 对象。
+调用 insertTextLink 接口之后，会向当前打开笔记的当前页主图层插入一个文本链接。
 
-When the linkType is set to 4 (Website),
-the destPath shall be configured as a URL address, and the destPage can be set to 0 in this case.
+
+如果链接需要跳转到笔记的指定页面，linkType 应设置为 0。
+如果需要跳转到文档的指定页面，linkType 也应设置为 2。当linkType为2时，如果 destPage 的值为负数，
+将跳转到文档当前页面或文档的第一页；如果 destPage 的值大于或等于 0，将跳转到文档的目标页面。
+
+当 linkType 设置为 4（网站）时，destPath 应配置为 URL 地址，在这种情况下，destPage 可以设置为 0。
 
 ## Stroke Link
 
