@@ -6,10 +6,11 @@ description: "设置套索笔画或几何图形为标题。"
 <Note>
 该接口支持笔记中的撤销还原操作。
 
-只支持套索主图层的笔画或几何图形设置为标题，其他图层不支持。
+只支持套索主图层的笔画、几何图形、文本框设置为标题，其他图层不支持。
 
-所以建议在点击套索工具条按钮后进入的插件界面调用该接口。
+建议在点击套索工具条按钮后进入的插件界面调用该接口。
 </Note>
+
 ```ts
 static setLassoTitle(params: { style: number }): Promise<APIResponse<boolean>>;
 ```
@@ -23,7 +24,7 @@ static setLassoTitle(params: { style: number }): Promise<APIResponse<boolean>>;
 **返回**
 
 - [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
-`result`为true表示设置标题成功，为false表示设置标题失败。
+`result === true`表示设置标题成功。
 
 ## 示例
 

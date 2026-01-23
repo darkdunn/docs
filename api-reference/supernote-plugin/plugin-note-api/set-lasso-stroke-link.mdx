@@ -1,7 +1,16 @@
 ---
 title: "setLassoStrokeLink"
-description: "设置套索笔划为链接。"
+description: "设置套索元素为链接。"
 ---
+
+<Note>
+该接口支持笔记中的撤销还原操作。
+
+只支持套索主图层的笔画、几何图形、文本框设置为链接，其他图层不支持。
+
+建议在点击套索工具条按钮后进入的插件界面调用该接口。
+</Note>
+
 
 ```ts
 static setLassoStrokeLink(params: {
@@ -17,13 +26,14 @@ static setLassoStrokeLink(params: {
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `params.destPath` | `string` | 目标文件路径；当 `linkType === 3` 时填写 URL |
-| `params.destPage` | `number` | 目标页码（通常仅 `linkType === 0` 时有效） |
+| `params.destPage` | `number` | 目标页码（仅 `linkType === 0` 或 `linkType === 2` 有效）<br />`linkType === 0`：必须填非负整数，表示需要跳到得指定页面<br />`linkType === 2`：负数表示跳转到文档当前页，非负整数表示跳转到文档指定页面 |
 | `params.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
 | `params.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址 |
 
 **返回**
 
-- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：`result` 为状态码（文档约定：`0` 成功，`-1` 失败，`-2` 目标文件需要升级）
+- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
+`result` 为状态码（文档约定：`0` 成功，`-1` 失败，`-2` 目标文件需要升级）
 
 ## 示例
 

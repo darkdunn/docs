@@ -7,9 +7,12 @@ description: "了解 Plugin / PluginHost / Supernote App 三模块关系与运�
 
 插件框架主要分以下三个模块：
 
-- Plugin：由开发者开发的定制化插件，用来扩展笔记、文档的功能。
-- PluginHost：插件宿主应用，用来管理、加载开发者开发的插件。可以安装、卸载、加载插件，插件都是运行在该 App 上。
-- Supernote App：Supernote 设备的手写应用，包含笔记、文档等。是插件的使用方，会在对应的工具栏或套索工具条上显示正在运行的插件按钮。
+- Plugin：由开发者开发的定制化插件，用于扩展笔记、文档业务功能。插件本身不直接运行在宿主应用中，
+而是由PluginHost负责加载与调度。
+- PluginHost：负责插件的安装、卸载、生命周期管理以及运行环境的提供。插件逻辑实际运行于
+PluginHost 提供的运行环境中，并通过标准接口与 Supernote 应用进行交互。
+- Plugin-enabled App：可以使用插件的应用，目前只有笔记、文档应用可以使用插件。
+从PluginHost APP获取插件信息，并在对应的工具栏、套索工具条等位置展示插件按钮，触发插件功能调用。
 
 接下来详细讲述三个模块之间的关系和运行机制。
 
@@ -19,13 +22,21 @@ description: "了解 Plugin / PluginHost / Supernote App 三模块关系与运�
 
 ![整体插件安装流程](/images/plugin-principle/principle-01.png)
 
-终端设置会有一个入口，选择需要安装的插件包之后会将其发送给 PluginHost App，PluginHost 接收到消息之后会解析插件包中配置文件，根据配置文件数据安装插件，拷贝代码文件和资源文件到插件运行目录。
+通过Settings->Apps->Plugins进入插件安装界面，在其中选择需要安装的插件包，
+点击“Install”之后会插件安装包发送给 PluginHost App，
+PluginHost 接收到消息之后会解析插件包中配置文件，根据配置文件数据安装插件，
+拷贝代码文件和资源文件到插件运行目录。
 
-插件安装成功之后，就会初始化插件，并向笔记、文档注册插件按钮，如图所示：
+插件安装成功之后，PluginHost会初始化插件，并向笔记、文档注册插件按钮，如图所示：
 
 ![插件初始化与按钮注册](/images/plugin-principle/principle-02.png)
 
-激活插件之后会执行 JS/TS 代码，在该代码中需要开发者自行编写注册按钮代码，注册成功之后会将按钮信息发送给笔记、文档应用，相关按钮会显示在笔记、文档中。
+整个插件的初始化流程如上图所示。PluginHost会初始化插件的运行环境，然后激活已安装的插件。
+激活时会执行JS/TS代码，这里会对当前插件初始化，并且注册插件按钮（开发者需要自行编写插件初始化和插件按钮注册的代码）。
+注册成功之后会将按钮信息发送给Plugin-enabled App（笔记、文档），相关按钮会显示在Plugin-enabled App中。
+
+这就是整个插件安装流程：选择插件安装包->安装->初始化->激活->注册。如果PluginHost退出并重新启动，
+会重新执行初始化以及后面的流程。
 
 ## 插件事件响应流程
 
@@ -33,7 +44,9 @@ description: "了解 Plugin / PluginHost / Supernote App 三模块关系与运�
 
 ![插件事件响应流程](/images/plugin-principle/principle-03.png)
 
-笔记、文档通过 Android 的 AIDL 机制向 PluginHost 发送事件消息，PluginHost 接收到消息之后会核对消息的内容，根据消息内容转发给对应插件。插件内部会注册相应的监听器用来监听不同的消息，根据接收到的不同的事件来触发不同的事务，调用功能接口。
+已被安装插件的APP（笔记、文档）通过 Android 的 [Android Interface Definition Language（AIDL）](https://developer.android.com/guide/components/aidl) 机制向 PluginHost 发送事件消息，
+PluginHost 接收到消息之后会核对消息的内容，根据消息内容转发到相应的监听器。插件内部会注册相应的监听器用来监听不同的消息，
+根据接收到的不同的事件来触发不同的事务，调用功能接口。
 
 具体的功能调用接口如下：
 

@@ -6,8 +6,7 @@ description: "修改链接数据。"
 该接口支持笔记中的撤销还原操作。
 
 该接口修改的是套索的链接数据，所以必须在套索链接之后调用，而且是套索单个链接。如果套索的不是链接，或者套索多个链接，调用会失败。
-
-所以建议在点击套索工具条按钮后进入的插件界面调用该接口。
+所以建议在点击套索工具栏按钮后进入的插件界面调用该接口。
 </Note>
 ```ts
 static modifyLassoLink(modifyLink: {
@@ -25,15 +24,20 @@ static modifyLassoLink(modifyLink: {
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `modifyLink.destPath` | `string` | 目标文件路径；当linkType为4时填写URL地址 |
-| `modifyLink.destPage` | `number` | 目标页码（可选；当linkType为0时必须为非负整数） |
-| `modifyLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址， `5` 跳转摘录 |
+| `modifyLink.destPage` | `number` | 目标页码（通常 `linkType === 0` 或 `linkType === 2`时有效） |
+| `modifyLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 文档，`3` 图片，`4` 网址， `6` 跳转摘录 |
 | `modifyLink.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
 | `modifyLink.fullText` | `string` | 完整文本，只有是文本链接才需要修改该参数 |
 | `modifyLink.showText` | `string` | 展示文本，只有文本链接才需要修改该参数 |
 
 **返回**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：`result`为true表示修改成功，为false表示修改失败
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response)：
+`result === true`表示修改成功。
+
+<Note>
+该接口无法将文字链接修改为笔划链接，也无法将笔划链接修改为文字链接。
+</Note>
 
 ## 示例
 

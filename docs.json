@@ -17,13 +17,14 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "principle",
-              "environment"
+              "principle"
+
             ]
           },
           {
             "group": "开发指南",
             "pages": [
+              "environment",
               "first-plugin",
               {
                 "group": "学习基础知识",
@@ -60,44 +61,16 @@
                 ]
               }
             ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
           }
+
+
         ]
       },
       {
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Supernote Plugin SDK",
+            "group": "API",
             "pages": [
               {
                 "group": "PluginCommAPI",
@@ -115,7 +88,7 @@
                   "api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state",
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect",
                   "api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect",
-                  
+
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-data",
                   "api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts",
                   "api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data",
@@ -196,9 +169,6 @@
                 "pages": [
                   "api-reference/supernote-plugin/plugin-manager/index",
                   "api-reference/supernote-plugin/plugin-manager/init",
-                  "api-reference/supernote-plugin/plugin-manager/add-plugin-life-listener",
-                  "api-reference/supernote-plugin/plugin-manager/register-button-listener",
-                  "api-reference/supernote-plugin/plugin-manager/register-config-button-listener",
                   "api-reference/supernote-plugin/plugin-manager/register-lang-listener",
                   "api-reference/supernote-plugin/plugin-manager/register-event-listener",
                   "api-reference/supernote-plugin/plugin-manager/register-button",
@@ -236,11 +206,11 @@
                   "api-reference/supernote-plugin/types/recogn-data",
                   "api-reference/supernote-plugin/types/recog-result-data",
                   "api-reference/supernote-plugin/types/geometry",
-                  
+
                   "api-reference/supernote-plugin/types/template",
                   "api-reference/supernote-plugin/types/key-word",
                   "api-reference/supernote-plugin/types/layer",
-                  
+
                   "api-reference/supernote-plugin/types/trail",
                   "api-reference/supernote-plugin/types/text-link",
                   "api-reference/supernote-plugin/types/link",
@@ -255,21 +225,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",

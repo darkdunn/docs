@@ -25,7 +25,7 @@ static insertTextLink(textLink: {
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `textLink.destPath` | `string` | 目标文件路径；当 `linkType`为3是填写URL地址 |
-| `textLink.destPage` | `number` | 目标页码，可选；通常仅 `linkType`为0和2时才有效。 |
+| `textLink.destPage` | `number` | 目标页码（仅 `linkType === 0` 或 `linkType === 2` 有效）<br />`linkType === 0`：必须填非负整数，表示需要跳到得指定页面<br />`linkType === 2`：负数表示跳转到文档当前页，非负整数表示跳转到文档指定页面 |
 | `textLink.style` | `number` | 链接样式：`0` 实下划线，`1` 实边框，`2` 虚边框 |
 | `textLink.linkType` | `number` | 链接类型：`0` 跳转笔记页，`1` 跳转笔记文件，`2` 跳转文档，`3` 跳转图片，`4` 跳转网址，`6` 跳转摘录|
 | `textLink.rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | 文本区域矩形（需为非零面积） |
@@ -37,7 +37,7 @@ static insertTextLink(textLink: {
 **返回**
 
 - [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response)：
-调用返回结果。`result`为0表示插入成功，`result`为-1表示插入失败，`result`为-2表示目标文件需要升级
+result` 为状态码（文档约定：`0` 成功，`-1` 失败，`-2` 目标文件需要升级）
 
 ## 示例
 

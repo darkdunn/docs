@@ -3,6 +3,10 @@ title: "insertText"
 description: "插入文本框。"
 ---
 
+<Note>
+文本框只能插入到主图层，无法插入到其他图层。该接口支持笔记中的撤销还原操作
+</Note>
+
 ```ts
 static insertText(textBox: {
   fontSize?: number;
