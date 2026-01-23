@@ -5,39 +5,39 @@ description: "笔记应用中的标题元素的使用。"
 
 <Note>
 标题是笔记特有的功能，文档应用无法使用该功能。标题只能在笔记文件中创建，在文档中无法创建标题。
-标题也只能在笔记文件的主图层中创建，其他图层无法创建标题
+标题也只能在笔记文件的主图层中创建，其他图层无法创建标题。
 </Note>
 
 ## 标题创建
 
-调用[`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title)
-这个接口可以将套索的笔画或几何图形设置为标题。样例代码如下：
-``` ts wrap
-import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 接口，
+可以将套索的笔划或几何图形设置为标题。示例代码如下：
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
 
-PluginNoteAPI.setLassoTitle({style:1})
-    .then(data => {
+PluginNoteAPI.setLassoTitle({ style: 1 })
+  .then(data => {
     console.log('setLassoTitle success:', data);
-    })
-    .catch(error => {
+  })
+  .catch(error => {
     console.error('setLassoTitle error:', error);
-    });
+  });
 ```
-创建标题只需要传入标题的样式值，就可以将套索的笔画或几何图形设置为对应的标题。
+创建标题只需要传入标题的样式值，就可以将套索的笔划或几何图形设置为对应的标题。
 
 <Note>
-调用[`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title)
-接口之前必须先套索笔画或几何图形元素，否会调用接口会失败。
+调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 接口之前，
+必须先套索笔划或几何图形元素，否则调用接口会失败。
 </Note>
 
 
 ## 获取套索标题数据
 
-调用[`PluginNoteAPI.getLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-title)
+调用 [`PluginNoteAPI.getLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-title)
 接口获取套索的标题数据，样例代码如下：
 
-``` ts wrap
-import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
 
 PluginNoteAPI.getLassoTitle()
     .then(data => {
@@ -49,10 +49,10 @@ PluginNoteAPI.getLassoTitle()
 ```
 [`PluginNoteAPI.getLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-title)
 这个接口只有在套索的时候才能调用。返回的是[`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response)对象。
-`result`为[`Title`](/api-reference/supernote-plugin/types/title)对象数组。
+`result` 为 [`Title`](/api-reference/supernote-plugin/types/title) 对象数组。
 
 [`Title`](/api-reference/supernote-plugin/types/title)的数据结构如下：
-``` ts wrap
+```ts wrap
 class Title {
   public X: number = 0; // 标题左上角坐标X轴值
   public Y: number = 0; // 标题左上角坐标Y轴值
@@ -69,29 +69,28 @@ class Title {
    * 4：阴影标题
    */
   public style: number = 0;
-  // 关联的笔划编号列表，表示哪些笔画是属于该标题的
+  // 关联的笔划编号列表，表示哪些笔划是属于该标题的
   public controlTrailNums: number[] = [];
 }
 ```
 
-都是标题信息，每个参数的含义看上面的注释。
+以上是标题信息，每个参数的含义见上面的注释。
 
 ## 修改标题
 
-当套索标题之后，可以通过[`PluginNoteAPI.modifyLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title)
+当套索选中标题之后，可以通过 [`PluginNoteAPI.modifyLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title)
 修改套索的标题数据，样例代码如下：
-``` ts wrap
-import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+```ts wrap
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
 
-PluginNoteAPI.modifyLassoTitle({style:2})
-    .then(data => {
+PluginNoteAPI.modifyLassoTitle({ style: 2 })
+  .then(data => {
     console.log('modifyLassoTitle success:', data);
-    })
-    .catch(error => {
+  })
+  .catch(error => {
     console.error('modifyLassoTitle error:', error);
-    });
+  });
 ```
-
 
 
 
