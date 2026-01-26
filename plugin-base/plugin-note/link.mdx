@@ -20,9 +20,14 @@ PluginNoteAPI.getLassoLink()
 ```
 
 如果套索中没有链接数据，那么返回的 result 数据为空；有链接数据时会返回一个链接数组（[`Link`](/api-reference/supernote-plugin/types/link)）。
-详细解析请看[`PluginNoteAPI.getLassoLink`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-link)接口描述。
+详细解析请看 [`PluginNoteAPI.getLassoLink`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-link) 的接口描述。
 
-## Text Link
+<Note>
+`Link.linkType` 的取值范围以类型定义为准。读取接口可能返回 `linkType=6`（摘录链接）。
+当前插件接口不支持创建或修改为摘录链接（写入接口如 `insertTextLink`、`modifyLassoLink` 通常只允许 `0..4`），但可以读取到摘录链接数据并用于展示或识别。
+</Note>
+
+## 文本链接（Text Link）
 
 笔记链接有两种类型：第一种是文本链接；第二种是笔划链接。需要注意的是，链接只能在主图层操作，不可插入其他图层。
 本节将详细介绍文本链接的创建方法。
@@ -32,26 +37,27 @@ PluginNoteAPI.getLassoLink()
 
 
 ```ts wrap
-import {PluginNoteAPI } from 'rtn-supernote-plugin-core';
-    // Create a TextLink object
-    const textLink = {
-      destPath: '/storage/emulated/0/Note/test.note', // Link Target Path
-      destPage: 2, //Target Page Number
-      style: 0,        // Link style: 0: solid underline, 1: solid border, 2: dashed border
-      linkType: 0,     // Link types: 0: Jump to note page, 1: Jump to note file, 2: Document, 3: Picture, 4: Website, 6: Excerpt link
-      rect: { left: 100, top: 100, right: 300, bottom: 150 }, // Link Display Region
-      fontSize: 49,
-      fullText: 'Show Text',
-      showText: 'Show Text',
-      isItalic: 1      // Italic: 0: italic, 1: not italic
-    };
-    PluginNoteAPI.insertTextLink(textLink)
-      .then(data => {
-        console.log('insertTextLink success:', data);
-      })
-      .catch(error => {
-        console.error('insertTextLink error:', error);
-      });
+import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+
+const textLink = {
+  destPath: '/storage/emulated/0/Note/test.note', // 目标路径
+  destPage: 2, // 目标页码
+  style: 0, // 样式：0 实下划线，1 实边框，2 虚边框
+  linkType: 0, // 类型：0 笔记页，1 笔记文件，2 文档，3 图片，4 网址
+  rect: { left: 100, top: 100, right: 300, bottom: 150 }, // 显示区域（像素坐标）
+  fontSize: 49,
+  fullText: 'Show Text',
+  showText: 'Show Text',
+  isItalic: 1, // 是否斜体：0 否，1 是
+};
+
+PluginNoteAPI.insertTextLink(textLink)
+  .then(data => {
+    console.log('insertTextLink success:', data);
+  })
+  .catch(error => {
+    console.error('insertTextLink error:', error);
+  });
 ```
 
 
@@ -59,13 +65,15 @@ import {PluginNoteAPI } from 'rtn-supernote-plugin-core';
 调用 insertTextLink 接口之后，会向当前打开笔记的当前页主图层插入一个文本链接。
 
 
-如果链接需要跳转到笔记的指定页面，linkType 应设置为 0。
-如果需要跳转到文档的指定页面，linkType 也应设置为 2。当linkType为2时，如果 destPage 的值为负数，
-将跳转到文档当前页面或文档的第一页；如果 destPage 的值大于或等于 0，将跳转到文档的目标页面。
+如果链接需要跳转到笔记的指定页面，`linkType` 应设置为 `0`。
+如果需要跳转到文档的指定页面，`linkType` 应设置为 `2`。当 `linkType === 2` 时：
 
-当 linkType 设置为 4（网站）时，destPath 应配置为 URL 地址，在这种情况下，destPage 可以设置为 0。
+- `destPage < 0`：跳转到文档当前页或文档第一页
+- `destPage >= 0`：跳转到文档目标页
 
-## Stroke Link
+当 `linkType === 4`（网址）时，`destPath` 应为 URL 地址；此时 `destPage` 可设置为 `0`。
+
+## 笔划链接（Stroke Link）
 
 笔划链接是将笔划设置为链接，其中笔划包括普通笔划和几何图形。
 要创建此类链接，必须先框选相应的笔划，否则无法设置链接。此外，必须只套索纯笔划和几何图形，不能包含文本框、标题等元素。

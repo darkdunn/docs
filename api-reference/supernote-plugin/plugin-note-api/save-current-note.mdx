@@ -3,11 +3,11 @@ title: "saveCurrentNote"
 description: "保存当前笔记文件。"
 ---
 
-笔记应用对当前打开的笔记进行操作时，都是现在操作数据保存在缓存当中，实际文件并没有该数据。
-此时如果调用文件相关接口（[`replaceElements`](/api-reference/supernote-plugin/plugin-file-api/replace-trails)、
+笔记应用对当前打开的笔记进行操作时，修改通常先写入内存缓存，并不会立刻落盘到实际文件。
+如果你在未保存的情况下调用文件相关接口（例如 [`replaceElements`](/api-reference/supernote-plugin/plugin-file-api/replace-trails)、
 [`insertElements`](/api-reference/supernote-plugin/plugin-file-api/insert-trails)、
 [`modifyElements`](/api-reference/supernote-plugin/plugin-file-api/modify-trails) 等），
-数据可能会错乱，最后先调用该接口将婚车数据保存到实际文件中去。
+可能导致数据状态不一致。建议先调用 `saveCurrentNote` 将缓存数据保存到实际文件，再进行文件级读写操作。
 
 ```ts
 static saveCurrentNote(): Promise<APIResponse<boolean>>;

@@ -2,21 +2,27 @@
 title: '环境搭建'
 ---
 
-系统插件是使用React Native开发的，所以需要搭建的开发环境其实就是React Native的开发环境。详细环境搭建可以参考RN官网的环境搭建，这里简单描述下基本的环境搭建。
+Supernote 插件基于 React Native 开发。搭建开发环境时，可以把它视为“React Native 开发环境 + Android 构建环境”。
+本章给出在 Windows 上的最小可用配置，并标注常见检查点。更完整的说明请参考 React Native 官方文档：
+https://reactnative.dev/docs/0.79/getting-started
 
 ## 安装依赖
 
-必须安装的依赖有：Node、JDK和Android Studio。以下安装依赖都是以Windows为例
+必须安装的依赖包括：Node.js、JDK、Android Studio（含 Android SDK）。以下步骤以 Windows 为例。
 
-### Node，JDK
+### Node.js 与 JDK
 
-建议直接使用搜索引擎下载Node和JDK（Java Development Kit），JDK（Java Development Kit）可以使用Oracle JDK或者OpenJDK。
+- Node.js：建议使用当前 LTS 版本（并确保版本 ≥ 18）
+- JDK：React Native Android 构建需要 JDK 19 或更高版本（Oracle JDK 或 OpenJDK 均可）
 
-注意：Node的版本应大于18，强烈建议始终选择Node当前的LTS（长期维护）版本，一般是偶数版本，不要选择偏实验性质的奇数版本。
+安装后建议在命令行确认版本：
 
-注意：RN需要JDK 21以上的版本，可以在命令行输入javac -version来查看当前的JDK版本，如果版本不符合要求，需要安装更高级的版本。
+```bash wrap
+node -v
+javac -version
+```
 
-注意：中国用户需要使用 npm config set registry [https://registry.npmmirror.com](https://registry.npmmirror.com) 命令配置淘宝镜像，否则可能无法使用npm。
+如果你的网络环境无法访问 npm 官方 registry，需要先把 registry 切换到可用的镜像源；否则依赖安装会失败。
 
 ### Yarn
 
@@ -30,11 +36,11 @@ npm install -g yarn
 
 ### Android Studio开发环境
 
-如果你之前没有接触过 Android 的开发环境，那么请做好心理准备，这一过程相当繁琐。请万分仔细地阅读下面的说明，严格对照文档进行配置操作。
+如果你之前没有配置过 Android Studio/SDK，按下面步骤完成一次性安装与配置即可。
 
 #### 安装Android Studio
 
-首先下载和安装Android Studio，Android Studio版本需要Android Studio Narwhal | 2025.1.2以上的版本，太老版本会无法开发插件。
+下载并安装 Android Studio。建议使用 Android Studio Narwhal | 2025.1.2 或更高版本，避免因版本过旧导致构建失败。
 
 在Android Studio安装向导中，确保选中以下所有项目旁边的复选框：
 
@@ -46,7 +52,7 @@ npm install -g yarn
 
 #### 安装Android SDK
 
-Android Studio 默认会安装最新版本的 Android SDK。目前编译 React Native 应用需要的是Android 14 (UpsideDownCake)版本的 SDK（注意 SDK 版本不等于终端系统版本，RN 目前支持 android 6 以上设备）。你可以在 Android Studio 的 SDK Manager 中选择安装各版本的 SDK。
+Android Studio 默认会安装最新版本的 Android SDK。目前编译 React Native 应用需要的是Android 15 (VanillaIceCream)版本的 SDK（注意 SDK 版本不等于终端系统版本，RN 目前支持 android 6 以上设备）。你可以在 Android Studio 的 SDK Manager 中选择安装各版本的 SDK。
 
 你可以在 Android Studio 的欢迎界面中找到 SDK Manager。点击"Configure"，然后就能看到"SDK Manager"。
 
@@ -54,7 +60,7 @@ Android Studio 默认会安装最新版本的 Android SDK。目前编译 React N
 
 注：SDK Manager 还可以在 Android Studio 的"Preferences"菜单中找到。具体路径是Appearance & Behavior → System Settings → Android SDK。
 
-在 SDK Manager 中选择"SDK Platforms"选项卡，然后在右下角勾选"Show Package Details"。展开Android 15 (UpsideDownCake)选项，确保勾选了下面这些组件（如果你看不到这个界面，则需要使用稳定的代理软件）：
+在 SDK Manager 中选择"SDK Platforms"选项卡，然后在右下角勾选"Show Package Details"。展开Android 15 (VanillaIceCream)选项，确保勾选了下面这些组件（如果你看不到这个界面，则需要使用稳定的代理软件）：
 
 - Android SDK Platform 35
 - Intel x86 Atom_64 System Image（官方模拟器镜像文件，使用非官方模拟器不需要安装此组件）

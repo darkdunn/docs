@@ -3,6 +3,10 @@ title: "LassoLink"
 description: "套索选区中的链接数据结构。"
 ---
 
+<Note>
+`LassoLink.linkType` 表示“套索中读取到的链接类型”。不同写入接口对 `linkType` 的支持范围可能不同；例如 `insertTextLink` 与 `modifyLassoLink` 的参数校验当前只允许 `0..4`。
+</Note>
+
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `category` | `number` | 链接分类：`0` 文字链接，`1` 笔划链接 |

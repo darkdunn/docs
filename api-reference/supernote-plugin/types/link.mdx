@@ -5,6 +5,10 @@ description: "链接元素的详细数据结构。"
 
 当 [`Element`](/api-reference/supernote-plugin/types/trail) 的 `type === 600` 时，`element.link` 会提供链接的详细信息。
 
+<Note>
+`Link.linkType` 表示“读取到的链接类型”。不同写入接口对 `linkType` 的支持范围可能不同；例如 `insertTextLink` 与 `modifyLassoLink` 的参数校验当前只允许 `0..4`。
+</Note>
+
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `category` | `number` | 链接分类：`0` 文字链接，`1` 笔划链接 |

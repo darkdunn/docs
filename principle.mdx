@@ -5,16 +5,13 @@ description: "了解 Plugin / PluginHost / Supernote App 三模块关系与运�
 
 ## 插件运行机制
 
-插件框架主要分以下三个模块：
+插件系统包含三个核心模块：
 
-- Plugin：由开发者开发的定制化插件，用于扩展笔记、文档业务功能。插件本身不直接运行在宿主应用中，
-而是由PluginHost负责加载与调度。
-- PluginHost：负责插件的安装、卸载、生命周期管理以及运行环境的提供。插件逻辑实际运行于
-PluginHost 提供的运行环境中，并通过标准接口与 Supernote 应用进行交互。
-- Plugin-enabled App：可以使用插件的应用，目前只有笔记、文档应用可以使用插件。
-从PluginHost APP获取插件信息，并在对应的工具栏、套索工具条等位置展示插件按钮，触发插件功能调用。
+- **Plugin**：开发者编写的插件，用于扩展 NOTE/DOC 的能力。插件不直接运行在 NOTE/DOC 内，由 PluginHost 加载与调度。
+- **PluginHost**：负责插件安装、卸载与生命周期管理，并提供 React Native 运行环境。插件逻辑运行在 PluginHost 中，通过标准接口与 NOTE/DOC 交互。
+- **Plugin-enabled App**：支持插件的宿主应用。目前包括 NOTE（笔记）与 DOC（文档）。它们从 PluginHost 获取插件信息，在工具栏、套索工具栏等位置展示插件按钮，并触发插件事件。
 
-接下来详细讲述三个模块之间的关系和运行机制。
+下文分别说明安装流程与事件链路。
 
 ## 插件安装流程
 
@@ -22,21 +19,24 @@ PluginHost 提供的运行环境中，并通过标准接口与 Supernote 应用�
 
 ![整体插件安装流程](/images/plugin-principle/principle-01.png)
 
-通过Settings->Apps->Plugins进入插件安装界面，在其中选择需要安装的插件包，
-点击“Install”之后会插件安装包发送给 PluginHost App，
-PluginHost 接收到消息之后会解析插件包中配置文件，根据配置文件数据安装插件，
-拷贝代码文件和资源文件到插件运行目录。
+安装步骤：
+
+1. 在 Settings -> Apps -> Plugins 进入插件安装界面
+2. 选择插件安装包并点击 “Install”
+3. NOTE/DOC 将安装包发送给 PluginHost
+4. PluginHost 解析插件包内的配置文件，完成安装，并把代码与资源拷贝到插件运行目录
 
 插件安装成功之后，PluginHost会初始化插件，并向笔记、文档注册插件按钮，如图所示：
 
 ![插件初始化与按钮注册](/images/plugin-principle/principle-02.png)
 
-整个插件的初始化流程如上图所示。PluginHost会初始化插件的运行环境，然后激活已安装的插件。
-激活时会执行JS/TS代码，这里会对当前插件初始化，并且注册插件按钮（开发者需要自行编写插件初始化和插件按钮注册的代码）。
-注册成功之后会将按钮信息发送给Plugin-enabled App（笔记、文档），相关按钮会显示在Plugin-enabled App中。
+初始化流程：
 
-这就是整个插件安装流程：选择插件安装包->安装->初始化->激活->注册。如果PluginHost退出并重新启动，
-会重新执行初始化以及后面的流程。
+1. PluginHost 初始化 React Native 运行环境
+2. PluginHost 激活已安装插件并执行其 JS/TS 入口逻辑（包含插件初始化与按钮注册）
+3. PluginHost 将注册结果同步给 NOTE/DOC，NOTE/DOC 在对应位置展示插件按钮
+
+如果 PluginHost 退出并重新启动，会重新执行初始化与后续注册流程。
 
 ## 插件事件响应流程
 
@@ -44,17 +44,16 @@ PluginHost 接收到消息之后会解析插件包中配置文件，根据配置
 
 ![插件事件响应流程](/images/plugin-principle/principle-03.png)
 
-已被安装插件的APP（笔记、文档）通过 Android 的 [Android Interface Definition Language（AIDL）](https://developer.android.com/guide/components/aidl) 机制向 PluginHost 发送事件消息，
-PluginHost 接收到消息之后会核对消息的内容，根据消息内容转发到相应的监听器。插件内部会注册相应的监听器用来监听不同的消息，
-根据接收到的不同的事件来触发不同的事务，调用功能接口。
+NOTE/DOC 通过 Android 的 [Android Interface Definition Language（AIDL）](https://developer.android.com/guide/components/aidl) 向 PluginHost 发送事件消息。
+PluginHost 校验消息内容后，把事件转发给对应插件的监听器。插件在监听器回调中处理业务逻辑，并调用 SDK 接口完成对 NOTE/DOC 的操作。
 
 具体的功能调用接口如下：
 
 ![功能调用接口与链路](/images/plugin-principle/principle-04.png)
 
-插件内容事务逻辑由插件负责。在插件内部可以通过 React Native 自带的 TurboModule 架构调用 Java 代码，再通过 Java 代码调用底层的 C/C++ 代码，暂时不支持直接调用 C/C++ 代码。
+插件的业务逻辑由插件自身实现。插件可通过 React Native 的 TurboModule 调用 Java 层能力，再由 Java 层调用底层 C/C++；当前不支持从 JS/TS 直接调用 C/C++。
 
-此外插件可以通过我司提供 SDK 调用笔记/文档应用的接口，实现对笔记/文档的操作。
+此外，插件可通过 SDK 调用 NOTE/DOC 提供的标准接口，实现对内容与交互的操作。
 
 ## 相关文档
 

@@ -5,16 +5,15 @@ description: "欢迎来到 Supernote 官方开发者文档，您可以在这里�
 
 ## 预备知识
 
-Supernote 插件系统是以 React Native 框架为基础搭建的，所以你要对 React Native 有所了解。如果你是 React Native 的新手，
-或者需要复习，你可以在 [React Native 官网](https://reactnative.dev/docs/0.79/getting-started) 上深入学习或复习一下。
+Supernote 插件系统基于 React Native。建议你先掌握 React Native 的基础概念（组件、状态管理、打包与调试）。参考：[React Native 官方文档](https://reactnative.dev/docs/0.79/getting-started)。
 
-Supernote 设备是 Android 系统，如果你要开发复杂的插件，比如需要调用 Android 的接口，那就需要了解 Android 相关的开发知识，
-你可以在 [Android 官网](https://developer.android.com/) 上深入学习。
+Supernote 设备运行在 Android 系统上。如果你的插件需要调用 Android 能力（例如文件、权限或系统服务），也建议了解 Android 开发基础。参考：
+[Android 官方文档](https://developer.android.com/)。
 
 
 ## 基础原理
 
-这里可以了解整个插件系统的工作原理
+了解插件系统的整体架构与运行机制：
 
 <Card
   title="插件工作原理"
@@ -22,14 +21,14 @@ Supernote 设备是 Android 系统，如果你要开发复杂的插件，比如�
   href="/principle"
   horizontal
 >
-  Supernote插件系统工作原理介绍。
+  介绍 Plugin / PluginHost / Supernote App 的关系与运行机制。
 </Card>
 
 
 
 ## 开发指南
 
-在这里你可以了解如何开发Supernote插件。
+按步骤完成环境搭建、编写与打包：
 
 <Card
   title="环境搭建"
@@ -37,16 +36,16 @@ Supernote 设备是 Android 系统，如果你要开发复杂的插件，比如�
   href="/environment"
   horizontal
 >
-  如何配置Supernote插件开发环境。
+  配置 React Native 与 Android 构建环境。
 </Card>
 
 <Card
-  title="编写第一个Supernote插件"
+  title="编写第一个 Supernote 插件"
   icon="puzzle-piece"
   href="/first-plugin"
   horizontal
 >
-  在这里可以学习到如何开发一个简单的Supernote插件。
+  从创建工程到注册按钮与打包安装。
 </Card>
 
 <Card
@@ -55,5 +54,5 @@ Supernote 设备是 Android 系统，如果你要开发复杂的插件，比如�
   href="/plugin-base/coordinate-system"
   horizontal
 >
-  在这里可以学习到插件开发的基础知识。
+  从坐标系、套索、笔记/文档能力开始建立基础概念。
 </Card>

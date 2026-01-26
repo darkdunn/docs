@@ -1,17 +1,16 @@
 ---
-title: "Title"
-description: "笔记应用中的标题元素的使用。"
+title: "标题"
+description: "在 NOTE 应用中创建、读取与修改标题元素。"
 ---
 
 <Note>
-标题是笔记特有的功能，文档应用无法使用该功能。标题只能在笔记文件中创建，在文档中无法创建标题。
-标题也只能在笔记文件的主图层中创建，其他图层无法创建标题。
+标题是 NOTE（笔记）特有能力，DOC（文档）不支持。标题只能在笔记文件的主图层（layer=0）上创建与修改。
 </Note>
 
 ## 标题创建
 
-调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 接口，
-可以将套索的笔划或几何图形设置为标题。示例代码如下：
+调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 可以把“套索选中的笔划或几何图形”设置为标题。
+示例代码如下：
 ```ts wrap
 import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
 
@@ -23,11 +22,10 @@ PluginNoteAPI.setLassoTitle({ style: 1 })
     console.error('setLassoTitle error:', error);
   });
 ```
-创建标题只需要传入标题的样式值，就可以将套索的笔划或几何图形设置为对应的标题。
+创建标题时只需要传入标题样式（`style`）。
 
 <Note>
-调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 接口之前，
-必须先套索笔划或几何图形元素，否则调用接口会失败。
+调用该接口前，必须先在页面中完成套索选择；否则接口会失败。
 </Note>
 
 
@@ -40,15 +38,15 @@ PluginNoteAPI.setLassoTitle({ style: 1 })
 import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
 
 PluginNoteAPI.getLassoTitle()
-    .then(data => {
+  .then(data => {
     console.log('getLassoTitle success:', data);
-    })
-    .catch(error => {
+  })
+  .catch(error => {
     console.error('getLassoTitle error:', error);
-    });
+  });
 ```
 [`PluginNoteAPI.getLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-title)
-这个接口只有在套索的时候才能调用。返回的是[`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response)对象。
+这个接口只能在存在套索上下文时调用。返回的是 [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response) 对象。
 `result` 为 [`Title`](/api-reference/supernote-plugin/types/title) 对象数组。
 
 [`Title`](/api-reference/supernote-plugin/types/title)的数据结构如下：
@@ -91,7 +89,6 @@ PluginNoteAPI.modifyLassoTitle({ style: 2 })
     console.error('modifyLassoTitle error:', error);
   });
 ```
-
 
 
 

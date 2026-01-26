@@ -8,6 +8,11 @@ description: "获取套索链接数据。"
 建议在点击套索工具栏按钮后进入的插件界面调用该接口。
 </Note>
 
+<Note>
+该接口是“读取”接口。返回的 `LassoLink.linkType` 可能包含 `6`（摘录链接），表示该链接会跳转到摘录。
+当前插件接口不支持把链接“创建/修改”为摘录链接（写入接口通常只允许 `linkType=0..4`），但可以读取到摘录链接的数据并做展示或识别。
+</Note>
+
 ```ts
 static getLassoLink(): Promise<APIResponse<LassoLink[]>>;
 ```
