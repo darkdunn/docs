@@ -1,0 +1,15 @@
+---
+title: "Layer"
+description: "Layer data in note files."
+---
+
+<Note>
+Only note files (`.note`) have layer data. Other files do not.
+</Note>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `layerId` | `number` | Layer ID: <br/>- `-1` background: cannot delete/rename/move; cannot set as current; visibility can be toggled<br/>- `0` main: cannot delete/rename; can reorder, set current, toggle visibility<br/>- `1-3` custom: can delete/rename/reorder; can set current and toggle visibility |
+| `name` | `string` | Layer name |
+| `isCurrentLayer` | `boolean` | Whether this is the current layer |
+| `isVisible` | `boolean` | Whether the layer is visible |

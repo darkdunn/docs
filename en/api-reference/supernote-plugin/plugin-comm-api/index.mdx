@@ -1,0 +1,39 @@
+---
+title: "PluginCommAPI"
+sidebarTitle: "Overview"
+description: "Common APIs usable in both note and document contexts."
+---
+
+## Import
+
+```ts wrap
+import { PluginCommAPI } from "rtn-supernote-plugin-core";
+```
+
+## Return Convention
+
+Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response). Read `result` when `success === true`. If `success === false`, `result` is empty and `error` contains details.
+
+## Methods
+
+- [createElement](/api-reference/supernote-plugin/plugin-comm-api/create-trail)
+- [recycleElement](/api-reference/supernote-plugin/plugin-comm-api/recycle-trail)
+- [clearElementCache](/api-reference/supernote-plugin/plugin-comm-api/clear-trail-cache)
+- [saveStickerByLasso](/api-reference/supernote-plugin/plugin-comm-api/save-sticker-by-lasso)
+- [getStickerSize](/api-reference/supernote-plugin/plugin-comm-api/get-sticker-size)
+- [generateStickerThumbnail](/api-reference/supernote-plugin/plugin-comm-api/generate-sticker-thumbnail)
+- [convertElement2Sticker](/api-reference/supernote-plugin/plugin-comm-api/convert-trail2-sticker)
+- [insertSticker](/api-reference/supernote-plugin/plugin-comm-api/insert-sticker)
+- [setLassoBoxState](/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state)
+- [getLassoRect](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect)
+- [updateLassoRect](/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect)
+- [getLassoElements](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data)
+- [getLassoElementTypeCounts](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts)
+- [deleteLassoElements](/api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data)
+- [getCurrentPageNum](/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num)
+- [getCurrentFilePath](/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path)
+- [reloadFile](/api-reference/supernote-plugin/plugin-comm-api/reload-file)
+- [getLassoGeometries](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries)
+- [insertGeometry](/api-reference/supernote-plugin/plugin-comm-api/insert-geometry)
+- [modifyLassoGeometry](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry)
+- [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-note-system-templates)

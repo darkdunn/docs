@@ -1,0 +1,19 @@
+---
+title: "getNotePageSize"
+description: "Derive page pixel size based on device type and orientation."
+---
+
+```ts
+static getNotePageSize(orientation: number, machineType: number): { width: number; height: number };
+```
+
+**Parameters**
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `orientation` | `number` | Page orientation, see `PointUtils.ROTATION_*` |
+| `machineType` | `number` | Machine type, see `PointUtils.MACHINE_TYPE_*` |
+
+**Returns**
+
+- [`Size`](/api-reference/supernote-plugin/types/size): Page pixel size

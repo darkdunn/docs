@@ -1,0 +1,16 @@
+---
+title: "Element Operations"
+description: "Create, insert, modify, and replace page elements."
+---
+
+## Recommended Workflow
+
+- Use [`PluginCommAPI.createElement`](/api-reference/supernote-plugin/plugin-comm-api/create-trail) to initialize an element with native-side accessors
+- Fill stroke/text/link/geometry content on JS side
+- Insert or modify using [`PluginFileAPI`](/api-reference/supernote-plugin/plugin-file-api/index)
+
+## Common Scenarios
+
+- Insert elements: [`insertElements`](/api-reference/supernote-plugin/plugin-file-api/insert-trails)
+- Modify elements: [`modifyElements`](/api-reference/supernote-plugin/plugin-file-api/modify-trails)
+- Replace elements: [`replaceElements`](/api-reference/supernote-plugin/plugin-file-api/replace-trails)

@@ -1,0 +1,47 @@
+---
+title: "Element"
+description: "Unified data structure for visible elements in notes/documents."
+---
+
+`Element` describes shared information across visible elements: strokes, titles, links, text boxes, geometric shapes, etc. `type` distinguishes the category and specific fields exist under `stroke`, `title`, `link`, `textBox`, `geometry`.
+
+## ElementType
+
+| Type | Const | Value | Description | Fields |
+| --- | --- | ---| --- | --- |
+| Stroke | `TYPE_STROKE` | `0` | Handwritten stroke | `stroke` |
+| Title | `TYPE_TITLE` | `100` | Title element | `title` |
+| Picture | `TYPE_PICTURE` | `200` | Image (unused currently) | - |
+| TextBox | `TYPE_TEXT` | `500` | Plain text box | `textBox` |
+| Text Quote | `TYPE_TEXT_DIGEST_QUOTE` | `501` | Quoted digest | `textBox` |
+| Text Create | `TYPE_TEXT_DIGEST_CREATE` | `502` | Created digest in note | `textBox` |
+| Link | `TYPE_LINK` | `600` | Text/stroke link | `link` |
+| Geometry | `TYPE_GEO` | `700` | Geometric shapes | `geometry` |
+| FiveStar | `TYPE_FIVE_STAR` | `800` | Five-star | `fiveStar` |
+
+## Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `uuid` | `string` | Unique ID |
+| `type` | `number` | See `ElementType` |
+| `pageNum` | `number` | Page number |
+| `layerNum` | `number` | Layer number (`0..3` common in notes) |
+| `thickness` | `number` | Stroke thickness (may be irrelevant for some) |
+| `recognizeResult` | [`RecogResultData`](/api-reference/supernote-plugin/types/recog-result-data) | Recognition result |
+| `maxX` | `number` | Max X in EMR coords (see [Coordinate System](/plugin-base/coordinate-system)) |
+| `maxY` | `number` | Max Y in EMR coords (see [Coordinate System](/plugin-base/coordinate-system)) |
+| `angles` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Angle points (accessor) |
+| `status` | `number` | Status |
+| `numInPage` | `number` | Order within page (starts at `0`) |
+| `contoursSrc` | [`ElementDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Contour points (pixel coords; accessor) |
+| `stroke` | [`Stroke \| null`](/api-reference/supernote-plugin/types/stroke) | Stroke data (only when `type === 0`) |
+| `title` | [`Title \| null`](/api-reference/supernote-plugin/types/title) | Title data (only when `type === 100`) |
+| `textBox` | [`TextBox \| null`](/api-reference/supernote-plugin/types/text-box) | Text box data (text-related types) |
+| `geometry` | [`Geometry \| null`](/api-reference/supernote-plugin/types/geometry) | Geometry data (only when `type === 700`) |
+| `link` | [`Link \| null`](/api-reference/supernote-plugin/types/link) | Link data (only when `type === 600`) |
+| `fiveStar` | `FiveStar \| null` | Five-star data (only when `type === 800`) |
+
+<Note>
+`angles` and `contoursSrc` are accessors, not arrays. Use async accessor methods to fetch data without loading large point sets into RN memory all at once.
+</Note>

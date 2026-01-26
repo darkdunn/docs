@@ -1,0 +1,32 @@
+---
+title: "Plugin UI"
+description: "How plugin UIs are displayed via React Native and button events."
+---
+
+## Rendering
+
+PluginHost declares a `ReactRootView` to render plugin UIs. Based on the clicked button event containing `PluginID`, PluginHost loads and renders the corresponding plugin UI in the root view.
+
+## Button Event Listener
+
+Register a button listener to handle clicks:
+
+```ts wrap
+import { PluginManager } from 'rtn-supernote-plugin-core';
+
+const buttonClickListener = PluginManager.registerButtonListener({
+  onButtonPress: event => {
+    console.log('Button clicked, ID:', event.id);
+  },
+} as any);
+```
+
+Event structure:
+
+```ts wrap
+class ButtonEvent {
+  id: number;
+  name: string;
+  icon: string;
+}
+```

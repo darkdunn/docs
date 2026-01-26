@@ -1,0 +1,32 @@
+---
+title: "ElementDataAccessor"
+description: "Accessor for large point datasets, and the data types it supports."
+---
+
+## Methods
+
+| Method | Returns | Description |
+| --- | --- | --- |
+| `size()` | `Promise<number>` | Get data length |
+| `get(index)` | `Promise<T \| null>` | Get item at index |
+| `getRange(startIndex, count)` | `Promise<T[]>` | Fetch a range of data |
+| `add(index, value)` | `Promise<boolean>` | Insert at index (clears cache on success) |
+| `set(index, value)` | `Promise<boolean>` | Overwrite at index (clears cache on success) |
+| `setRange(index, endIndex, valueArray)` | `Promise<boolean>` | Overwrite a range (clears cache on success) |
+| `clearCache()` | `void` | Clear RN-side cache |
+| `getCacheStats()` | `{ cachedCount: number; totalSize: number }` | Cache stats |
+| `preload(startIndex, count)` | `Promise<void>` | Preload a range into cache |
+| `isCached(index)` | `boolean` | Whether index is cached |
+
+## ElementPointDataType
+
+| Enum | Value | Description |
+| --- | ---:| --- |
+| `ElementPointDataType.ANGLE_POINT` | `0` | Angle points |
+| `ElementPointDataType.CONTOUR_POINT` | `1` | Contour points |
+| `ElementPointDataType.STROKE_SAMPLE_POINT` | `2` | Stroke sample points |
+| `ElementPointDataType.STROKE_PRESSURE_POINT` | `3` | Stroke pressure points |
+| `ElementPointDataType.ERASE_LINE_DATA` | `4` | Erase line data |
+| `ElementPointDataType.WRITE_FLAG` | `5` | Write flag |
+| `ElementPointDataType.MARK_PEN_DIRECTION` | `6` | Marker pen direction |
+| `ElementPointDataType.RECOGNITION_DATA_POINT` | `7` | Recognition data points |

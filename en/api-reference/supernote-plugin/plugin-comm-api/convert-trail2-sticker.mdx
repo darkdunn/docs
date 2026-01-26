@@ -1,0 +1,16 @@
+---
+title: "convertElement2Sticker"
+description: "Convert elements to a sticker."
+---
+
+```ts
+static convertElement2Sticker(params: { machineType: number; elements: Element[]; stickerPath: string }): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `machineType` | `number` | Machine type: `0` A5, `1` A6, `2` A6X, `3` A5X, `4` Nomad, `5` Manta |
+| `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | Elements to convert |
+| `stickerPath` | `string` | Output path |

@@ -1,0 +1,19 @@
+---
+title: "APIResponse"
+description: "Standard async response wrapper used across the SDK."
+---
+
+## Definition
+
+`APIResponse<T>` wraps the result of async SDK calls.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `success` | `boolean` | Whether the call succeeded |
+| `result` | `T \| null` | Success payload when `success === true` |
+| `error` | `{ code?: number; message?: string } \| null` | Error information when `success === false` |
+
+## Usage
+
+- Read `result` only when `success === true`
+- When `success === false`, `result` is `null` and `error` contains details

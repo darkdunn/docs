@@ -1,0 +1,19 @@
+---
+title: "getPageSize"
+description: "Get the pixel size of a specific page."
+---
+
+```ts
+static getPageSize(notePath: string, page: number): Promise<APIResponse<Size>>;
+```
+
+**Parameters**
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `notePath` | `string` | Note/document file path |
+| `page` | `number` | Page index (starts at 0) |
+
+**Returns**
+
+- [`APIResponse<Size>`](/api-reference/supernote-plugin/types/api-response): Page size |

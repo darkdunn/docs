@@ -1,0 +1,19 @@
+---
+title: "emrPoint2Android"
+description: "Convert an EMR coordinate point to a pixel point."
+---
+
+```ts
+static emrPoint2Android(point: Point, pageSize: { width: number; height: number }): Point;
+```
+
+**Parameters**
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `point` | [`Point`](/api-reference/supernote-plugin/types/point) | EMR coordinate point |
+| `pageSize` | [`Size`](/api-reference/supernote-plugin/types/size) | Page pixel size |
+
+**Returns**
+
+- [`Point`](/api-reference/supernote-plugin/types/point): Converted pixel point

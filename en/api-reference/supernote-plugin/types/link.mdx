@@ -1,0 +1,22 @@
+---
+title: "Link"
+description: "Detailed data for link elements."
+---
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `category` | `number` | Link category: `0` text link, `1` stroke link |
+| `X` | `number` | Top-left X (pixel) |
+| `Y` | `number` | Top-left Y (pixel) |
+| `width` | `number` | Width (pixel) |
+| `height` | `number` | Height (pixel) |
+| `page` | `number` | Page number |
+| `style` | `number` | Style: `0` solid underline, `1` solid border, `2` dashed border |
+| `linkType` | `number` | Type: `0` note page, `1` note file, `2` document, `3` image, `4` url, `5` other, `6` digest |
+| `destPath` | `string` | Target path (URL when `linkType === 4`) |
+| `destPage` | `number` | Target page (primarily for `linkType === 0`) |
+| `fontSize` | `number` | Font size (text link) |
+| `fullText` | `string` | Full text (text link) |
+| `showText` | `string` | Display text (text link) |
+| `italic` | `number` | Italic: `0` no, `1` yes (text link) |
+| `controlTrailNums` | `number[]` | Stroke indices (stroke link) |

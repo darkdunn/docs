@@ -1,0 +1,12 @@
+---
+title: "registerLangListener"
+description: "Register a language change listener."
+---
+
+```ts
+static registerLangListener(listener: { onLangChange(lang: string): void }): { remove(): void };
+```
+
+**Returns**
+
+- `{ remove(): void }`: Subscription object

@@ -1,0 +1,19 @@
+---
+title: "Stroke"
+description: "Pure stroke data (present when Element is stroke type)."
+---
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `penColor` | `number` | Pen color |
+| `penType` | `number` | Pen type |
+| `points` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Sample points (EMR coordinates) |
+| `pressures` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Pressure data (0–4096) |
+| `eraseLineTrailNums` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Erase line data |
+| `flagDraw` | [`ElementDataAccessor<boolean>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Write flag |
+| `markPenDirection` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Marker pen direction |
+| `recognPoints` | [`ElementDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Recognition points (pixel coordinates) for OCR libraries such as MyScript |
+
+<Note>
+`points/pressures/eraseLineTrailNums/flagDraw/markPenDirection/recognPoints` are [`ElementDataAccessor`](/api-reference/supernote-plugin/types/trail-data-accessor) objects, not full arrays. Use `size()/get()/getRange()` to fetch data progressively to avoid memory pressure on RN.
+</Note>

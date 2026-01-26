@@ -1,0 +1,44 @@
+---
+title: "Coordinate System"
+description: "EMR coordinate system and pixel coordinate system: differences and conversion."
+---
+
+Supernote devices use two coordinate systems:
+
+- **EMR coordinates**: defined by the digitizer hardware (Electro-Magnetic Resonance), describing the pen tip position with high precision
+- **Pixel coordinates**: used by screen rendering/UI
+
+## EMR Coordinates
+
+- Unit is hardware ticks, not pixels
+- Higher precision; multiple EMR units may map to the same pixel
+- Axis origin and direction may differ from screen coordinates
+- Best suited for handwriting data: stroke sample points, contours, angle points
+
+## Pixel Coordinates
+
+- Unit is pixels (px)
+- Typically top-left origin, `x` increases to the right, `y` increases downwards
+- Best suited for UI rendering and interaction
+
+## Why Two Systems
+
+- Digitizer captures high-precision handwriting data (EMR)
+- Screen rendering uses pixels for visuals and interaction
+- Conversions are needed to bridge handwriting and UI
+
+## Conversions in the SDK
+
+Use [`PointUtils`](/api-reference/supernote-plugin/utils/point-utils/index) for conversions:
+
+```ts wrap
+import { PluginFileAPI, PointUtils } from 'rtn-supernote-plugin-core';
+
+export async function pixelToEmr(notePath: string, page: number, pixelPoint: { x: number; y: number }) {
+  const res = await PluginFileAPI.getPageSize(notePath, page);
+  if (!res?.success || !res.result) {
+    throw new Error('Failed to get page size');
+  }
+  return PointUtils.androidPoint2Emr(pixelPoint, res.result);
+}
+```

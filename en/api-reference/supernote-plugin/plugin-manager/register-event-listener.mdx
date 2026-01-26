@@ -1,0 +1,12 @@
+---
+title: "registerEventListener"
+description: "Register a general event listener for plugin events."
+---
+
+```ts
+static registerEventListener(listener: { onEvent(e: object): void }): { remove(): void };
+```
+
+**Returns**
+
+- `{ remove(): void }`: Subscription object

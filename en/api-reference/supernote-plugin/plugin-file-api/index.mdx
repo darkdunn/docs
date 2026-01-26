@@ -1,0 +1,49 @@
+---
+title: "PluginFileAPI"
+sidebarTitle: "Overview"
+description: "Directory of file-related APIs."
+---
+
+<Note>
+These APIs operate directly on files.
+</Note>
+
+## Import
+
+```ts wrap
+import { PluginFileAPI } from "rtn-supernote-plugin-core";
+```
+
+## Return Convention
+
+Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response). Read `result` only when `success === true`.
+
+## Methods
+
+- [getElements](/api-reference/supernote-plugin/plugin-file-api/get-page-trails)
+- [replaceElements](/api-reference/supernote-plugin/plugin-file-api/replace-trails)
+- [insertElements](/api-reference/supernote-plugin/plugin-file-api/insert-trails)
+- [modifyElements](/api-reference/supernote-plugin/plugin-file-api/modify-trails)
+- [getTitles](/api-reference/supernote-plugin/plugin-file-api/get-titles)
+- [getKeyWords](/api-reference/supernote-plugin/plugin-file-api/get-key-words)
+- [insertKeyWord](/api-reference/supernote-plugin/plugin-file-api/insert-key-word)
+- [deleteKeyWord](/api-reference/supernote-plugin/plugin-file-api/delete-key-word)
+- [getNoteTotalPageNum](/api-reference/supernote-plugin/plugin-file-api/get-note-total-page-num)
+- [getPageSize](/api-reference/supernote-plugin/plugin-file-api/get-page-size)
+- [generateNotePng](/api-reference/supernote-plugin/plugin-file-api/generate-note-png)
+- [searchFiveStars](/api-reference/supernote-plugin/plugin-file-api/search-five-stars)
+- [createNote](/api-reference/supernote-plugin/plugin-file-api/create-note)
+- [removeNotePage](/api-reference/supernote-plugin/plugin-file-api/remove-note-page)
+- [insertNotePage](/api-reference/supernote-plugin/plugin-file-api/insert-note-page)
+- [clearLayerElements](/api-reference/supernote-plugin/plugin-file-api/clear-page-layer-data)
+- [getLayers](/api-reference/supernote-plugin/plugin-file-api/get-layers)
+- [modifyLayers](/api-reference/supernote-plugin/plugin-file-api/modify-layers)
+- [insertLayer](/api-reference/supernote-plugin/plugin-file-api/insert-layer)
+- [deleteLayers](/api-reference/supernote-plugin/plugin-file-api/delete-layers)
+- [sortLayers](/api-reference/supernote-plugin/plugin-file-api/sort-layers)
+- [getMarkPages](/api-reference/supernote-plugin/plugin-file-api/get-mark-pages)
+- [generateMarkThumbnails](/api-reference/supernote-plugin/plugin-file-api/generate-mark-thumbnails)
+- [clearMarkElements](/api-reference/supernote-plugin/plugin-file-api/clear-mark-trails)
+- [getNotePageTemplate](/api-reference/supernote-plugin/plugin-file-api/get-note-page-template)
+- [generateNoteTemplatePng](/api-reference/supernote-plugin/plugin-file-api/generate-note-template-png)
+- [getNoteType](/api-reference/supernote-plugin/plugin-file-api/get-note-type)
