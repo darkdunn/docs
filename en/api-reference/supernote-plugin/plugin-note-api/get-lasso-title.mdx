@@ -1,8 +1,36 @@
----
+﻿---
 title: "getLassoTitle"
-description: "Get the title for the current lasso selection."
+description: "Get lasso titledata."
 ---
 
+<Note>
+You must create a lasso selection before calling this API; otherwise the call fails.
+
+Recommended to call this API from the plugin UI entered via a lasso toolbar button.
+</Note>
+
 ```ts
-static getLassoTitle(): Promise<APIResponse<Title>>;
+static getLassoTitle(): Promise<APIResponse<Title[]>>;
+```
+
+**Returns**
+
+- [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response):
+`result` is [`Title`](/api-reference/supernote-plugin/types/title)objectarray.
+
+## Example
+
+```ts wrap
+import { PluginNoteAPI } from 'sn-plugin-lib';
+
+/**
+ * Get currentlassotitledata example.
+ */
+export async function exampleGetLassoTitle() {
+ const res = await PluginNoteAPI.getLassoTitle();
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'getLassoTitle call failed');
+ }
+ return res.result;
+}
 ```

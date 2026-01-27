@@ -1,14 +1,22 @@
----
+﻿---
 title: "PluginDocAPI"
 sidebarTitle: "Overview"
-description: "Document-specific APIs."
+description: "DOCrelatedAPIindex."
 ---
+
+<Note>
+APIs in this section can only be called in DOC; NOTE cannot call these APIs.
+</Note>
 
 ## Import
 
-```ts wrap
-import { PluginDocAPI } from "rtn-supernote-plugin-core";
+```ts
+import { PluginDocAPI } from 'sn-plugin-lib';
 ```
+
+## Return Convention
+
+Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response).Read `result` only when `success === true`.
 
 ## Methods
 

@@ -1,8 +1,43 @@
----
+﻿---
 title: "insertNotePage"
-description: "Insert a new page into a note."
+description: "to NOTEfileInsert newpage."
 ---
 
-```ts
-static insertNotePage(params: { notePath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
+```ts wrap
+static insertNotePage(params: { NOTEPath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `params.NOTEPath` | `string` | NOTEfilepath |
+| `params.page` | `number` | page number(starting from 0) |
+| `params.template` | `string` | templatesource:<br/>- systemtemplate:via [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-NOTE-system-templates) Get ,passits intemplatename([Template](/api-reference/supernote-plugin/types/template) `name`)thenCreate ；<br/>- customtemplate:passcustomtemplate imagepath,based onimagefileCreate NOTE. |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesInsert pagesuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Insert new page example.
+ */
+export async function exampleInsertNotePage() {
+ const res = await PluginFileAPI.insertNotePage({
+ NOTEPath: '/storage/emulated/0/Note/demo.NOTE',
+ page: 2,
+ template: 'style_blank',
+ });
+
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'insertNotePage call failed');
+ }
+ return res.result;
+}
 ```

@@ -1,8 +1,49 @@
----
+﻿---
 title: "generateMarkThumbnails"
-description: "Generate thumbnails for marked pages."
+description: "Generate DOC mark pagethumbnail."
 ---
 
-```ts
-static generateMarkThumbnails(notePath: string): Promise<APIResponse<string[]>>;
+```ts wrap
+static generateMarkThumbnails(
+ markPath: string,
+ page: number,
+ pngPath: string,
+ size: Size
+): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `markPath` | `string` | DOCfilepath |
+| `page` | `number` | page number(starting from 0) |
+| `pngPath` | `string` | PNG outputpath(must end with `.png` suffix) |
+| `size` | [`Size`](/api-reference/supernote-plugin/types/size) | Generate imagesize |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesGenerate thumbnailsuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Generate mark thumbnail example.
+ */
+export async function exampleGenerateMarkThumbnails() {
+ const markPath = '/storage/emulated/0/Note/demo.pdf';
+ const page = 1;
+ const pngPath = '/storage/emulated/0/Note/out/mark.png';
+ const size = { width: 512, height: 512 };
+
+ const res = await PluginFileAPI.generateMarkThumbnails(markPath, page, pngPath, size);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'generateMarkThumbnails call failed');
+ }
+ return res.result;
+}
 ```

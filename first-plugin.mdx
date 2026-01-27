@@ -12,7 +12,7 @@ title: '编写第一个 Supernote 插件'
 
 ## 插件项目创建
 
-插件项目本质上是一个 React Native 项目。建议使用社区 CLI 的 `npx` 方式创建工程（不需要全局安装 `react-native-cli`）。
+插件项目本质上是一个 React Native 项目。建议使用社区 CLI 的 `npx` 方式创建工程（通常不需要全局安装 `react-native-cli`）。
 
 如果你曾经全局安装过旧版 `react-native-cli`（或全局 `react-native`），建议先卸载，避免脚手架版本冲突：
 
@@ -98,24 +98,20 @@ plugin\
 |-- metro.config.js                    # Metro bundler configuration
 |-- package-lock.json                  # npm dependency lock file
 |-- *package.json                      # Project dependencies and scripts configuration
+|-- *buildPlugin.ps1                   # 插件打包脚本（Windows平台）
+|-- *buildPlugin.sh                    # 插件打包脚本（Linux/MacOS平台）
 \\-- tsconfig.json                     # TypeScript configuration file
 ```
 
 这是一个标准的 React Native 项目结构。上面带星号（*）的文件与目录是开发插件时最常用的部分：
 
-- **index.js**：插件程序入口。负责注册界面入口并完成插件初始化
-- **App.tsx**：插件界面入口（React 组件）
-- **package.json**：依赖与脚本配置（添加第三方库、运行构建脚本等）
-- **android**：Android 原生代码目录（需要原生能力或 C/C++ 扩展时使用）
+- `index.js`：插件入口（初始化与按钮注册）
+- `App.tsx`：插件界面入口（React 组件）
+- `package.json`：依赖与脚本配置
+- `android/`：Android 原生代码目录（需要原生能力时使用）
+- `buildPlugin.ps1` / `buildPlugin.sh`：插件打包脚本
 
-创建完插件项目后，需要安装 `rtn-supernote-plugin-core`（插件 SDK）：
-
-```bash wrap
-yarn add rtn-supernote-plugin-core
-```
-
-安装完成后，你就可以在代码中通过 `import ... from 'rtn-supernote-plugin-core'` 使用插件 SDK 提供的接口。
-建议使用 VS Code 等编辑器打开项目目录进行开发。
+模板已内置插件 SDK（npm 包：`sn-plugin-lib`）。后续在代码中通过 `import ... from 'sn-plugin-lib'` 使用接口。
 
 ## 插件初始化
 
@@ -128,14 +124,14 @@ yarn add rtn-supernote-plugin-core
 import { AppRegistry, Image } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
-import { PluginManager } from 'rtn-supernote-plugin-core';
+import { PluginManager } from 'sn-plugin-lib';
 
 AppRegistry.registerComponent(appName, () => App);
 
 PluginManager.init();
 ```
 
-上述代码先通过 `import { PluginManager } from 'rtn-supernote-plugin-core'` 引入 `PluginManager`，再在 `AppRegistry.registerComponent(...)` 之后调用 `PluginManager.init()` 完成初始化。
+上述代码先引入 `PluginManager`，再在 `AppRegistry.registerComponent(...)` 之后调用 `PluginManager.init()` 完成初始化。
 
 其余部分是 React Native 工程模板生成的：`AppRegistry.registerComponent(...)` 用于注册界面入口，对应组件为 `App.tsx`。
 
@@ -157,7 +153,7 @@ PluginManager.init();
 import { AppRegistry, Image } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
-import { PluginManager } from 'rtn-supernote-plugin-core';
+import { PluginManager } from 'sn-plugin-lib';
 
 AppRegistry.registerComponent(appName, () => App);
 
@@ -194,7 +190,7 @@ PluginManager.registerButton(1, ['NOTE', 'DOC'], {
 
 当 `showType=0` 时，不展示界面，但插件仍会收到按钮事件，你可以在后台执行业务逻辑。
 
-通过上面的方式注册按钮之后就会在笔记、文档的工具栏上显示一个插件按钮，如下图所示：
+打包安装后，NOTE/DOC 的工具栏会出现一个插件入口按钮，如下图所示：
 
 ![image](/images/devguide/devguide-8.png)
 
@@ -208,7 +204,7 @@ PluginManager.registerButton(1, ['NOTE', 'DOC'], {
 import { AppRegistry, Image } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
-import { PluginManager } from 'rtn-supernote-plugin-core';
+import { PluginManager } from 'sn-plugin-lib';
 
 AppRegistry.registerComponent(appName, () => App);
 
@@ -228,7 +224,7 @@ PluginManager.registerButton(2, ['NOTE', 'DOC'], {
   icon: Image.resolveAssetSource(
     require('./assets/icon/icon.png'),
   ).uri,
-  editDataTypes: [0, 1, 2, 3, 4],
+  editDataTypes: [0, 1, 2, 3, 4, 5],
   showType: 1,
 });
 ```
@@ -267,7 +263,7 @@ PluginManager.registerButton(2, ['NOTE', 'DOC'], {
 import { AppRegistry, Image } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
-import { PluginManager } from 'rtn-supernote-plugin-core';
+import { PluginManager } from 'sn-plugin-lib';
 
 AppRegistry.registerComponent(appName, () => App);
 
@@ -287,7 +283,7 @@ PluginManager.registerButton(2, ['NOTE', 'DOC'], {
   icon: Image.resolveAssetSource(
     require('./assets/icon/icon.png'),
   ).uri,
-  editDataTypes: [0, 1, 2, 3, 4],
+  editDataTypes: [0, 1, 2, 3, 4, 5],
   showType: 1,
 });
 
@@ -332,7 +328,9 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={isDarkMode ? '#000000' : '#ffffff'}
       />
-      <Text style={[styles.helloText, {color: isDarkMode ? '#ffffff' : '#000000'}]}>
+      <Text
+        style={[styles.helloText, {color: isDarkMode ? '#ffffff' : '#000000'}]}
+      >
         Hello World
       </Text>
     </View>

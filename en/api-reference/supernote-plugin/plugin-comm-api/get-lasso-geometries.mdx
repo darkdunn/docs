@@ -1,8 +1,34 @@
----
+﻿---
 title: "getLassoGeometries"
-description: "Get geometric shapes within the current lasso selection."
+description: "Get lassogeometrydatalist."
 ---
+
+<Note>
+You must create a lasso selection before calling this API; otherwise the call fails.
+</Note>
 
 ```ts
 static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
+```
+
+**Returns**
+
+- [`APIResponse<Geometry[]>`](/api-reference/supernote-plugin/types/api-response):
+`result` geometrytypeinformationSee [`Geometry`](/api-reference/supernote-plugin/types/geometry)
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Get lassogeometrylist example.
+ */
+export async function exampleGetLassoGeometries() {
+ const res = await PluginCommAPI.getLassoGeometries();
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'getLassoGeometries call failed');
+ }
+ return res.result;
+}
 ```

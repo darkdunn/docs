@@ -1,11 +1,27 @@
 ---
 title: "Geometry"
-description: "Geometric shapes data."
+description: "Geometry data."
 ---
+
+Constants (`type` values):
+
+| Constant | Value | Description |
+| --- | --- | ---|
+| `Geometry.TYPE_STRAIGHT_LINE` | `straightLine` | Straight line |
+| `Geometry.TYPE_CIRCLE` | `GEO_circle` | Circle |
+| `Geometry.TYPE_ELLIPSE` | `GEO_ellipse` | Ellipse |
+| `Geometry.TYPE_POLYGON` | `GEO_polygon` | Polygon |
+
+Fields:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `type` | `number` | Geometry type |
-| `points` | [`ElementDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Shape points (pixel coordinates unless otherwise specified) |
-| `strokeWidth` | `number` | Stroke width |
-| `color` | `number` | Color |
+| `penColor` | `number` | Pen color, e.g. `0xFE` (white), `0x9D` (dark gray), `0xC9` (light gray) |
+| `penType` | `number` | Pen type: `10` technical pen, `1` pressure pen, `11` marker pen |
+| `penWidth` | `number` | Pen width |
+| `type` | `string` | Geometry type. See the table above |
+| `points` | [`Point[]`](/api-reference/supernote-plugin/types/point) | Polygon points (pixel coordinates) |
+| `ellipseCenterPoint` | [`Point \| null`](/api-reference/supernote-plugin/types/point) | Ellipse center point (pixel coordinates) |
+| `ellipseMajorAxisRadius` | `number` | Ellipse major axis radius (pixels) |
+| `ellipseMinorAxisRadius` | `number` | Ellipse minor axis radius (pixels) |
+| `ellipseAngle` | `number` | Ellipse rotation angle (radians) |

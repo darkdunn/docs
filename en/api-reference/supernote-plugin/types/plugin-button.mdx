@@ -1,11 +1,37 @@
----
+﻿---
 title: "PluginButton"
-description: "Button definition used by PluginManager."
+description: "pluginbuttondatastructure."
 ---
+
+`PluginButton` describes a plugin button that can be registered to the toolbar, lasso toolbar, or text-selection toolbar.
+
+```ts
+type PluginButton = {
+ id: number;
+ name: string;
+ icon: string;
+ showType?: number;
+ editDataTypes?: number[];
+};
+```
+
+## Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` | Unique button ID |
-| `name` | `string` | Display name |
-| `icon` | `string` | Icon path |
-| `enabled` | `boolean` | Enabled state |
+| `id` | `number` | button ID(pluginsidecustom,must be unique) |
+| `name` | `string` | buttonname |
+| `icon` | `string` | Button icon path (absolute path or URI) |
+| `showType` | `number` | Show type: `0` do not show plugin UI, `1` show plugin UI (default `1`) |
+| `editDataTypes` | `number[]` | Lasso data type array (only required for lasso toolbar buttons). The button is shown only when the lasso selection matches this list |
+
+## editDataTypes value
+
+| Value | Meaning |
+| --- | --- |
+| `0` | handwritingstroke |
+| `1` | title |
+| `2` | image |
+| `3` | text |
+| `4` | link |
+| `5` | geometry |

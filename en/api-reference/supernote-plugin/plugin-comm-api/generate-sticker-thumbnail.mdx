@@ -1,8 +1,50 @@
 ---
 title: "generateStickerThumbnail"
-description: "Generate a thumbnail for a sticker."
+description: "Generate stickerthumbnail."
 ---
 
 ```ts
-static generateStickerThumbnail(path: string): Promise<APIResponse<string>>;
+static generateStickerThumbnail(
+ stickerPath: string,
+ thumbnailPath: string,
+ size: Size
+): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `stickerPath` | `string` | Sticker source file path |
+| `thumbnailPath` | `string` | Thumbnail output path (usually `.png`) |      
+| `size` | [`Size`](/api-reference/supernote-plugin/types/size) | thumbnailsize(keep the same aspect ratio as the original image),canvia [`getStickerSize`](/api-reference/supernote-plugin/plugin-comm-api/get-sticker-size)thisAPIGet sticker size|
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesGenerate thumbnailsuccess
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Generate stickerthumbnail example.
+ */
+export async function exampleGenerateStickerThumbnail() {
+ const stickerPath = '/storage/emulated/0/Note/stickers/demo.sticker';
+ const thumbnailPath = '/storage/emulated/0/Note/stickers/demo_thumb.png';
+ const sizeRes = await PluginCommAPI.getStickerSize(stickerPath);
+ if (!sizeRes.success || !sizeRes.result) {
+ throw new Error(sizeRes.error?.message ?? 'getStickerSize call failed');
+ }
+ const size = sizeRes.result;
+
+ const res = await PluginCommAPI.generateStickerThumbnail(stickerPath, thumbnailPath, size);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'generateStickerThumbnail call failed');
+ }
+ return res.result;
+}
 ```

@@ -1,8 +1,72 @@
 ---
 title: "insertText"
-description: "Insert a text box."
+description: "Insert text box."
 ---
 
+<Note>
+text boxonlyInsert to main layer,cannotInsert to otherlayer.This APIsupportNOTEinundo/redooperation
+</Note>
+
 ```ts
-static insertText(textBox: TextBox): Promise<APIResponse<boolean>>;
+static insertText(textBox: {
+ fontSize?: number;
+ fontPath?: string;
+ textContentFull: string;
+ textRect: Rect;
+ textAlign?: number;
+ textBold?: number;
+ textItalics?: number;
+ textFrameWidthType?: number;
+ textFrameStyle?: number;
+ textEditable?: number;
+}): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `textBox.textContentFull` | `string` | textcontent(required,non-empty) |
+| `textBox.textRect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
+| `textBox.fontSize` | `number` | font size(must be positive) |
+| `textBox.fontPath` | `string` | fontpath(optional) |
+| `textBox.textAlign` | `number` | alignment:0 left aligned,1 center,2 right aligned |
+| `textBox.textBold` | `number` | whetherbold:0 normal,1 bold |
+| `textBox.textItalics` | `number` | italic:0 normal,1 tilt |
+| `textBox.textFrameWidthType` | `number` | border widthtype:0 fixedwidth,1 auto width |
+| `textBox.textFrameStyle` | `number` | borderstyle:0 no border,3 stroke |
+| `textBox.textEditable` | `number` | editablestate:0 editable,1 non-editable |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result` is a boolean value, indicating whether insertion succeeds
+
+## Example
+
+```ts wrap
+import { PluginNoteAPI, type Rect } from 'sn-plugin-lib';
+
+/**
+ * Insert text box example.
+ */
+export async function exampleInsertText() {
+ const textRect: Rect = { left: 100, top: 100, right: 320, bottom: 180 };
+ const res = await PluginNoteAPI.insertText({
+ textContentFull: 'Hello from plugin',
+ textRect,
+ fontSize: 32,
+ textAlign: 0,
+ textBold: 0,
+ textItalics: 0,
+ textFrameWidthType: 0,
+ textFrameStyle: 0,
+ textEditable: 0,
+ });
+
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'insertText call failed');
+ }
+ return res.result;
+}
 ```

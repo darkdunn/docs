@@ -1,8 +1,42 @@
----
+﻿---
 title: "getTitles"
-description: "Get titles in a note page."
+description: "Get NOTEfile titledata."
 ---
 
-```ts
-static getTitles(notePath: string, page: number): Promise<APIResponse<Title[]>>;
+<Note>
+onlyNOTEfileonly whentitledata,DOCfilenonetitledata.
+</Note>
+
+```ts wrap
+static getTitles(NOTEPath: string, pageList: number[]): Promise<APIResponse<Title[]>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTEpath |
+| `pageList` | `number[]` | page numberlist(starting from 0) |
+
+**Returns**
+
+- [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response):
+`result` is titledataarray(type: see [Title](/api-reference/supernote-plugin/types/title))
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Get specifiedpagetitlelist example.
+ */
+export async function exampleGetTitles() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const res = await PluginFileAPI.getTitles(NOTEPath, [0, 1, 2]);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'getTitles call failed');
+ }
+ return res.result;
+}
 ```

@@ -1,12 +1,28 @@
----
+﻿---
 title: "init"
-description: "Initialize the plugin runtime."
+description: "initializepluginenvironment."
 ---
+
+<Note>
+This API must be called,otherwiseplugincannotrun.recommended topluginas early as possible at startupcallonce(multiple timescallwill be ignored).
+preferablyAppRegistry.registerComponentafterimmediatelycall
+</Note>
 
 ```ts
-static init(config?: object): Promise<void>;
+async init(): Promise<void>;
 ```
 
-**Returns**
 
-- `Promise<void>`: Resolves when initialization completes
+
+## Example
+
+```ts wrap
+import { PluginManager } from 'sn-plugin-lib';
+
+/**
+ * initializepluginenvironment example.
+ */
+export async function exampleInit() {
+ await PluginManager.init();
+}
+```

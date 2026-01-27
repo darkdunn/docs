@@ -1,8 +1,34 @@
----
+﻿---
 title: "deleteLassoElements"
-description: "Delete elements within the current lasso selection."
+description: "Delete lassoelementdata."
 ---
 
+<Note>
+You must create a lasso selection before calling this API; otherwise the call fails.
+</Note>
+
 ```ts
-static deleteLassoElements(): Promise<APIResponse<number>>;
+static deleteLassoElements(): Promise<APIResponse<boolean>>;
+```
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesDelete lassodatasuccess
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Delete currentlassoelementdata example.
+ */
+export async function exampleDeleteLassoElements() {
+ const res = await PluginCommAPI.deleteLassoElements();
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'deleteLassoElements call failed');
+ }
+ return res.result;
+}
 ```

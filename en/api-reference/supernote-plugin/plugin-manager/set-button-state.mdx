@@ -1,19 +1,33 @@
----
+﻿---
 title: "setButtonState"
-description: "Set the state (enabled/disabled) of a button."
+description: "Set buttonenable/disablestate."
 ---
 
 ```ts
-static setButtonState(id: number, enabled: boolean): Promise<boolean>;
+setButtonState(id: number, state: boolean): Promise<boolean>;
 ```
 
 **Parameters**
 
-| Param | Type | Description |
+| Parameter | Type | Description |
 | --- | --- | --- |
-| `id` | `number` | Button ID |
-| `enabled` | `boolean` | Enabled state |
+| `id` | `number` | buttonunique identifier(registerbuttonwhen Set id) |
+| `state` | `boolean` | buttonstate:`true` enable,`false` disable |
 
 **Returns**
 
-- `Promise<boolean>`: `true` if updated successfully
+- `Promise<boolean>`:Set result
+
+## Example
+
+```ts wrap
+import { PluginManager } from 'sn-plugin-lib';
+
+/**
+ * Set buttonstate example.
+ */
+export async function exampleSetButtonState() {
+ const ok = await PluginManager.setButtonState(1, false);
+ return ok;
+}
+```

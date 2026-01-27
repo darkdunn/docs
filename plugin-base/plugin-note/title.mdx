@@ -1,4 +1,4 @@
----
+﻿---
 title: "标题"
 description: "在 NOTE 应用中创建、读取与修改标题元素。"
 ---
@@ -12,7 +12,7 @@ description: "在 NOTE 应用中创建、读取与修改标题元素。"
 调用 [`PluginNoteAPI.setLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title) 可以把“套索选中的笔划或几何图形”设置为标题。
 示例代码如下：
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 PluginNoteAPI.setLassoTitle({ style: 1 })
   .then(data => {
@@ -35,7 +35,7 @@ PluginNoteAPI.setLassoTitle({ style: 1 })
 接口获取套索的标题数据，样例代码如下：
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 PluginNoteAPI.getLassoTitle()
   .then(data => {
@@ -79,7 +79,7 @@ class Title {
 当套索选中标题之后，可以通过 [`PluginNoteAPI.modifyLassoTitle`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title)
 修改套索的标题数据，样例代码如下：
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 PluginNoteAPI.modifyLassoTitle({ style: 2 })
   .then(data => {

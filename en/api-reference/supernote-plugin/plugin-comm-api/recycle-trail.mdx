@@ -1,8 +1,27 @@
----
+﻿---
 title: "recycleElement"
-description: "Recycle native-side caches for an element."
+description: "Recycle Element objectand release nativeAndroidcache on the native side."
 ---
 
 ```ts
-static recycleElement(element: Element): Promise<void>;
+static recycleElement(uuid: string): void;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `uuid` | `string` | Element unique identifier(See [`Element.uuid`](/api-reference/supernote-plugin/types/trail)) |
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Recycle Element example.
+ */
+export async function exampleRecycleElement(uuid: string) {
+ PluginCommAPI.recycleElement(uuid);
+}
 ```

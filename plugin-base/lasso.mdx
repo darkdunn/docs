@@ -1,4 +1,4 @@
----
+﻿---
 title: '套索（Lasso）'
 description: '介绍套索交互的工作流、数据模型与常用接口（获取/更新套索框与套索元素）。'
 ---
@@ -32,7 +32,7 @@ description: '介绍套索交互的工作流、数据模型与常用接口（获
 
 <Tip>
 套索框属于 UI 交互矩形，通常以“像素坐标系”表达；而元素点集（笔迹采样点）是 EMR 坐标系。
-需要做几何对齐时，先明确坐标系，再参考 [`坐标系`](/plugin-base/coordinate-system) 做换算。
+需要做坐标系对齐时，先明确坐标系，再参考 [`坐标系`](/plugin-base/coordinate-system) 做换算。
 </Tip>
 
 ## 示例
@@ -45,7 +45,7 @@ description: '介绍套索交互的工作流、数据模型与常用接口（获
 - 控制套索框显示/隐藏/移除
 
 ```ts wrap
-import { PluginCommAPI, PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginCommAPI, PluginNoteAPI } from 'sn-plugin-lib';
 
 type Rect = { left: number; top: number; right: number; bottom: number };
 

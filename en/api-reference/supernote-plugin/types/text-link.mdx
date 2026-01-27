@@ -1,20 +1,21 @@
----
+﻿---
 title: "TextLink"
-description: "Text link element data."
+description: "textlinkdatastructure(used for insertTextLink)."
 ---
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `X` | `number` | Top-left X (pixel) |
-| `Y` | `number` | Top-left Y (pixel) |
-| `width` | `number` | Width (pixel) |
-| `height` | `number` | Height (pixel) |
-| `page` | `number` | Page number |
-| `style` | `number` | Style: `0` solid underline, `1` solid border, `2` dashed border |
-| `linkType` | `number` | Type: `0` note page, `1` note file, `2` document, `3` image, `4` url, `5` other, `6` digest |
-| `destPath` | `string` | Target path (URL when `linkType === 4`) |
-| `destPage` | `number` | Target page (mainly used when `linkType === 0`) |
-| `fontSize` | `number` | Font size |
-| `fullText` | `string` | Full text |
-| `showText` | `string` | Display text |
-| `italic` | `number` | Italic: `0` no, `1` yes |
+| `destPath` | `string` | Destination path / URL: when `linkType === 4`, set this to the URL; otherwise set it to the destination file path |
+| `destPage` | `number` | Destination page (only valid when `linkType === 0` or `linkType === 2`) |
+| `style` | `number` | Link style:`0` solid underline,`1` solid border,`2` dashed border |
+| `linkType` | `number` | Link type: `0` note page, `1` note file, `2` document, `3` image, `4` URL |
+| `rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | textregionrectangle(pixelcoordinate,must be non-zero area) |
+| `fontSize` | `number` | font size(positive number) |
+| `showText` | `string` | Display text (usually a simplified version of `fullText`) |
+| `fullText` | `string` | fulltext |
+| `isItalic` | `number` | Italic: `0` no, `1` yes |
+
+<Note>
+`TextLink` is used to create text links (for `insertTextLink`). If you are reading link data from a lasso selection, see [`Link`](/api-reference/supernote-plugin/types/link) and [`LassoLink`](/api-reference/supernote-plugin/types/lasso-link).
+</Note>
+

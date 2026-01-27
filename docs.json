@@ -19,11 +19,12 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["index", "principle", "environment"]
+                "pages": ["index", "principle"]
               },
               {
                 "group": "开发指南",
                 "pages": [
+                  "environment",
                   "first-plugin",
                   {
                     "group": "学习基础知识",
@@ -62,11 +63,12 @@
             "groups": [
               {
                 "group": "Getting started",
-                "pages": ["en/index", "en/principle", "en/environment"]
+                "pages": ["en/index", "en/principle"]
               },
               {
                 "group": "Developer Guide",
                 "pages": [
+                  "en/environment",
                   "en/first-plugin",
                   {
                     "group": "Basics",

@@ -1,8 +1,42 @@
----
+﻿---
 title: "clearMarkElements"
-description: "Clear marked elements."
+description: "Clear DOCfileinhandwritingelementdata."
 ---
 
-```ts
-static clearMarkElements(notePath: string): Promise<APIResponse<boolean>>;
+DOC inhandwritingelementis not written directly inDOCfilein,but written inDOCfilecorresponding markfileon.
+
+```ts wrap
+static clearMarkElements(filePath: string, page: number): Promise<APIResponse<boolean>>;
 ```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `filePath` | `string` | DOCfilepath |
+| `page` | `number` | DOCfile page number(starting from 0) |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):`result === true` indicatesClear elementdatasuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Clear a page mark element example.
+ */
+export async function exampleClearMarkElements() {
+ const filePath = '/storage/emulated/0/Note/demo.pdf';
+ const page = 1;
+
+ const res = await PluginFileAPI.clearMarkElements(filePath, page);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'clearMarkElements call failed');
+ }
+ return res.result;
+}
+```
+

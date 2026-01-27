@@ -1,10 +1,100 @@
 ---
-title: "Text Boxes"
-description: "Create and modify text boxes in notes."
+title: "Text Box"
+description: "Text box usage in NOTE."
 ---
 
-## APIs
+This page explains how to insert, read, and modify text box data in NOTE, covering three APIs:
 
-- Insert text: [`insertText`](/api-reference/supernote-plugin/plugin-note-api/insert-text)
-- Modify text: [`modifyLassoText`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text)
-- Save note: [`saveCurrentNote`](/api-reference/supernote-plugin/plugin-note-api/save-current-note)
+- Insert a text box: `PluginNoteAPI.insertText`
+- Get lasso text boxes: `PluginNoteAPI.getLassoText`
+- Modify a lasso text box: `PluginNoteAPI.modifyLassoText`
+
+## Insert a Text Box
+
+Call [`insertText`](/api-reference/supernote-plugin/plugin-note-api/insert-text) to insert a text box into the current page and current layer of the currently opened note.
+Make sure the note is opened and the current page is loaded; otherwise it returns an error.
+
+```ts wrap
+import { PluginNoteAPI } from 'sn-plugin-lib';
+
+/**
+ * Insert a text box into the current page and current layer of the currently opened note.
+ */
+async function insertTextBox() {
+  const textBox = {
+    textContentFull: 'Hello Supernote',// Text box content
+    textRect: { left: 100, top: 120, right: 480, bottom: 220 },
+    fontSize: 36,      // Font size
+    textAlign: 0,      // 0: left, 1: center, 2: right
+    textBold: 0,       // 0: normal, 1: bold
+    textItalics: 0,    // 0: normal, 1: italic
+    textFrameWidthType: 0, // Border width type: 0 fixed width, 1 auto width
+    textFrameStyle: 0,     // Border style: 0 none, 3 stroke
+    textEditable: 0,       // Editable state: 0 editable, 1 non-editable
+  };
+
+  const res = await PluginNoteAPI.insertText(textBox);
+  console.log('insertText:', res);
+}
+```
+
+
+<Note>
+`textRect` must be a non-zero-area rectangle (`right > left` and `bottom > top`), otherwise it throws a parameter error.
+</Note>
+
+## Get Lasso Text Boxes
+
+Call [`getLassoText`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-text) to get text box data in the current lasso selection.
+
+```ts wrap
+import { PluginNoteAPI } from 'sn-plugin-lib';
+
+/**
+ * Get the list of text boxes in the current lasso selection.
+ */
+async function readLassoText() {
+  const res = await PluginNoteAPI.getLassoText();
+  if (!res.success) {
+    console.error('getLassoText error:', res.error);
+    return;
+  }
+  const list = res.result ?? [];
+  console.log('lasso text list:', list);
+}
+```
+
+<Warning>
+You must create a lasso selection before calling this API; otherwise it returns an error. If there are no text boxes in the lasso selection, the returned array is empty.
+</Warning>
+
+## Modify a Lasso Text Box
+
+Call [`modifyLassoText`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text) to modify the text box selected by the current lasso selection.
+
+```ts wrap
+import { PluginNoteAPI } from 'sn-plugin-lib';
+
+/**
+ * Modify a single text box selected by lasso.
+ */
+async function updateLassoText() {
+  // First get the lasso-selected text box
+  const res = await PluginNoteAPI.getLassoText();
+  if (!res.success || !res.result || res.result.length !== 1) {
+    console.error('You must lasso-select exactly one text box to modify it');
+    return;
+  }
+
+  const tb = res.result[0];
+  tb.textContentFull = 'Updated content';
+  tb.textRect = { left: 100, top: 120, right: 520, bottom: 240 };
+
+  const mod = await PluginNoteAPI.modifyLassoText(tb);
+  console.log('modifyLassoText:', mod);
+}
+```
+
+<Warning>
+You must ensure the lasso selection contains exactly one text box; otherwise the modification will fail. Calling it with no lasso selection or multiple text boxes returns an error.
+</Warning>

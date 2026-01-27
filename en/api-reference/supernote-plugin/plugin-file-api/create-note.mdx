@@ -1,8 +1,62 @@
----
+﻿---
 title: "createNote"
-description: "Create a new note file."
+description: "Create NOTEfile."
 ---
 
 ```ts
-static createNote(path: string, template: string): Promise<APIResponse<boolean>>;
+static createNote(params: {
+ NOTEPath: string;
+ template: string;
+ mode: number;
+ isPortrait: boolean;
+}): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `params.NOTEPath` | `string` | NOTEpath |
+| `params.template` | `string` | templatesource:<br/>- systemtemplate:via [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-NOTE-system-templates) Get ,passits intemplatename([Template](/api-reference/supernote-plugin/types/template) `name`)thenCreate ；<br/>- customtemplate:passcustomtemplate imagepath,based onimagefileCreate NOTE.|
+| `params.mode` | `number` | Create mode:`0` normalNOTEfile,`1` recognitionNOTEfile |
+| `params.isPortrait` | `boolean` | whetheris portraitNOTE |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesCreate NOTEfilesuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI, PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Create NOTE example(usesystemtemplate).
+ */
+export async function exampleCreateNote() {
+ const NOTEPath = '/storage/emulated/0/Note/new.NOTE';
+
+ // Get systemtemplatelistandselectonetemplatename(Template.name)
+ const tplRes = await PluginCommAPI.getNoteSystemTemplates();
+ if (!tplRes.success) {
+ throw new Error(tplRes.error?.message ?? 'getNoteSystemTemplates call failed');
+ }
+ const templates = (tplRes.result ?? []) as any[];
+ const templateName = templates[0]?.name;
+ if (!templateName) {
+ throw new Error('not Get to systemtemplatename');
+ }
+
+ const res = await PluginFileAPI.createNote({
+ NOTEPath,
+ template: templateName,
+ mode: 0,
+ isPortrait: true,
+ });
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'createNote call failed');
+ }
+ return res.result;
+}
 ```

@@ -1,8 +1,82 @@
 ---
 title: "modifyLassoText"
-description: "Modify text of the current lasso selection."
+description: "Modify lassotext box."
 ---
+<Note>
+This API supports undo/redo in NOTEs.
+
+This APIModify islasso text boxdata,thereforeMust in lassotext boxaftercall,
+and islassosingletext box.iflassois nottext box,orlassomultipletext box,call will failure.
+thereforeRecommended to call this API from the plugin UI entered via a lasso toolbar button.
+</Note>
 
 ```ts
-static modifyLassoText(textBox: TextBox): Promise<APIResponse<number>>;
+static modifyLassoText(textBox: {
+ fontSize?: number;
+ fontPath?: string;
+ textContentFull: string;
+ textRect: Rect;
+ textDigestData?: string;
+ textAlign?: number;
+ textBold?: number;
+ textItalics?: number;
+ textFrameWidthType?: number;
+ textFrameWidth?: number;
+ textFrameStyle?: number;
+ textEditable?: number;
+}): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `textBox.textContentFull` | `string` | textcontent(required,non-empty) |
+| `textBox.textRect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
+| `textBox.fontSize` | `number` | font size(optional；must be positive) |
+| `textBox.fontPath` | `string` | fontpath(optional) |
+| `textBox.textDigestData` | `string` | summarydata(optional) |
+| `textBox.textAlign` | `number` | alignment(optional) |
+| `textBox.textBold` | `number` | bold(optional) |
+| `textBox.textItalics` | `number` | italic(optional) |
+| `textBox.textFrameWidthType` | `number` | border widthtype(optional) |
+| `textBox.textFrameWidth` | `number` | border width(optional) |
+| `textBox.textFrameStyle` | `number` | borderstyle(optional) |
+| `textBox.textEditable` | `number` | whethereditable(optional) |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesModify success
+
+## Example
+
+```ts wrap
+import { PluginNoteAPI, type TextBox } from 'sn-plugin-lib';
+
+/**
+* Example: modify a lasso-selected text box (read first, then update content).
+ */
+export async function exampleModifyLassoText() {
+ const listRes = await PluginNoteAPI.getLassoText();
+ if (!listRes.success) {
+ throw new Error(listRes.error?.message ?? 'getLassoText call failed');
+ }
+
+ const textBoxes = (listRes.result ?? []) as TextBox[];
+ const first = textBoxes[0];
+ if (!first) {
+ return false;
+ }
+
+ const res = await PluginNoteAPI.modifyLassoText({
+ ...first,
+ textContentFull: 'Updated by plugin',
+ });
+
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'modifyLassoText call failed');
+ }
+ return res.result;
+}
 ```

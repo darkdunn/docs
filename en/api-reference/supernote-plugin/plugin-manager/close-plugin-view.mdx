@@ -1,12 +1,28 @@
----
+﻿---
 title: "closePluginView"
-description: "Close the plugin UI."
+description: "closepluginUI."
 ---
 
+callThis APIwill directlyclosecurrentplugin UIshow.
+
 ```ts
-static closePluginView(): Promise<void>;
+closePluginView(): Promise<boolean>;
 ```
 
 **Returns**
 
-- `Promise<void>`: Resolves when the view is closed
+- `Promise<boolean>`:whethersuccessclose
+
+## Example
+
+```ts wrap
+import { PluginManager } from 'sn-plugin-lib';
+
+/**
+ * closepluginUI example.
+ */
+export async function exampleClosePluginView() {
+ const ok = await PluginManager.closePluginView();
+ return ok;
+}
+```

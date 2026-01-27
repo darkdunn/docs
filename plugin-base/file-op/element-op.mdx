@@ -1,4 +1,4 @@
----
+﻿---
 title: '元素操作'
 description: '在笔记/文档文件中获取、创建、插入、修改与替换 Element。'
 ---
@@ -42,7 +42,7 @@ description: '在笔记/文档文件中获取、创建、插入、修改与替�
 当你需要读取某一页的全部元素（用于展示、筛选、二次编辑、复制等），使用 `getElements`：
 
 ```ts wrap
-import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
  * 获取指定文件指定页的所有元素。
@@ -65,7 +65,7 @@ export async function loadPageElements(notePath: string, page: number) {
 创建“将要插入到页面”的新元素，推荐使用 `createElement(type)`：
 
 ```ts wrap
-import { PluginCommAPI, ElementType } from 'rtn-supernote-plugin-core';
+import { PluginCommAPI, ElementType } from 'sn-plugin-lib';
 
 /**
  * 创建一个新的笔画元素对象（Element）。
@@ -88,7 +88,7 @@ export async function createStrokeElement() {
 当你已经准备好了要插入的元素数组（通常来自 `createElement` 或复制自已有元素），使用 `insertElements` 插入到指定文件页：
 
 ```ts wrap
-import { PluginFileAPI, PluginCommAPI, ElementType } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI, PluginCommAPI, ElementType } from 'sn-plugin-lib';
 
 /**
  * 向指定页插入一个“新建的笔画元素”。
@@ -126,7 +126,7 @@ export async function insertOneStroke(notePath: string, page: number) {
 3. 修改字段后把该元素（或一组元素）传给 `modifyElements`
 
 ```ts wrap
-import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
  * 修改指定页内某个元素（示例：仅演示流程，具体修改字段按元素类型决定）。
@@ -163,7 +163,7 @@ export async function modifyOneElement(notePath: string, page: number, numInPage
 这通常用于整页重排、批量导入、或把编辑结果一次性落盘的场景。
 
 ```ts wrap
-import { PluginFileAPI } from 'rtn-supernote-plugin-core';
+import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
  * 用一组元素完全替换指定页的所有元素（会清空原有元素）。

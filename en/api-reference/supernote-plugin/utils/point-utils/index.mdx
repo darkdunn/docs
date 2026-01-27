@@ -1,31 +1,37 @@
 ---
 title: "PointUtils"
-description: "Convert between EMR (digitizer) and pixel coordinate systems."
+description: "Conversion utilities between the EMR coordinate system and screen pixel coordinates."
 ---
 
-`PointUtils` helps convert coordinates between:
+`PointUtils` converts between two coordinate systems:
 
-- Pixel coordinates: used by screen rendering/layout (px)
-- EMR coordinates: used by the digitizer hardware (hardware ticks)
+- **Pixel coordinate system**: screen rendering/layout coordinates (unit: px)
+- **EMR coordinate system**: digitizer/handwriting hardware coordinates (unit: hardware units)
+
+For background and differences between the two coordinate systems, see: [Coordinate System](/plugin-base/coordinate-system).
+
+```ts
+import { PointUtils } from 'sn-plugin-lib';
+```
 
 ## Constants
 
-### Orientation
+### Page Orientation (`orientation`)
 
-| Const | Value | Description |
+| Constant | Value | Description |
 | --- | ---:| --- |
 | `PointUtils.ROTATION_0` | `1000` | 0° portrait |
-| `PointUtils.ROTATION_0_LR` | `2000` | 0° portrait, left-right pagination |
+| `PointUtils.ROTATION_0_LR` | `2000` | 0° portrait, left/right split page |
 | `PointUtils.ROTATION_90` | `1090` | 90° landscape |
-| `PointUtils.ROTATION_90_UD` | `2090` | 90° landscape, up-down pagination |
+| `PointUtils.ROTATION_90_UD` | `2090` | 90° landscape, top/bottom split page |
 | `PointUtils.ROTATION_180` | `1180` | 180° portrait |
-| `PointUtils.ROTATION_180_LR` | `2180` | 180° portrait, left-right pagination |
+| `PointUtils.ROTATION_180_LR` | `2180` | 180° portrait, left/right split page |
 | `PointUtils.ROTATION_270` | `1270` | 270° landscape |
-| `PointUtils.ROTATION_270_UD` | `2270` | 270° landscape, up-down pagination |
+| `PointUtils.ROTATION_270_UD` | `2270` | 270° landscape, top/bottom split page |
 
-### Machine Type
+### Device Model (`machineType`)
 
-| Const | Value | Description |
+| Constant | Value | Description |
 | --- | ---:| --- |
 | `PointUtils.MACHINE_TYPE_A5` | `0` | A5 |
 | `PointUtils.MACHINE_TYPE_A6` | `1` | A6 |
@@ -34,9 +40,9 @@ description: "Convert between EMR (digitizer) and pixel coordinate systems."
 | `PointUtils.MACHINE_TYPE_NOMAD` | `4` | Nomad |
 | `PointUtils.MACHINE_TYPE_MANTA` | `5` | Manta |
 
-### Common Page Sizes
+### Common Page Pixel Sizes
 
-| Const | Value |
+| Constant | Value |
 | --- | --- |
 | `PointUtils.NORMAL_PAGE_SIZE` | `{ width: 1404, height: 1872 }` |
 | `PointUtils.A5X2_PAGE_SIZE` | `{ width: 1920, height: 2560 }` |

@@ -1,18 +1,21 @@
----
+﻿---
 title: "PluginCommAPI"
 sidebarTitle: "Overview"
-description: "Common APIs usable in both note and document contexts."
+description: "Common APIs that can be called in both NOTE and DOC."
 ---
 
 ## Import
 
-```ts wrap
-import { PluginCommAPI } from "rtn-supernote-plugin-core";
+```ts
+import { PluginCommAPI } from 'sn-plugin-lib';
 ```
 
 ## Return Convention
 
-Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response). Read `result` when `success === true`. If `success === false`, `result` is empty and `error` contains details.
+**Returns**
+
+Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response).Read `result` only when `success === true`.
+When `success === false`, `result` is empty and `error` describes the failure.
 
 ## Methods
 
@@ -36,4 +39,4 @@ Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/
 - [getLassoGeometries](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries)
 - [insertGeometry](/api-reference/supernote-plugin/plugin-comm-api/insert-geometry)
 - [modifyLassoGeometry](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry)
-- [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-note-system-templates)
+- [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-NOTE-system-templates)

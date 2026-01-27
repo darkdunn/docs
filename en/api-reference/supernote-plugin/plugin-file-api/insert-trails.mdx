@@ -1,8 +1,65 @@
----
+﻿---
 title: "insertElements"
-description: "Insert elements into a page."
+description: "Insert elementdata to NOTE/DOCfilepage in ."
 ---
 
-```ts
-static insertElements(notePath: string, page: number, elements: Element[]): Promise<APIResponse<boolean>>;
+```ts wrap
+static insertElements(NOTEPath: string, page: number, elements: Element[]): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTEfilepath |
+| `page` | `number` | pageindex(starting from 0) |
+| `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | elementdataarray |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):`result === true` indicatesInsert success
+
+## Example
+
+```ts wrap
+import { PluginFileAPI, PluginCommAPI, PointUtils, type Element } from 'sn-plugin-lib';
+
+/**
+ * Create one Element andInsert to specifiedpage example.
+ */
+export async function exampleInsertElements() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 0;
+
+ const createRes = await PluginCommAPI.createElement(0);
+ if (!createRes.success) {
+ throw new Error(createRes.error?.message ?? 'createElement call failed');
+ }
+
+ const element = createRes.result as Element;
+ const pixelPoints = [
+ { x: 100, y: 100 },
+ { x: 200, y: 220 },
+ { x: 300, y: 260 },
+ ];
+ const pressures = [800, 900, 1000];
+ const pageSizeRes = await PluginFileAPI.getPageSize(NOTEPath, page);
+ if (!pageSizeRes.success) {
+ throw new Error(pageSizeRes.error?.message ?? 'getPageSize call failed');
+ }
+ const pageSize = pageSizeRes.result;
+ const points = pixelPoints.map((p) => PointUtils.androidPoint2Emr(p, pageSize));
+ element.thickness = 2;
+ if (element.stroke) {
+ element.stroke.penColor = 0;
+ element.stroke.penType = 1;
+ await element.stroke.points.setRange(0, points.length - 1, points);
+ await element.stroke.pressures.setRange(0, pressures.length - 1, pressures);
+ }
+ const res = await PluginFileAPI.insertElements(NOTEPath, page, [element]);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'insertElements call failed');
+ }
+ return res.result;
+}
 ```

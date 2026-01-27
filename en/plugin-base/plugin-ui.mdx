@@ -1,32 +1,49 @@
----
+﻿---
 title: "Plugin UI"
-description: "How plugin UIs are displayed via React Native and button events."
 ---
 
-## Rendering
+This chapter explains where the plugin UI is displayed, how it is rendered, and how to listen for button press events.
 
-PluginHost declares a `ReactRootView` to render plugin UIs. Based on the clicked button event containing `PluginID`, PluginHost loads and renders the corresponding plugin UI in the root view.
+## Where the Plugin UI Renders
+
+In [Plugin Principles](/principle), we described the plugin event chain. After a button is tapped, the event is sent to PluginHost:
+
+![Plugin event handling flow](/images/plugin-principle/principle-03.png)
+
+After receiving the press event, PluginHost selects the target plugin UI by plugin identifier and renders it into its own container view.
+
+React Native UIs are described in JS/TS, but they must be rendered by a native container view on Android. A typical approach is to use `ReactRootView` as the root container, which loads JS/TS and renders to the screen.
+
+PluginHost also maintains a `ReactRootView` (or an equivalent container). All plugin UIs are mounted into this container; PluginHost uses the plugin identifier in the event to decide which plugin `App` entry to render.
 
 ## Button Event Listener
 
-Register a button listener to handle clicks:
+Plugins can register multiple buttons. To distinguish "which button was pressed", listen for button events and read `id` from the event.
 
 ```ts wrap
-import { PluginManager } from 'rtn-supernote-plugin-core';
+import { PluginManager } from 'sn-plugin-lib';
 
-const buttonClickListener = PluginManager.registerButtonListener({
+/**
+ * Listen for native button press events.
+ */
+const subscription = PluginManager.registerButtonListener({
   onButtonPress: event => {
-    console.log('Button clicked, ID:', event.id);
+    console.log('button press:', event);
+    console.log('button id:', event.id);
   },
-} as any);
+});
 ```
-
-Event structure:
+`registerButtonListener` provides an `event` when the button is pressed. Common fields:
 
 ```ts wrap
-class ButtonEvent {
-  id: number;
-  name: string;
-  icon: string;
-}
+type ButtonEvent = {
+  id: number;    // id passed during button registration
+  name: string;  // button name
+  icon: string;  // icon path passed during registration
+};
+
 ```
+Assign a unique `id` to each button, and dispatch by `id` in the callback (e.g., `switch (event.id)`).
+
+
+

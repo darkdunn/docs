@@ -1,4 +1,4 @@
----
+﻿---
 title: '文本框'
 description: "笔记应用中的文本框使用。"
 ---
@@ -15,7 +15,7 @@ description: "笔记应用中的文本框使用。"
 需要保证笔记已打开且当前页已加载，否则会返回错误。
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 /**
  * 向当前打开笔记的当前页当前图层插入文本框。
@@ -48,7 +48,7 @@ textRect 必须是非零面积矩形（right > left 且 bottom > top），否则
 调用 [`getLassoText`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-text) 接口可以获取当前套索区域中的文本框数据。
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 /**
  * 获取当前套索区域内的文本框列表。
@@ -73,7 +73,7 @@ async function readLassoText() {
 调用 [`modifyLassoText`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text) 接口可以修改“当前套索选中的文本框”。
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 /**
  * 修改当前套索选中的单个文本框。

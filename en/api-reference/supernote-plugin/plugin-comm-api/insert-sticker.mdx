@@ -1,8 +1,42 @@
----
+﻿---
 title: "insertSticker"
-description: "Insert a sticker."
+description: "Insert sticker."
 ---
 
+<Note>
+callThis APIwillstickerInsert to currentopenedfilecurrentpagecurrentlayer.
+</Note>
+
 ```ts
-static insertSticker(path: string, x: number, y: number): Promise<APIResponse<boolean>>;
+static insertSticker(path: string): Promise<APIResponse<boolean>>;
 ```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | `string` | stickerfile(.sticker)path |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesInsert stickersuccess
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Insert sticker example.
+ */
+export async function exampleInsertSticker() {
+ const stickerPath = '/storage/emulated/0/Note/stickers/demo.sticker';
+ const res = await PluginCommAPI.insertSticker(stickerPath);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'insertSticker call failed');
+ }
+ return res.result;
+}
+```
+

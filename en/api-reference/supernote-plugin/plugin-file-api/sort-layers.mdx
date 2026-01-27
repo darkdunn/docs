@@ -1,8 +1,43 @@
----
+﻿---
 title: "sortLayers"
-description: "Sort layers (front-most appears on top)."
+description: "to layerinformationsort(the firstlayerat the top)."
 ---
+<Note>
+onlyNOTEfileonly whenlayerdata,otherfilenonelayerdata.
+</Note>
 
-```ts
-static sortLayers(notePath: string, page: number, layerIds: number[]): Promise<APIResponse<boolean>>;
+```ts wrap
+static sortLayers(NOTEPath: string, page: number, layerIds: number[]): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTEfilepath |
+| `page` | `number` | pageindex(starting from 0) |
+| `layerIds` | `number[]` | requiredsort layer ID (0-3)list(orderas the layer orderorder) |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatessortsuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * sortlayer example(pass the desired layer orderorder).
+ */
+export async function exampleSortLayers() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 1;
+ const res = await PluginFileAPI.sortLayers(NOTEPath, page, [2, 1, 0]);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'sortLayers call failed');
+ }
+ return res.result;
+}
 ```

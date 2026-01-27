@@ -1,9 +1,11 @@
 ---
 title: "RecognData"
-description: "Recognition input data for OCR/handwriting libraries."
+description: "Recognition point data."
 ---
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `points` | [`Point[]`](/api-reference/supernote-plugin/types/point) | Points (pixel coordinates) |
-| `pressures` | `number[]` | Pressure values |
+| `X` | `number` | X coordinate(pixelcoordinate) |
+| `Y` | `number` | Y coordinate(pixelcoordinate) |
+| `Flag` | `number` | flag |
+| `timestamp` | `number` | timestamp |

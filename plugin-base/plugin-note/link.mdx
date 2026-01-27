@@ -1,4 +1,4 @@
----
+﻿---
 title: '链接'
 ---
 
@@ -9,7 +9,7 @@ title: '链接'
 通过 [`PluginNoteAPI.getLassoLink`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-link)
 获取套索中的链接数据。样例代码如下：
 ```ts wrap
-import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+import {PluginNoteAPI} from 'sn-plugin-lib';
 PluginNoteAPI.getLassoLink()
     .then(data => {
     console.log('getLassoLink success:', data);
@@ -37,7 +37,7 @@ PluginNoteAPI.getLassoLink()
 
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 const textLink = {
   destPath: '/storage/emulated/0/Note/test.note', // 目标路径
@@ -87,7 +87,7 @@ PluginNoteAPI.insertTextLink(textLink)
 接口将套索的元素设置为链接。示例代码如下：
 
 ```ts wrap
-import {PluginNoteAPI} from 'rtn-supernote-plugin-core';
+import {PluginNoteAPI} from 'sn-plugin-lib';
 
 PluginNoteAPI.setLassoStrokeLink({
       destPath: '/storage/emulated/0/Note/test.note',
@@ -112,7 +112,7 @@ PluginNoteAPI.setLassoStrokeLink({
 代码如下：
 
 ```ts wrap
-import { PluginNoteAPI } from 'rtn-supernote-plugin-core';
+import { PluginNoteAPI } from 'sn-plugin-lib';
 
 
 

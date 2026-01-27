@@ -1,4 +1,4 @@
----
+﻿---
 title: '几何图形'
 description: '在 NOTE 与 DOC 应用中使用几何图形元素的方法与示例。'
 ---
@@ -13,7 +13,7 @@ description: '在 NOTE 与 DOC 应用中使用几何图形元素的方法与示�
 - 在 DOC 应用中：插入到“当前打开文档的当前页”
 
 ```ts wrap
-import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
  * 插入一个圆形几何图形到当前页面。
@@ -44,7 +44,7 @@ async function insertCircle() {
 读取被选中的几何图形列表。
 
 ```ts wrap
-import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
  * 读取当前套索区域中的几何图形。
@@ -70,7 +70,7 @@ async function readLassoGeos() {
 调用 [`modifyLassoGeometry`](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry) 完成修改：
 
 ```ts wrap
-import { PluginCommAPI } from 'rtn-supernote-plugin-core';
+import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
  * 修改当前套索选中的单个圆形几何的半径。

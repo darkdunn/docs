@@ -1,8 +1,26 @@
----
+﻿---
 title: "getNoteSystemTemplates"
-description: "Get system note templates."
+description: "Get systemNOTEtemplatelist.Create NOTEfilecanusethis systemtemplate."
 ---
 
 ```ts
-static getNoteSystemTemplates(): Promise<APIResponse<Template[]>>;
+static getNoteSystemTemplates(): Promise<Template[] | null | undefined>;
+```
+
+**Returns**
+
+- `Template[]`:templatetype: see [`Template`](/api-reference/supernote-plugin/types/template)
+
+## Example
+
+```ts wrap
+import { PluginCommAPI } from 'sn-plugin-lib';
+
+/**
+ * Get systemtemplatelist example.
+ */
+export async function exampleGetNoteSystemTemplates() {
+ const templates = await PluginCommAPI.getNoteSystemTemplates();
+ return templates ?? [];
+}
 ```

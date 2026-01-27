@@ -1,8 +1,43 @@
----
+﻿---
 title: "insertKeyWord"
-description: "Insert a keyword into a note page."
+description: "Insert keyword."
 ---
 
-```ts
-static insertKeyWord(notePath: string, page: number, text: string): Promise<APIResponse<boolean>>;
+```ts wrap
+static insertKeyWord(NOTEPath: string, page: number, keyword: string):
+ Promise<APIResponse<boolean>>;
 ```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTE/DOCfilepath |
+| `page` | `number` | page number(starting from 0) |
+| `keyword` | `string` | keywordcontent |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):`result === true` indicatesInsert success
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Insert keyword example.
+ */
+export async function exampleInsertKeyWord() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 1;
+ const keyword = 'TODO';
+
+ const res = await PluginFileAPI.insertKeyWord(NOTEPath, page, keyword);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'insertKeyWord call failed');
+ }
+ return res.result;
+}
+```
+

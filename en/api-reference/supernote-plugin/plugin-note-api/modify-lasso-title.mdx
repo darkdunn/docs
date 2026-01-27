@@ -1,8 +1,44 @@
----
+﻿---
 title: "modifyLassoTitle"
-description: "Modify the title of the current lasso selection."
+description: "Modify lasso title."
 ---
 
-```ts
-static modifyLassoTitle(title: Title): Promise<APIResponse<number>>;
+<Note>
+This API supports undo/redo in NOTEs.
+
+This APIModify islassodocumenttitledata,thereforeMust in lassotitleaftercall,
+and islassosingletitle.iflassois nottitle,orlassomultipletitle,call will failure.
+thereforeRecommended to call this API from the plugin UI entered via a lasso toolbar button.
+</Note>
+
+```ts wrap
+static modifyLassoTitle(params: { style: number }): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `params.style` | `number` | titlestyle:`0` removetitleproperty,`1` black backgroundtitle,`2` gray-whitetitle,`3` gray-blacktitle,`4` shadowtitle |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true`indicatesModify success
+
+## Example
+
+```ts wrap
+import { PluginNoteAPI } from 'sn-plugin-lib';
+
+/**
+ * Modify lassotitlestyle example.
+ */
+export async function exampleModifyLassoTitle() {
+ const res = await PluginNoteAPI.modifyLassoTitle({ style: 2 });
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'modifyLassoTitle call failed');
+ }
+ return res.result;
+}
 ```

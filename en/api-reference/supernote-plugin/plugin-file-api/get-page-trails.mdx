@@ -1,12 +1,41 @@
----
+﻿---
 title: "getElements"
-description: "Get elements of a specific page."
+description: "Get pageelementdata,includenormalstroke、link、title、text box、five-star."
 ---
 
-```ts
-static getElements(page: number, notePath: string): Promise<APIResponse<Element[]>>;
+```ts wrap
+static getElements(page: number, NOTEPath: string): Promise<APIResponse<Element[]>>;
 ```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `page` | `number` | pageindex(starting from 0) |
+| `NOTEPath` | `string` | NOTE/DOCfilepath |
 
 **Returns**
 
-- [`APIResponse<Element[]>`](/api-reference/supernote-plugin/types/api-response): Element list for the page
+- [`APIResponse<Element[]>`](/api-reference/supernote-plugin/types/api-response):
+elementtype: see [`Element`](/api-reference/supernote-plugin/types/trail)
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Get a pageelementlist example.
+ */
+export async function exampleGetElements() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 1;
+
+ const res = await PluginFileAPI.getElements(page, NOTEPath);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'getElements call failed');
+ }
+ return res.result;
+}
+```
+

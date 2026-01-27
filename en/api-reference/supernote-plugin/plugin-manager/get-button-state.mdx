@@ -1,18 +1,29 @@
----
+﻿---
 title: "getButtonState"
-description: "Get the current state of a registered button."
+description: "Get pluginbuttonenablestate."
 ---
+
+When a plugin button is enabled, it is shown in the toolbar/lasso toolbar/text-selection toolbar. When disabled, the corresponding button is not shown.
 
 ```ts
-static getButtonState(id: number): Promise<boolean>;
+getButtonState(id: number): Promise<boolean>;
 ```
-
-**Parameters**
-
-| Param | Type | Description |
-| --- | --- | --- |
-| `id` | `number` | Button ID |
 
 **Returns**
 
-- `Promise<boolean>`: Whether the button is enabled
+- `Promise<boolean>`:buttonstate,`true` enable,`false` disable
+ - `Promise<boolean>`: button state, `true` enabled, `false` disabled
+
+## Example
+
+```ts wrap
+import { PluginManager } from 'sn-plugin-lib';
+
+/**
+ * Example: get button state.
+ */
+export async function exampleGetButtonState() {
+ const enabled = await PluginManager.getButtonState(1);
+ return enabled;
+}
+```

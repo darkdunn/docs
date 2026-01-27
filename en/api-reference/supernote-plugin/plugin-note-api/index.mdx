@@ -1,8 +1,18 @@
----
+﻿---
 title: "PluginNoteAPI"
 sidebarTitle: "Overview"
-description: "Note-specific operations (titles, text boxes, links)."
+description: "NOTErelatedAPIindex,APIs in this sectiononly in NOTE in call."
 ---
+
+## Import
+
+```ts
+import { PluginNoteAPI } from 'sn-plugin-lib';
+```
+
+## Return Convention
+
+Most async APIs return [`APIResponse<T>`](/api-reference/supernote-plugin/types/api-response).Read `result` only when `success === true`.
 
 ## Methods
 
@@ -10,7 +20,7 @@ description: "Note-specific operations (titles, text boxes, links)."
 - [setLassoStrokeLink](/api-reference/supernote-plugin/plugin-note-api/set-lasso-stroke-link)
 - [insertTextLink](/api-reference/supernote-plugin/plugin-note-api/insert-text-link)
 - [modifyLassoLink](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-link)
-- [saveCurrentNote](/api-reference/supernote-plugin/plugin-note-api/save-current-note)
+- [saveCurrentNote](/api-reference/supernote-plugin/plugin-note-api/save-current-NOTE)
 - [setLassoTitle](/api-reference/supernote-plugin/plugin-note-api/set-lasso-title)
 - [getLassoTitle](/api-reference/supernote-plugin/plugin-note-api/get-lasso-title)
 - [modifyLassoTitle](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title)

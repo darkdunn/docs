@@ -1,19 +1,20 @@
 ---
 title: "Stroke"
-description: "Pure stroke data (present when Element is stroke type)."
+description: "Raw stroke data (present when an Element is a stroke)."
 ---
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `penColor` | `number` | Pen color |
-| `penType` | `number` | Pen type |
+| `penColor` | `number` | Pen color, e.g. `0xFE` (white), `0x9D` (dark gray), `0xC9` (light gray) |
+| `penType` | `number` | Pen type: `10` technical pen, `1` pressure pen, `11` marker pen |
 | `points` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Sample points (EMR coordinates) |
-| `pressures` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Pressure data (0–4096) |
+| `pressures` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Pressure data (`0..4096`) |
 | `eraseLineTrailNums` | [`ElementDataAccessor<number>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Erase line data |
 | `flagDraw` | [`ElementDataAccessor<boolean>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Write flag |
 | `markPenDirection` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Marker pen direction |
-| `recognPoints` | [`ElementDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Recognition points (pixel coordinates) for OCR libraries such as MyScript |
+| `recognPoints` | [`ElementDataAccessor<RecognData>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Recognition point data. Can be used with MyScript and other recognition libraries to generate corresponding text (pixel coordinates) |
 
 <Note>
-`points/pressures/eraseLineTrailNums/flagDraw/markPenDirection/recognPoints` are [`ElementDataAccessor`](/api-reference/supernote-plugin/types/trail-data-accessor) objects, not full arrays. Use `size()/get()/getRange()` to fetch data progressively to avoid memory pressure on RN.
+`points/pressures/eraseLineTrailNums/flagDraw/markPenDirection/recognPoints` are all [`ElementDataAccessor`](/api-reference/supernote-plugin/types/trail-data-accessor) accessor objects, not full arrays. Fetch data asynchronously via `size()/get()/getRange()` to avoid JS memory issues caused by transferring large point sets at once.
 </Note>
+

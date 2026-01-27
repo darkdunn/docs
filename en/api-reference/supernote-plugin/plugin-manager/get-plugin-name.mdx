@@ -1,12 +1,26 @@
----
+﻿---
 title: "getPluginName"
-description: "Get the plugin name."
+description: "Get pluginname."
 ---
 
 ```ts
-static getPluginName(): Promise<string>;
+getPluginName(): Promise<string | null | undefined>;
 ```
 
 **Returns**
 
-- `Promise<string>`: Plugin name
+- `Promise<string | null | undefined>`:pluginname
+
+## Example
+
+```ts wrap
+import { PluginManager } from 'sn-plugin-lib';
+
+/**
+ * Get pluginname example.
+ */
+export async function exampleGetPluginName() {
+ const name = await PluginManager.getPluginName();
+ return name;
+}
+```

@@ -1,8 +1,42 @@
----
+﻿---
 title: "generateNoteTemplatePng"
-description: "Generate a PNG from a note template."
+description: "Generate NOTEfilespecifiedpage backgroundtemplate PNG image."
 ---
 
-```ts
-static generateNoteTemplatePng(templateName: string): Promise<APIResponse<string>>;
+```ts wrap
+static generateNoteTemplatePng(NOTEPath: string, page: number, pngPath: string): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTEfilepath |
+| `page` | `number` | page number(starting from 0) |
+| `pngPath` | `string` | PNG outputpath(must end with `.png` suffix) |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesGenerate imagesuccess
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Generate pagebackgroundtemplate PNG example.
+ */
+export async function exampleGenerateNoteTemplatePng() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 1;
+ const pngPath = '/storage/emulated/0/Note/out/template.png';
+
+ const res = await PluginFileAPI.generateNoteTemplatePng(NOTEPath, page, pngPath);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'generateNoteTemplatePng call failed');
+ }
+ return res.result;
+}
 ```

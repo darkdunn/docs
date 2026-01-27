@@ -1,8 +1,39 @@
----
+﻿---
 title: "removeNotePage"
-description: "Delete a specific page from a note."
+description: "Delete NOTEfilespecifiedpage."
 ---
 
-```ts
-static removeNotePage(notePath: string, page: number): Promise<APIResponse<boolean>>;
+```ts wrap
+static removeNotePage(NOTEPath: string, page: number): Promise<APIResponse<boolean>>;
+```
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `NOTEPath` | `string` | NOTEfilepath |
+| `page` | `number` | to Delete page number(starting from 0) |
+
+**Returns**
+
+- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+`result === true` indicatesDelete success
+
+## Example
+
+```ts wrap
+import { PluginFileAPI } from 'sn-plugin-lib';
+
+/**
+ * Delete specifiedpage example.
+ */
+export async function exampleRemoveNotePage() {
+ const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const page = 2;
+ const res = await PluginFileAPI.removeNotePage(NOTEPath, page);
+ if (!res.success) {
+ throw new Error(res.error?.message ?? 'removeNotePage call failed');
+ }
+ return res.result;
+}
 ```
