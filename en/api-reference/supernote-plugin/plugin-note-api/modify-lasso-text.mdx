@@ -3,7 +3,7 @@ title: "modifyLassoText"
 description: "Modify lassotext box."
 ---
 <Note>
-This API supports undo/redo in NOTEs.
+This API supports undo/redo in NOTE.
 
 This APIModify islasso text boxdata,thereforeMust in lassotext boxaftercall,
 and islassosingletext box.iflassois nottext box,orlassomultipletext box,call will failure.
@@ -32,7 +32,7 @@ static modifyLassoText(textBox: {
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `textBox.textContentFull` | `string` | textcontent(required,non-empty) |
-| `textBox.textRect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
+| `textBox.textRect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
 | `textBox.fontSize` | `number` | font size(optional；must be positive) |
 | `textBox.fontPath` | `string` | fontpath(optional) |
 | `textBox.textDigestData` | `string` | summarydata(optional) |
@@ -46,7 +46,7 @@ static modifyLassoText(textBox: {
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicatesModify success
 
 ## Example

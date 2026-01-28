@@ -1,4 +1,4 @@
-﻿---
+---
 title: "getPageSize"
 description: "Get filespecifiedpage size(pixel)."
 ---
@@ -16,8 +16,8 @@ static getPageSize(NOTEPath: string, page: number): Promise<APIResponse<Size>>;
 
 **Returns**
 
-- [`APIResponse<Size>`](/api-reference/supernote-plugin/types/api-response):
-`result` is pagesize,See [`Size`](/api-reference/supernote-plugin/types/size)
+- [`APIResponse<Size>`](/en/api-reference/supernote-plugin/types/api-response):
+`result` is pagesize,See [`Size`](/en/api-reference/supernote-plugin/types/size)
 
 ## Example
 
@@ -28,7 +28,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Get pagepixelsize example.
  */
 export async function exampleGetPageSize() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
 
  const res = await PluginFileAPI.getPageSize(NOTEPath, page);
@@ -38,4 +38,5 @@ export async function exampleGetPageSize() {
  return res.result;
 }
 ```
+
 

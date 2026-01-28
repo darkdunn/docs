@@ -1,4 +1,4 @@
-﻿---
+---
 title: "insertKeyWord"
 description: "Insert keyword."
 ---
@@ -18,7 +18,7 @@ static insertKeyWord(NOTEPath: string, page: number, keyword: string):
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):`result === true` indicatesInsert success
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesInsert success
 
 ## Example
 
@@ -29,7 +29,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Insert keyword example.
  */
 export async function exampleInsertKeyWord() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
  const keyword = 'TODO';
 
@@ -40,4 +40,5 @@ export async function exampleInsertKeyWord() {
  return res.result;
 }
 ```
+
 

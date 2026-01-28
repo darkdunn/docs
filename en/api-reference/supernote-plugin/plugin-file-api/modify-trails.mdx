@@ -1,4 +1,4 @@
-﻿---
+---
 title: "modifyElements"
 description: "Modify existingpageelementdata(Mustis existingdata,otherwisewill not take effect)."
 ---
@@ -13,11 +13,11 @@ static modifyElements(NOTEPath: string, page: number, elements: Element[]): Prom
 | --- | --- | --- |
 | `NOTEPath` | `string` | NOTE/DOCfilepath |
 | `page` | `number` | pageindex(starting from 0) |
-| `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | requiredModify elementarray(Mustalready exists) |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | requiredModify elementarray(Mustalready exists) |
 
 **Returns**
 
-- [`APIResponse<number[]>`](/api-reference/supernote-plugin/types/api-response):`result` is Modify success elementindexlist
+- [`APIResponse<number[]>`](/en/api-reference/supernote-plugin/types/api-response):`result` is Modify success elementindexlist
 
 ## Example
 
@@ -28,7 +28,7 @@ import { PluginFileAPI, ElementType, type Element } from 'sn-plugin-lib';
  * fetchpageelementandsubmitModify example.
  */
 export async function exampleModifyElements() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 0;
 
  const listRes = await PluginFileAPI.getElements(page, NOTEPath);
@@ -71,3 +71,4 @@ export async function exampleModifyElements() {
  return res.result;
 }
 ```
+

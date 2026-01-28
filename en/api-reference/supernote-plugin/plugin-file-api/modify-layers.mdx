@@ -1,4 +1,4 @@
-﻿---
+---
 title: "modifyLayers"
 description: "Modify pagelayerdata(not exists layerwill notModify )."
 ---
@@ -17,11 +17,11 @@ static modifyLayers(NOTEPath: string, page: number, layers: Layer[]): Promise<AP
 | --- | --- | --- |
 | `NOTEPath` | `string` | NOTEfilepath |
 | `page` | `number` | pageindex(starting from 0) |
-| `layers` | [`Layer[]`](/api-reference/supernote-plugin/types/layer) | existinglayerdataarray |
+| `layers` | [`Layer[]`](/en/api-reference/supernote-plugin/types/layer) | existinglayerdataarray |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicatesModify success
 
 ## Example
@@ -33,7 +33,7 @@ import { PluginFileAPI, type Layer } from 'sn-plugin-lib';
  * Modify pagelayerdata example.
  */
 export async function exampleModifyLayers() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 0;
 
  const listRes = await PluginFileAPI.getLayers(NOTEPath, page);
@@ -61,3 +61,4 @@ export async function exampleModifyLayers() {
  return res.result;
 }
 ```
+

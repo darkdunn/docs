@@ -1,4 +1,4 @@
-﻿---
+---
 title: "insertLayer"
 description: "Insert layerdata."
 ---
@@ -17,11 +17,11 @@ static insertLayer(NOTEPath: string, page: number, layer: Layer): Promise<APIRes
 | --- | --- | --- |
 | `NOTEPath` | `string` | NOTEpath |
 | `page` | `number` | pageindex(starting from 0) |
-| `layer` | [`Layer`](/api-reference/supernote-plugin/types/layer) | requiredInsert layerdata |
+| `layer` | [`Layer`](/en/api-reference/supernote-plugin/types/layer) | requiredInsert layerdata |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicatesInsert layersuccess
 
 ## Example
@@ -33,7 +33,7 @@ import { PluginFileAPI, type Layer } from 'sn-plugin-lib';
  * Insert layer example.
  */
 export async function exampleInsertLayer() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
  const layer: Layer = {
  layerId: 1,
@@ -48,3 +48,4 @@ export async function exampleInsertLayer() {
  return res.result;
 }
 ```
+

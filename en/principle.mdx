@@ -9,7 +9,7 @@ The plugin system has three core parts:
 
 - **Plugin**: A developer-built plugin that extends NOTE/DOC capabilities. It does not run inside NOTE/DOC directly; PluginHost loads and schedules it.
 - **PluginHost**: Manages plugin install/uninstall and lifecycle, and provides the React Native runtime. Plugin logic runs in PluginHost and interacts with NOTE/DOC through standard interfaces.
-- **Plugin-enabled App**: Host apps that support plugins. Currently NOTE (Notes) and DOC (Documents). They read plugin metadata from PluginHost, show plugin buttons in the toolbar and lasso toolbar, and dispatch plugin events.
+- **Plugin-enabled App**: Host apps that support plugins. Currently NOTE and DOC. They read plugin metadata from PluginHost, show plugin buttons in the toolbar and lasso toolbar, and dispatch plugin events.
 
 The following sections describe the install flow and the event chain.
 
@@ -57,5 +57,5 @@ In addition, plugins can use the SDK to call NOTE/DOC standard interfaces to ope
 
 ## Related Docs
 
-- Local development setup: [Environment Setup](/environment)
-- Plugin development and packaging: [Your First Plugin](/first-plugin)
+- Local development setup: [Environment Setup](/en/environment)
+- Plugin development and packaging: [Your First Plugin](/en/first-plugin)

@@ -7,7 +7,7 @@ Geometry is both “drawing” and “data”. In NOTE and DOC, geometry element
 
 ## Insert Geometry
 
-Call [`insertGeometry`](/api-reference/supernote-plugin/plugin-comm-api/insert-geometry) to insert a geometry element:
+Call [`insertGeometry`](/en/api-reference/supernote-plugin/plugin-comm-api/insert-geometry) to insert a geometry element:
 
 - In NOTE: inserted into the current page on the current layer of the currently opened note
 - In DOC: inserted into the current page of the currently opened document
@@ -35,12 +35,12 @@ async function insertCircle() {
 ```
 
 <Tip>
-The `type` field values and data structure are defined in [`Geometry`](/api-reference/supernote-plugin/types/geometry). Point coordinates use pixel coordinates.
+The `type` field values and data structure are defined in [`Geometry`](/en/api-reference/supernote-plugin/types/geometry). Point coordinates use pixel coordinates.
 </Tip>
 
 ## Get Lasso Geometries
 
-After selecting geometry elements with the lasso tool, call [`getLassoGeometries`](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries) to read the selected geometry list.
+After selecting geometry elements with the lasso tool, call [`getLassoGeometries`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries) to read the selected geometry list.
 
 ```ts wrap
 import { PluginCommAPI } from 'sn-plugin-lib';
@@ -58,7 +58,7 @@ async function readLassoGeos() {
   console.log('lasso geometries:', list);
 }
 ```
-`result` is a list of [`Geometry`](/api-reference/supernote-plugin/types/geometry).
+`result` is a list of [`Geometry`](/en/api-reference/supernote-plugin/types/geometry).
 <Warning>
 You must create a lasso selection before calling this API. If there are no geometry elements in the lasso selection, the returned array is empty.
 </Warning>
@@ -66,7 +66,7 @@ You must create a lasso selection before calling this API. If there are no geome
 ## Modify Lasso Geometry
 
 You can modify the currently lasso-selected geometry, for example adjust a circle radius or change a line point set.
-Call [`modifyLassoGeometry`](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry) to apply the modification:
+Call [`modifyLassoGeometry`](/en/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry) to apply the modification:
 
 ```ts wrap
 import { PluginCommAPI } from 'sn-plugin-lib';
@@ -98,7 +98,7 @@ This operation requires the current lasso selection to contain exactly one geome
 
 ## Related Types and APIs
 
-- Geometry data structure: [`Geometry`](/api-reference/supernote-plugin/types/geometry)
-- Insert geometry: [`insertGeometry`](/api-reference/supernote-plugin/plugin-comm-api/insert-geometry)
-- Get lasso geometries: [`getLassoGeometries`](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries)
-- Modify lasso geometry: [`modifyLassoGeometry`](/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry)
+- Geometry data structure: [`Geometry`](/en/api-reference/supernote-plugin/types/geometry)
+- Insert geometry: [`insertGeometry`](/en/api-reference/supernote-plugin/plugin-comm-api/insert-geometry)
+- Get lasso geometries: [`getLassoGeometries`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries)
+- Modify lasso geometry: [`modifyLassoGeometry`](/en/api-reference/supernote-plugin/plugin-comm-api/modify-lasso-geometry)

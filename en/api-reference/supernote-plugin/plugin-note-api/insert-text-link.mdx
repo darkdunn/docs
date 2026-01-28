@@ -1,4 +1,4 @@
-﻿---
+---
 title: "insertTextLink"
 description: "Insert a text link into the main layer of the currently opened note page."
 ---
@@ -28,7 +28,7 @@ static insertTextLink(textLink: {
 | `textLink.destPage` | `number` | Destination page (only valid when `linkType === 0` or `linkType === 2`)<br />For `linkType === 0`: must be a non-negative integer, meaning the target note page<br />For `linkType === 2`: a negative value jumps to the document current page; a non-negative integer jumps to the specified document page |
 | `textLink.style` | `number` | Link style: `0` solid underline, `1` solid border, `2` dashed border |
 | `textLink.linkType` | `number` | Link type: `0` note page, `1` note file, `2` document, `3` image, `4` URL |
-| `textLink.rect` | [`Rect`](/api-reference/supernote-plugin/types/rect) | Text region rectangle (must be non-zero area) |
+| `textLink.rect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | Text region rectangle (must be non-zero area) |
 | `textLink.fontSize` | `number` | Font size (positive number) |
 | `textLink.fullText` | `string` | Full text (required for text links) |
 | `textLink.showText` | `string` | Display text (required for text links) |
@@ -36,12 +36,12 @@ static insertTextLink(textLink: {
 
 <Note>
 Supported `linkType` ranges may differ across APIs. Currently, `insertTextLink` only allows `0..4`.
-When reading lasso link data, you may encounter `linkType=6` (digest link). This type is currently read-only and cannot be created via this API. See [`Link`](/api-reference/supernote-plugin/types/link) / [`LassoLink`](/api-reference/supernote-plugin/types/lasso-link).
+When reading lasso link data, you may encounter `linkType=6` (digest link). This type is currently read-only and cannot be created via this API. See [`Link`](/en/api-reference/supernote-plugin/types/link) / [`LassoLink`](/en/api-reference/supernote-plugin/types/lasso-link).
 </Note>
 
 **Returns**
 
-- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<number>`](/en/api-reference/supernote-plugin/types/api-response):
 `result` is a status code (convention: `0` success, `-1` failure, `-2` target file requires upgrade)
 
 ## Example

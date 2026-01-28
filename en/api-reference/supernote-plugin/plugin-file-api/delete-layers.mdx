@@ -1,4 +1,4 @@
-﻿---
+---
 title: "deleteLayers"
 description: "Delete layerdata."
 ---
@@ -21,7 +21,7 @@ static deleteLayers(NOTEPath: string, page: number, layerIds: number[]): Promise
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicatesDelete layersuccess
 
 ## Example
@@ -33,7 +33,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Delete layer example.
  */
 export async function exampleDeleteLayers() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
  const res = await PluginFileAPI.deleteLayers(NOTEPath, page, [1, 2]);
  if (!res.success) {
@@ -42,4 +42,5 @@ export async function exampleDeleteLayers() {
  return res.result;
 }
 ```
+
 

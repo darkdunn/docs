@@ -1,4 +1,4 @@
-﻿---
+---
 title: "searchFiveStars"
 description: "searchfile in five-starwhere it is located page,returnpage numberlist."
 ---
@@ -15,7 +15,7 @@ static searchFiveStars(filePath: string): Promise<APIResponse<number[]>>;
 
 **Returns**
 
-- [`APIResponse<number[]>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<number[]>`](/en/api-reference/supernote-plugin/types/api-response):
 `result` is five-starwhere it is locatedpage numberarray
 
 ## Example
@@ -27,7 +27,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * searchfile in five-starwhere it is locatedpage example.
  */
 export async function exampleSearchFiveStars() {
- const filePath = '/storage/emulated/0/Note/demo.NOTE';
+ const filePath = '/storage/emulated/0/Note/demo.note';
  const res = await PluginFileAPI.searchFiveStars(filePath);
  if (!res.success) {
  throw new Error(res.error?.message ?? 'searchFiveStars call failed');
@@ -35,3 +35,4 @@ export async function exampleSearchFiveStars() {
  return res.result;
 }
 ```
+

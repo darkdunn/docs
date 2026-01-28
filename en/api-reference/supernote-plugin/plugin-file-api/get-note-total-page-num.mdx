@@ -1,4 +1,4 @@
-﻿---
+---
 title: "getNoteTotalPageNum"
 description: "Get NOTEfiletotal page count."
 ---
@@ -15,7 +15,7 @@ static getNoteTotalPageNum(NOTEPath: string): Promise<APIResponse<number>>;
 
 **Returns**
 
-- [`APIResponse<number>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<number>`](/en/api-reference/supernote-plugin/types/api-response):
 `result` is NOTEtotal page count
 
 ## Example
@@ -27,7 +27,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Get NOTEtotal pagesvalueexample.
  */
 export async function exampleGetNoteTotalPageNum() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const res = await PluginFileAPI.getNoteTotalPageNum(NOTEPath);
  if (!res.success) {
  throw new Error(res.error?.message ?? 'getNoteTotalPageNum call failed');
@@ -35,4 +35,5 @@ export async function exampleGetNoteTotalPageNum() {
  return res.result;
 }
 ```
+
 

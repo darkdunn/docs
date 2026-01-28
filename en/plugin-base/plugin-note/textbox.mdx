@@ -11,7 +11,7 @@ This page explains how to insert, read, and modify text box data in NOTE, coveri
 
 ## Insert a Text Box
 
-Call [`insertText`](/api-reference/supernote-plugin/plugin-note-api/insert-text) to insert a text box into the current page and current layer of the currently opened note.
+Call [`insertText`](/en/api-reference/supernote-plugin/plugin-note-api/insert-text) to insert a text box into the current page and current layer of the currently opened note.
 Make sure the note is opened and the current page is loaded; otherwise it returns an error.
 
 ```ts wrap
@@ -45,7 +45,7 @@ async function insertTextBox() {
 
 ## Get Lasso Text Boxes
 
-Call [`getLassoText`](/api-reference/supernote-plugin/plugin-note-api/get-lasso-text) to get text box data in the current lasso selection.
+Call [`getLassoText`](/en/api-reference/supernote-plugin/plugin-note-api/get-lasso-text) to get text box data in the current lasso selection.
 
 ```ts wrap
 import { PluginNoteAPI } from 'sn-plugin-lib';
@@ -70,7 +70,7 @@ You must create a lasso selection before calling this API; otherwise it returns 
 
 ## Modify a Lasso Text Box
 
-Call [`modifyLassoText`](/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text) to modify the text box selected by the current lasso selection.
+Call [`modifyLassoText`](/en/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text) to modify the text box selected by the current lasso selection.
 
 ```ts wrap
 import { PluginNoteAPI } from 'sn-plugin-lib';

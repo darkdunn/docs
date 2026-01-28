@@ -1,4 +1,4 @@
-﻿---
+---
 title: "registerEventListener"
 description: "Register a plugin event listener."
 ---
@@ -17,7 +17,7 @@ registerEventListener(
 | --- | --- | --- |
 | `event` | `string` | Event type (currently only `event_pen_up` is supported) |
 | `registerType` | `number` | Registration priority: `0` always first, `1` normal order, `2` always last. When multiple plugins register the same event, plugins are ordered by registration, and the priority affects placement (0 first, 2 last). |
-| `penUpListener` | `PluginEventListener` | Event callback object that implements `onMsg(msg)`.<br />The `msg` structure depends on the `event` type.<br />When `event` is `event_pen_up`, `msg` is an array of [`Element`](/api-reference/supernote-plugin/types/trail). |
+| `penUpListener` | `PluginEventListener` | Event callback object that implements `onMsg(msg)`.<br />The `msg` structure depends on the `event` type.<br />When `event` is `event_pen_up`, `msg` is an array of [`Element`](/en/api-reference/supernote-plugin/types/trail). |
 
 **Returns**
 

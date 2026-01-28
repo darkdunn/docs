@@ -1,4 +1,4 @@
-﻿---
+---
 title: "getLayers"
 description: "Get NOTE pagelayerdata."
 ---
@@ -16,8 +16,8 @@ static getLayers(NOTEPath: string, page: number): Promise<APIResponse<Layer[]>>;
 
 **Returns**
 
-- [`APIResponse<Layer[]>`](/api-reference/supernote-plugin/types/api-response):
-`result` is pagelayerdataarray(type: see [Layer](/api-reference/supernote-plugin/types/layer))
+- [`APIResponse<Layer[]>`](/en/api-reference/supernote-plugin/types/api-response):
+`result` is pagelayerdataarray(type: see [Layer](/en/api-reference/supernote-plugin/types/layer))
 
 ## Example
 
@@ -28,7 +28,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Get pagelayerdata example.
  */
 export async function exampleGetLayers() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
  const res = await PluginFileAPI.getLayers(NOTEPath, page);
  if (!res.success) {
@@ -37,3 +37,4 @@ export async function exampleGetLayers() {
  return res.result;
 }
 ```
+

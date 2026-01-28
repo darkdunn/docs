@@ -1,4 +1,4 @@
-﻿---
+---
 title: "replaceElements"
 description: "replacespecifiedpageelementdata."
 ---
@@ -13,11 +13,11 @@ static replaceElements(NOTEPath: string, page: number, elements: Element[]): Pro
 | --- | --- | --- |
 | `NOTEPath` | `string` | NOTE/DOCfilepath |
 | `page` | `number` | pageindex(starting from 0) |
-| `elements` | [`Element[]`](/api-reference/supernote-plugin/types/trail) | elementdataarray |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | elementdataarray |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):`result === true` indicatesreplacesuccess
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesreplacesuccess
 
 ## Example
 
@@ -28,7 +28,7 @@ import { PluginFileAPI, PluginCommAPI, ElementType, type Element } from 'sn-plug
  * readpageelementandwrite back(replace) example.
  */
 export async function exampleReplaceElements() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 0;
 
  const listRes = await PluginFileAPI.getElements(page, NOTEPath);
@@ -59,3 +59,4 @@ export async function exampleReplaceElements() {
  return res.result;
 }
 ```
+

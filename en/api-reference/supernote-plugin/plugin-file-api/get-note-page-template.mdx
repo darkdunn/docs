@@ -1,4 +1,4 @@
-﻿---
+---
 title: "getNotePageTemplate"
 description: "Get NOTEpage numberspecifiedpage templateinformation."
 ---
@@ -16,7 +16,7 @@ static getNotePageTemplate(NOTEPath: string, page: number): Promise<APIResponse<
 
 **Returns**
 
-- [`APIResponse<NoteTemplateInfo>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<NoteTemplateInfo>`](/en/api-reference/supernote-plugin/types/api-response):
 `result` is pagetemplateobject,Fields:
  | Field | Type | Description |
  | --- | --- | --- |
@@ -32,7 +32,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  * Get pagetemplateinformation example.
  */
 export async function exampleGetNotePageTemplate() {
- const NOTEPath = '/storage/emulated/0/Note/demo.NOTE';
+ const NOTEPath = '/storage/emulated/0/Note/demo.note';
  const page = 1;
  const res = await PluginFileAPI.getNotePageTemplate(NOTEPath, page);
  if (!res.success) {
@@ -41,3 +41,4 @@ export async function exampleGetNotePageTemplate() {
  return res.result;
 }
 ```
+

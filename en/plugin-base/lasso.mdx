@@ -1,9 +1,9 @@
-﻿---
+---
 title: "Lasso"
 description: "Workflow, data model, and common APIs for lasso selection (get/update lasso rectangle and elements)."
 ---
 
-Lasso is a common selection interaction in NOTEs/DOCs. After the user draws a region on the page, the system computes the selected element set and shows the lasso toolbar.
+Lasso is a common selection interaction in NOTE/DOC. After the user draws a region on the page, the system computes the selected element set and shows the lasso toolbar.
 Plugins can display their registered buttons in the lasso toolbar. After the user taps a plugin button and enters the plugin UI, the plugin can read and modify data based on the current lasso context.
 
 ## Workflow
@@ -16,23 +16,23 @@ Plugins can display their registered buttons in the lasso toolbar. After the use
 
 ## Data Model
 
-The selected element list can be obtained via [`PluginCommAPI.getLassoElements()`](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data). The return value is [`Element[]`](/api-reference/supernote-plugin/types/trail).
+The selected element list can be obtained via [`PluginCommAPI.getLassoElements()`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data). The return value is [`Element[]`](/en/api-reference/supernote-plugin/types/trail).
 
-- Use `Element.type` to distinguish element categories (constants: [`ElementType`](/api-reference/supernote-plugin/types/trail#elementtype))
-- For large point datasets (e.g., angle points, contour points), `Element` fields are provided as accessors ([`ElementDataAccessor`](/api-reference/supernote-plugin/types/trail-data-accessor)) to avoid transferring large point sets to RN at once
+- Use `Element.type` to distinguish element categories (constants: [`ElementType`](/en/api-reference/supernote-plugin/types/trail#elementtype))
+- For large point datasets (e.g., angle points, contour points), `Element` fields are provided as accessors ([`ElementDataAccessor`](/en/api-reference/supernote-plugin/types/trail-data-accessor)) to avoid transferring large point sets to RN at once
 
 ## Common APIs
 
 | Goal | API | Description |
 | --- | --- | --- |
-| Get lasso rectangle | [`getLassoRect()`](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect) | Returns lasso rectangle (`Rect`) |
-| Update lasso rectangle | [`updateLassoRect(rect)`](/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect) | Updates the lasso rectangle. Currently only proportional scaling is supported |
-| Get selected elements | [`getLassoElements()`](/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data) | Returns `Element[]` (accessor fields are filled on success) |
-| Control lasso box | [`setLassoBoxState(state)`](/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state) | `0` show, `1` hide, `2` remove completely |
+| Get lasso rectangle | [`getLassoRect()`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect) | Returns lasso rectangle (`Rect`) |
+| Update lasso rectangle | [`updateLassoRect(rect)`](/en/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect) | Updates the lasso rectangle. Currently only proportional scaling is supported |
+| Get selected elements | [`getLassoElements()`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data) | Returns `Element[]` (accessor fields are filled on success) |
+| Control lasso box | [`setLassoBoxState(state)`](/en/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state) | `0` show, `1` hide, `2` remove completely |
 
 <Tip>
 The lasso rectangle is a UI interaction rectangle and is typically expressed in the pixel coordinate system, while stroke point data uses the EMR coordinate system.
-If you need to align them, confirm the coordinate systems first and convert as needed. See [Coordinate System](/plugin-base/coordinate-system).
+If you need to align them, confirm the coordinate systems first and convert as needed. See [Coordinate System](/en/plugin-base/coordinate-system).
 </Tip>
 
 ## Example

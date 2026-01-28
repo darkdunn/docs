@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Coordinate System"
 description: "EMR coordinate system vs pixel coordinate system: differences and conversion."
 ---
@@ -71,7 +71,7 @@ To support both "high-precision handwriting sampling" and "visual rendering/inte
 
 ## Conversion in the SDK
 
-The SDK provides [`PointUtils`](/api-reference/supernote-plugin/utils/point-utils) for converting between these coordinate systems (it infers mapping ratio from page pixel size and applies axis transforms).
+The SDK provides [`PointUtils`](/en/api-reference/supernote-plugin/utils/point-utils) for converting between these coordinate systems (it infers mapping ratio from page pixel size and applies axis transforms).
 
 <Tip>
 If you only have the page pixel size, pass `{ width, height }` as `pageSize` to the conversion functions.
@@ -107,7 +107,7 @@ export async function emrToPixel(notePath: string, page: number, emrPoint: { x: 
 
 ## Mapping Range and Notes
 
-[`PointUtils`](/api-reference/supernote-plugin/utils/point-utils) infers EMR max coordinate ranges from `pageSize` (varies by device and orientation). Common mappings currently supported (from SDK built-in constants and tables):
+[`PointUtils`](/en/api-reference/supernote-plugin/utils/point-utils) infers EMR max coordinate ranges from `pageSize` (varies by device and orientation). Common mappings currently supported (from SDK built-in constants and tables):
 
 | Page pixel size (pageSize) | EMR max range (maxX, maxY) |
 | --- | --- |

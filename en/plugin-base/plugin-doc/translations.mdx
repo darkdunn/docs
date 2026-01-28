@@ -12,7 +12,7 @@ This chapter focuses on two `PluginDocAPI` APIs and shows how to compose them in
 
 ## Selection Translation (Selected Text)
 
-Call [`PluginDocAPI.getSelectedText`](/api-reference/supernote-plugin/plugin-doc-api/get-selected-text) to get the currently selected text.
+Call [`PluginDocAPI.getSelectedText`](/en/api-reference/supernote-plugin/plugin-doc-api/get-selected-text) to get the currently selected text.
 
 ```ts wrap
 import { PluginDocAPI } from 'sn-plugin-lib';
@@ -55,7 +55,7 @@ Selection translation works best as a lightweight popup or a toolbar button: sho
 
 ## Full-Page Translation (Specified Page Text)
 
-Call [`PluginDocAPI.getCurrentDocText`](/api-reference/supernote-plugin/plugin-doc-api/get-current-doc-text) to get the text content of a specified page in the currently opened document. Based on it, you can do full-page translation, key-point extraction, terminology highlighting, and more.
+Call [`PluginDocAPI.getCurrentDocText`](/en/api-reference/supernote-plugin/plugin-doc-api/get-current-doc-text) to get the text content of a specified page in the currently opened document. Based on it, you can do full-page translation, key-point extraction, terminology highlighting, and more.
 
 ```ts wrap
 import { PluginDocAPI } from 'sn-plugin-lib';
@@ -91,6 +91,6 @@ Page text can be long. Consider splitting it before translating (e.g., by line b
 
 ## Related APIs
 
-- [`getSelectedText`](/api-reference/supernote-plugin/plugin-doc-api/get-selected-text)
-- [`getCurrentDocText`](/api-reference/supernote-plugin/plugin-doc-api/get-current-doc-text)
-- [`getCurrentTotalPages`](/api-reference/supernote-plugin/plugin-doc-api/get-current-total-pages)
+- [`getSelectedText`](/en/api-reference/supernote-plugin/plugin-doc-api/get-selected-text)
+- [`getCurrentDocText`](/en/api-reference/supernote-plugin/plugin-doc-api/get-current-doc-text)
+- [`getCurrentTotalPages`](/en/api-reference/supernote-plugin/plugin-doc-api/get-current-total-pages)

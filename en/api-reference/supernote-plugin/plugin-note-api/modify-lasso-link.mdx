@@ -1,9 +1,9 @@
-﻿---
+---
 title: "modifyLassoLink"
 description: "Modify link data."
 ---
 <Note>
-This API supports undo/redo in NOTEs.
+This API supports undo/redo in NOTE.
 
 This API modifies the single link selected by the current lasso selection. You must lasso-select exactly one link first. If there is no lasso selection, the selection is not a link, or the selection contains multiple links, the call fails.
 It is recommended to call this API from the plugin UI entered via a lasso toolbar button.
@@ -32,12 +32,12 @@ static modifyLassoLink(modifyLink: {
 
 <Note>
 Currently, `modifyLassoLink` only allows `linkType` in `0..4`.
-When reading lasso link data, you may encounter `linkType=6` (digest link). This type is currently read-only and cannot be modified via this API. See [`Link`](/api-reference/supernote-plugin/types/link) / [`LassoLink`](/api-reference/supernote-plugin/types/lasso-link).
+When reading lasso link data, you may encounter `linkType=6` (digest link). This type is currently read-only and cannot be modified via this API. See [`Link`](/en/api-reference/supernote-plugin/types/link) / [`LassoLink`](/en/api-reference/supernote-plugin/types/lasso-link).
 </Note>
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicates modification succeeded.
 
 <Note>

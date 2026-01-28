@@ -1,23 +1,23 @@
-﻿---
+---
 title: "insertNotePage"
-description: "to NOTEfileInsert newpage."
+description: "Insert a new page into a note file."
 ---
 
 ```ts wrap
-static insertNotePage(params: { NOTEPath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
+static insertNotePage(params: { notePath: string; page: number; template: string }): Promise<APIResponse<boolean>>;
 ```
 
 **Parameters**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `params.NOTEPath` | `string` | NOTEfilepath |
+| `params.notePath` | `string` | Note file path |
 | `params.page` | `number` | page number(starting from 0) |
-| `params.template` | `string` | templatesource:<br/>- systemtemplate:via [getNoteSystemTemplates](/api-reference/supernote-plugin/plugin-comm-api/get-NOTE-system-templates) Get ,passits intemplatename([Template](/api-reference/supernote-plugin/types/template) `name`)thenCreate ；<br/>- customtemplate:passcustomtemplate imagepath,based onimagefileCreate NOTE. |
+| `params.template` | `string` | Template name for the new page |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/api-reference/supernote-plugin/types/api-response):
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
 `result === true` indicatesInsert pagesuccess
 
 ## Example
@@ -30,7 +30,7 @@ import { PluginFileAPI } from 'sn-plugin-lib';
  */
 export async function exampleInsertNotePage() {
  const res = await PluginFileAPI.insertNotePage({
- NOTEPath: '/storage/emulated/0/Note/demo.NOTE',
+ notePath: '/storage/emulated/0/Note/demo.note',
  page: 2,
  template: 'style_blank',
  });

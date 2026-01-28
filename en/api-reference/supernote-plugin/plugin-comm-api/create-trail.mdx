@@ -1,10 +1,10 @@
-﻿---
+---
 title: "createElement"
 description: "Create onenewelementobject(Element)."
 ---
-Some fields in [`Element`](/api-reference/supernote-plugin/types/trail) can be very large (e.g. stroke sample points, pressure points, angle points, contour points).
+Some fields in [`Element`](/en/api-reference/supernote-plugin/types/trail) can be very large (e.g. stroke sample points, pressure points, angle points, contour points).
 To avoid RN-side memory issues caused by loading large datasets at once, the SDK uses an accessor design. Therefore you should create elements via `createElement`.
-For details, see [`Element`](/api-reference/supernote-plugin/types/trail).
+For details, see [`Element`](/en/api-reference/supernote-plugin/types/trail).
 
 ```ts
 static createElement(
@@ -16,12 +16,12 @@ static createElement(
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `type` | `number` | datatype,see [`ElementType`](/api-reference/supernote-plugin/types/trail#elementtype) |
+| `type` | `number` | datatype,see [`ElementType`](/en/api-reference/supernote-plugin/types/trail#elementtype) |
 
 **Returns**
 
-- [`APIResponse<Element>`](/api-reference/supernote-plugin/types/api-response):
-See [`APIResponse`](/api-reference/supernote-plugin/types/api-response) and [`Element`](/api-reference/supernote-plugin/types/trail)
+- [`APIResponse<Element>`](/en/api-reference/supernote-plugin/types/api-response):
+See [`APIResponse`](/en/api-reference/supernote-plugin/types/api-response) and [`Element`](/en/api-reference/supernote-plugin/types/trail)
 - successon success, it willreturn `Element` fill inaccessorfield(e.g. `angles`、`contoursSrc`,andstroketypeunder `stroke.*` accessor)
 
 ## Example

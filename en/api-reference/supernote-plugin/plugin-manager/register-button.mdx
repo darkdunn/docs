@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Plugin Button Registration and Listener"
 description: "Register plugin buttons and listen for button press events."
 ---
@@ -21,7 +21,7 @@ registerButton(type: number, appTypes: string[], button: PluginButton): Promise<
 | --- | --- | --- |
 | `type` | `number` | Button type: `1` toolbar button, `2` lasso toolbar button, `3` selection toolbar button in DOC |
 | `appTypes` | `string[]` | App types array: `NOTE` / `DOC` |
-| `button` | [`PluginButton`](/api-reference/supernote-plugin/types/plugin-button) | Button configuration object |
+| `button` | [`PluginButton`](/en/api-reference/supernote-plugin/types/plugin-button) | Button configuration object |
 
 **Returns**
 
@@ -64,7 +64,7 @@ interface ButtonListener {
 - `event.id`: button id
 - `event.name`: button name
 - `event.icon`: button icon
-- For more details, see: [Plugin UI - Button Event Listener](/plugin-base/plugin-ui)
+- For more details, see: [Plugin UI - Button Event Listener](/en/plugin-base/plugin-ui)
 
 ### ButtonSubscription
 

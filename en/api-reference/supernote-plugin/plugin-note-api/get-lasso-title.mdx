@@ -1,5 +1,5 @@
-﻿---
-title: "getLassoTitle"
+---
+title: "getLassoTitles"
 description: "Get lasso titledata."
 ---
 
@@ -10,13 +10,13 @@ Recommended to call this API from the plugin UI entered via a lasso toolbar butt
 </Note>
 
 ```ts
-static getLassoTitle(): Promise<APIResponse<Title[]>>;
+static getLassoTitles(): Promise<APIResponse<Title[]>>;
 ```
 
 **Returns**
 
-- [`APIResponse<Title[]>`](/api-reference/supernote-plugin/types/api-response):
-`result` is [`Title`](/api-reference/supernote-plugin/types/title)objectarray.
+- [`APIResponse<Title[]>`](/en/api-reference/supernote-plugin/types/api-response):
+`result` is [`Title`](/en/api-reference/supernote-plugin/types/title)objectarray.
 
 ## Example
 
@@ -26,10 +26,10 @@ import { PluginNoteAPI } from 'sn-plugin-lib';
 /**
  * Get currentlassotitledata example.
  */
-export async function exampleGetLassoTitle() {
- const res = await PluginNoteAPI.getLassoTitle();
+export async function exampleGetLassoTitles() {
+ const res = await PluginNoteAPI.getLassoTitles();
  if (!res.success) {
- throw new Error(res.error?.message ?? 'getLassoTitle call failed');
+ throw new Error(res.error?.message ?? 'getLassoTitles call failed');
  }
  return res.result;
 }

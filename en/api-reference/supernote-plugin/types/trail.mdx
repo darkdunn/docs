@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Element"
 description: "Unified data structure for visible elements in notes/documents."
 ---
@@ -35,22 +35,22 @@ In the table below, the `ElementType.` prefix is omitted in the Constant column.
 | Field | Type | Description |
 | --- | --- | --- |
 | `uuid` | `string` | Unique identifier for the element |
-| `type` | `number` | Element type. See [`ElementType`](/api-reference/supernote-plugin/types/trail#elementtype) |
+| `type` | `number` | Element type. See [`ElementType`](/en/api-reference/supernote-plugin/types/trail#elementtype) |
 | `pageNum` | `number` | Page number |
 | `layerNum` | `number` | Layer number (common range in notes: `0..3`) |
 | `thickness` | `number` | Stroke thickness (may be meaningless for some element types) |
-| `recognizeResult` | [`RecogResultData`](/api-reference/supernote-plugin/types/recog-result-data) | Recognition result data |
-| `maxX` | `number` | Max X value in the EMR coordinate system. See [Coordinate System](/plugin-base/coordinate-system) |
-| `maxY` | `number` | Max Y value in the EMR coordinate system. See [Coordinate System](/plugin-base/coordinate-system) |
-| `angles` | [`ElementDataAccessor<Point>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Angle points. The dataset can be large, so RN holds an accessor/index; raw data is on the Android side |
+| `recognizeResult` | [`RecogResultData`](/en/api-reference/supernote-plugin/types/recog-result-data) | Recognition result data |
+| `maxX` | `number` | Max X value in the EMR coordinate system. See [Coordinate System](/en/plugin-base/coordinate-system) |
+| `maxY` | `number` | Max Y value in the EMR coordinate system. See [Coordinate System](/en/plugin-base/coordinate-system) |
+| `angles` | [`ElementDataAccessor<Point>`](/en/api-reference/supernote-plugin/types/trail-data-accessor) | Angle points. The dataset can be large, so RN holds an accessor/index; raw data is on the Android side |
 | `status` | `number` | Element status |
 | `numInPage` | `number` | Index within the page (starts from `0`) |
-| `contoursSrc` | [`ElementDataAccessor<Point[]>`](/api-reference/supernote-plugin/types/trail-data-accessor) | Contour points (pixel coordinates). RN holds an accessor/index; raw data is on the Android side |
-| `stroke` | [`Stroke \| null`](/api-reference/supernote-plugin/types/stroke) | Stroke data (only when `type === 0`) |
-| `title` | [`Title \| null`](/api-reference/supernote-plugin/types/title) | Title data (only when `type === 100`) |
-| `textBox` | [`TextBox \| null`](/api-reference/supernote-plugin/types/text-box) | Text box data (only for text-box-related types) |
-| `geometry` | [`Geometry \| null`](/api-reference/supernote-plugin/types/geometry) | Geometry data (only when `type === 700`) |
-| `link` | [`Link \| null`](/api-reference/supernote-plugin/types/link) | Link data (only when `type === 600`) |
+| `contoursSrc` | [`ElementDataAccessor<Point[]>`](/en/api-reference/supernote-plugin/types/trail-data-accessor) | Contour points (pixel coordinates). RN holds an accessor/index; raw data is on the Android side |
+| `stroke` | [`Stroke \| null`](/en/api-reference/supernote-plugin/types/stroke) | Stroke data (only when `type === 0`) |
+| `title` | [`Title \| null`](/en/api-reference/supernote-plugin/types/title) | Title data (only when `type === 100`) |
+| `textBox` | [`TextBox \| null`](/en/api-reference/supernote-plugin/types/text-box) | Text box data (only for text-box-related types) |
+| `geometry` | [`Geometry \| null`](/en/api-reference/supernote-plugin/types/geometry) | Geometry data (only when `type === 700`) |
+| `link` | [`Link \| null`](/en/api-reference/supernote-plugin/types/link) | Link data (only when `type === 600`) |
 | `fiveStar` | `FiveStar \| null` | Five-star data (only when `type === 800`; see "FiveStar" below) |
 
 <Note>
@@ -63,7 +63,7 @@ When `type === 800`, the `fiveStar` field provides the point set of the five-sta
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `points` | [`Point[]`](/api-reference/supernote-plugin/types/point) | Five-star point coordinates (EMR) |
+| `points` | [`Point[]`](/en/api-reference/supernote-plugin/types/point) | Five-star point coordinates (EMR) |
 
 ## Methods
 
