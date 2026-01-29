@@ -117,7 +117,8 @@
                       "zh/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title",
                       "zh/api-reference/supernote-plugin/plugin-note-api/get-lasso-text",
                       "zh/api-reference/supernote-plugin/plugin-note-api/insert-text",
-                      "zh/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text"
+                      "zh/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text",
+                      "zh/api-reference/supernote-plugin/plugin-note-api/insert-image"
                     ]
                   },
                   {
@@ -211,6 +212,7 @@
                       "zh/api-reference/supernote-plugin/types/recogn-data",
                       "zh/api-reference/supernote-plugin/types/recog-result-data",
                       "zh/api-reference/supernote-plugin/types/geometry",
+                      "zh/api-reference/supernote-plugin/types/picture",
                       "zh/api-reference/supernote-plugin/types/template",
                       "zh/api-reference/supernote-plugin/types/key-word",
                       "zh/api-reference/supernote-plugin/types/layer",
@@ -336,7 +338,8 @@
                       "en/api-reference/supernote-plugin/plugin-note-api/modify-lasso-title",
                       "en/api-reference/supernote-plugin/plugin-note-api/get-lasso-text",
                       "en/api-reference/supernote-plugin/plugin-note-api/insert-text",
-                      "en/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text"
+                      "en/api-reference/supernote-plugin/plugin-note-api/modify-lasso-text",
+                      "en/api-reference/supernote-plugin/plugin-note-api/insert-image"
                     ]
                   },
                   {
@@ -430,6 +433,7 @@
                       "en/api-reference/supernote-plugin/types/recogn-data",
                       "en/api-reference/supernote-plugin/types/recog-result-data",
                       "en/api-reference/supernote-plugin/types/geometry",
+                      "en/api-reference/supernote-plugin/types/picture",
                       "en/api-reference/supernote-plugin/types/template",
                       "en/api-reference/supernote-plugin/types/key-word",
                       "en/api-reference/supernote-plugin/types/layer",

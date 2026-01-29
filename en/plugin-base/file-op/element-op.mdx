@@ -3,7 +3,7 @@ title: "Element Operations"
 description: "Read, create, insert, modify, and replace Elements in NOTE/DOC files."
 ---
 
-`Element` is the unified data structure for “all visible elements” in NOTE/DOC: strokes, titles, links, text boxes, geometric shapes, five-star elements, etc. are all represented as `Element`, and distinguished by `type`.
+`Element` is the unified data structure for “all visible elements” in NOTE/DOC: strokes, titles, links, text boxes, geometries, five-star elements, pictures, etc. are all represented as `Element`, and distinguished by `type`.
 
 - Element types and fields: [`Element`](/en/api-reference/supernote-plugin/types/trail)
 - Type constants: [`ElementType`](/en/api-reference/supernote-plugin/types/trail#elementtype)
@@ -57,7 +57,7 @@ export async function loadPageElements(notePath: string, page: number) {
 ```
 
 <Tip>
-After `getElements` succeeds, the SDK automatically normalizes element structures and fills in accessors. You can directly read typed fields such as `stroke/title/link/textBox/geometry` based on `type`.
+After `getElements` succeeds, the SDK automatically normalizes element structures and fills in accessors. You can directly read typed fields such as `stroke/title/link/textBox/geometry/picture` based on `type`.
 </Tip>
 
 ## Create a New Element

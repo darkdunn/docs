@@ -3,8 +3,8 @@ title: "Element"
 description: "Unified data structure for visible elements in notes/documents."
 ---
 
-`Element` describes the common metadata of all visible elements in a note file (and in document annotation scenarios), such as strokes, titles, links, text boxes, and geometries.
-An `Element` uses `type` to distinguish its category and provides more specific structures under the corresponding fields (e.g. `stroke`, `title`, `link`, `textBox`, `geometry`).
+`Element` describes the common metadata of all visible elements in a note file (and in document annotation scenarios), such as strokes, titles, links, text boxes, geometries, and pictures.
+An `Element` uses `type` to distinguish its category and provides more specific structures under the corresponding fields (e.g. `stroke`, `title`, `link`, `textBox`, `geometry`, `picture`).
 
 <Tip>
 If you only care about the element category, read `type`. If you need to operate on the content, read typed fields such as `stroke/title/link/textBox/geometry` based on `type`.
@@ -22,7 +22,7 @@ In the table below, the `ElementType.` prefix is omitted in the Constant column.
 | --- | --- | ---| --- | --- |
 | Stroke | `TYPE_STROKE` | `0` | Handwritten stroke | `stroke` |
 | Title | `TYPE_TITLE` | `100` | Title element | `title` |
-| Picture | `TYPE_PICTURE` | `200` | Picture (currently unused) | - |
+| Picture | `TYPE_PICTURE` | `200` | Picture element | `picture` |
 | Text box | `TYPE_TEXT` | `500` | Text box | `textBox` |
 | Digest quote text box | `TYPE_TEXT_DIGEST_QUOTE` | `501` | Digest quote | `textBox` |
 | Digest created text box | `TYPE_TEXT_DIGEST_CREATE` | `502` | Created as a digest in notes | `textBox` |
@@ -52,6 +52,7 @@ In the table below, the `ElementType.` prefix is omitted in the Constant column.
 | `geometry` | [`Geometry \| null`](/en/api-reference/supernote-plugin/types/geometry) | Geometry data (only when `type === 700`) |
 | `link` | [`Link \| null`](/en/api-reference/supernote-plugin/types/link) | Link data (only when `type === 600`) |
 | `fiveStar` | `FiveStar \| null` | Five-star data (only when `type === 800`; see "FiveStar" below) |
+| `picture` | [`Picture \| null`](/en/api-reference/supernote-plugin/types/picture) | Picture data (only when `type === 200`) |
 
 <Note>
 `angles` and `contoursSrc` are accessor objects, not full arrays. Fetch data asynchronously via `size()/get()/getRange()` to avoid JS memory issues caused by transferring large point sets at once.

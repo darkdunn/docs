@@ -3,7 +3,7 @@ title: '元素操作'
 description: '在笔记/文档文件中获取、创建、插入、修改与替换 Element。'
 ---
 
-`Element` 是笔记/文档里“所有可见元素”的统一数据结构：普通笔画、标题、链接、文本框、几何图形、五角星等都以 `Element` 表示，并通过 `type` 区分具体类别。
+`Element` 是笔记/文档里“所有可见元素”的统一数据结构：普通笔画、标题、链接、文本框、几何图形、五角星、图片等都以 `Element` 表示，并通过 `type` 区分具体类别。
 
 - 元素类型与字段说明：[`Element`](/zh/api-reference/supernote-plugin/types/trail)
 - 类型常量：[`ElementType`](/zh/api-reference/supernote-plugin/types/trail#elementtype)
@@ -57,7 +57,7 @@ export async function loadPageElements(notePath: string, page: number) {
 ```
 
 <Tip>
-`getElements` 成功返回后，SDK 会自动对元素做结构转换与访问器补齐，你可以直接按 `type` 读取 `stroke/title/link/textBox/geometry` 等细分字段。
+`getElements` 成功返回后，SDK 会自动对元素做结构转换与访问器补齐，你可以直接按 `type` 读取 `stroke/title/link/textBox/geometry/picture` 等细分字段。
 </Tip>
 
 ## 创建新元素对象

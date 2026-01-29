@@ -3,8 +3,8 @@ title: "Element"
 description: "笔记/文档中“可见元素”的统一数据结构。"
 ---
 
-`Element` 用来描述笔记文件（以及文档标注场景）中所有“可见元素”的共同信息：例如普通笔画、标题、链接、文本框、几何图形等。
-同一个 `Element` 会通过 `type` 来区分具体类别，并在对应类别下提供更细分的数据结构（例如 `stroke`、`title`、`link`、`textBox`、`geometry`）。
+`Element` 用来描述笔记文件（以及文档标注场景）中所有“可见元素”的共同信息：例如普通笔画、标题、链接、文本框、几何图形、图片等。
+同一个 `Element` 会通过 `type` 来区分具体类别，并在对应类别下提供更细分的数据结构（例如 `stroke`、`title`、`link`、`textBox`、`geometry`、`picture`）。
 
 <Tip>
 如果你只关心“元素是什么类型”，读取 `type` 即可；如果你要操作具体内容，再根据 `type` 去读取 `stroke/title/link/textBox/geometry` 等细分字段。
@@ -22,7 +22,7 @@ description: "笔记/文档中“可见元素”的统一数据结构。"
 | --- | --- | ---| --- | --- |
 | 笔画 | `TYPE_STROKE` | `0` | 笔划（手写笔迹） | `stroke` |
 | 标题 | `TYPE_TITLE` | `100` | 标题元素 | `title` |
-| 图片 | `TYPE_PICTURE` | `200` | 图片（当前暂未使用） | - |
+| 图片 | `TYPE_PICTURE` | `200` | 图片元素 | `picture` |
 | 文本框 | `TYPE_TEXT` | `500` | 普通文本框 | `textBox` |
 | 摘录引用文本框 | `TYPE_TEXT_DIGEST_QUOTE` | `501` | 引用摘录 | `textBox` |
 | 摘录创建文本框 | `TYPE_TEXT_DIGEST_CREATE` | `502` | 在笔记中被创建为摘录 | `textBox` |
@@ -52,6 +52,7 @@ description: "笔记/文档中“可见元素”的统一数据结构。"
 | `geometry` | [`Geometry \| null`](/zh/api-reference/supernote-plugin/types/geometry) | 几何图形数据（仅 `type === 700` 时存在） |
 | `link` | [`Link \| null`](/zh/api-reference/supernote-plugin/types/link) | 链接数据（仅 `type === 600` 时存在） |
 | `fiveStar` | `FiveStar \| null` | 五角星数据（仅 `type === 800` 时存在；见下方“FiveStar”） |
+| `picture` | [`Picture \| null`](/zh/api-reference/supernote-plugin/types/picture) | 图片数据（仅 `type === 200` 时存在） |
 
 <Note>
 `angles` 与 `contoursSrc` 是访问器对象，不是完整数组。需要通过 `size()/get()/getRange()` 等方法异步取数，避免一次性把大规模点集传到 RN 端导致内存问题。
