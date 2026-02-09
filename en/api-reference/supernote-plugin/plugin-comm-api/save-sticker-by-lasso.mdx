@@ -5,7 +5,7 @@ description: "Save lasso-selected strokes as a sticker."
 
 <Note>
 You must create a lasso selection before calling this API; otherwise the call fails.
-andMustlassostroke or geometrydata,otherdatacannotconvert tosticker.
+The lasso selection must contain only strokes or geometries; other element types cannot be converted to a sticker.
 </Note>
 
 ```ts
@@ -16,11 +16,12 @@ static saveStickerByLasso(path: string): Promise<APIResponse<boolean>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `path` | `string` | stickerSave path |
+| `path` | `string` | Sticker output path |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesSave success
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
+`result === true` indicates the save succeeded
 
 ## Example
 

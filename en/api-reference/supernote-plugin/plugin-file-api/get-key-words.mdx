@@ -1,6 +1,6 @@
 ---
 title: "getKeyWords"
-description: "Get NOTE/DOCfile keyword."
+description: "Get keywords from a NOTE/DOC file."
 ---
 
 ```ts wrap
@@ -11,13 +11,13 @@ static getKeyWords(NOTEPath: string, pageList: number[]): Promise<APIResponse<Ke
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTE/DOCfilepath |
-| `pageList` | `number[]` | page numberlist(starting from 0) |
+| `NOTEPath` | `string` | NOTE/DOC file path |
+| `pageList` | `number[]` | Page index list (starts from `0`) |
 
 **Returns**
 
 - [`APIResponse<KeyWord[]>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` is keywordarray(type: see [KeyWord](/en/api-reference/supernote-plugin/types/key-word)).
+`result` is the keyword array. See [`KeyWord`](/en/api-reference/supernote-plugin/types/key-word).
 
 ## Example
 
@@ -25,7 +25,7 @@ static getKeyWords(NOTEPath: string, pageList: number[]): Promise<APIResponse<Ke
 import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
- * Get keywordlist example.
+ * Example: get keywords.
  */
 export async function exampleGetKeyWords() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';

@@ -1,9 +1,9 @@
 ---
 title: "clearMarkElements"
-description: "Clear DOCfileinhandwritingelementdata."
+description: "Clear handwriting elements in a DOC file."
 ---
 
-DOC inhandwritingelementis not written directly inDOCfilein,but written inDOCfilecorresponding markfileon.
+Handwriting elements in DOC are not written directly into the DOC file, but into its corresponding mark file.
 
 ```ts wrap
 static clearMarkElements(filePath: string, page: number): Promise<APIResponse<boolean>>;
@@ -13,12 +13,12 @@ static clearMarkElements(filePath: string, page: number): Promise<APIResponse<bo
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `filePath` | `string` | DOCfilepath |
-| `page` | `number` | DOCfile page number(starting from 0) |
+| `filePath` | `string` | DOC file path |
+| `page` | `number` | Page index (starts from `0`) |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesClear elementdatasuccess
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response): `result === true` indicates clearing succeeded
 
 ## Example
 

@@ -1,6 +1,6 @@
 ---
 title: "convertElement2Sticker"
-description: "element(Element)convert tosticker."
+description: "Convert elements to a sticker."
 ---
 
 ```ts
@@ -15,18 +15,18 @@ static convertElement2Sticker(
 
 **Parameters**
 
-- parameterobjectfield:
+- `params` fields:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `machineType` | `number` | device modeltype:`0` A5, `1` A6, `2` A6X, `3` A5X, `4` Nomad, `5` Manta |
-| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | elementdata |
-| `stickerPath` | `string` | outputpath(stickerSave position) |
+| `machineType` | `number` | Device type: `0` A5, `1` A6, `2` A6X, `3` A5X, `4` Nomad, `5` Manta |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | Element data |
+| `stickerPath` | `string` | Output path (sticker save location) |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicateselementconvertstickersuccess
+`result === true` indicates conversion succeeded
 
 ## Example
 

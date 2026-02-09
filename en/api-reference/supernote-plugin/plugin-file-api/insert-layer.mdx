@@ -1,10 +1,10 @@
 ---
 title: "insertLayer"
-description: "Insert layerdata."
+description: "Insert a layer."
 ---
 
 <Note>
-onlyNOTEfilecanInsert layerdata,otherfilecannotInsert layerdata.
+Only NOTE files support layer data.
 </Note>
 
 ```ts wrap
@@ -15,14 +15,14 @@ static insertLayer(NOTEPath: string, page: number, layer: Layer): Promise<APIRes
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTEpath |
-| `page` | `number` | pageindex(starting from 0) |
-| `layer` | [`Layer`](/en/api-reference/supernote-plugin/types/layer) | requiredInsert layerdata |
+| `NOTEPath` | `string` | NOTE file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `layer` | [`Layer`](/en/api-reference/supernote-plugin/types/layer) | Layer data to insert |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesInsert layersuccess
+`result === true` indicates the insertion succeeded
 
 ## Example
 
@@ -48,4 +48,3 @@ export async function exampleInsertLayer() {
  return res.result;
 }
 ```
-

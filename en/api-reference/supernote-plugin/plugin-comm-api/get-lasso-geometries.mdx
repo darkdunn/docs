@@ -1,6 +1,6 @@
 ---
 title: "getLassoGeometries"
-description: "Get lassogeometrydatalist."
+description: "Get lasso-selected geometries."
 ---
 
 <Note>
@@ -14,7 +14,7 @@ static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
 **Returns**
 
 - [`APIResponse<Geometry[]>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` geometrytypeinformationSee [`Geometry`](/en/api-reference/supernote-plugin/types/geometry)
+`result` is the [`Geometry`](/en/api-reference/supernote-plugin/types/geometry) array.
 
 ## Example
 
@@ -22,7 +22,7 @@ static getLassoGeometries(): Promise<APIResponse<Geometry[]>>;
 import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
- * Get lassogeometrylist example.
+ * Example: get lasso-selected geometries.
  */
 export async function exampleGetLassoGeometries() {
  const res = await PluginCommAPI.getLassoGeometries();

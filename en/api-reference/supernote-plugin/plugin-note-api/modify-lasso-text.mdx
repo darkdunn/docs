@@ -1,13 +1,12 @@
 ---
 title: "modifyLassoText"
-description: "Modify lassotext box."
+description: "Modify the lasso-selected TextBox."
 ---
 <Note>
 This API supports undo/redo in NOTE.
 
-This APIModify islasso text boxdata,thereforeMust in lassotext boxaftercall,
-and islassosingletext box.iflassois nottext box,orlassomultipletext box,call will failure.
-thereforeRecommended to call this API from the plugin UI entered via a lasso toolbar button.
+This API modifies the TextBox selected by the current lasso selection. The lasso selection must contain exactly one TextBox; otherwise the call fails.
+It is recommended to call this API from the plugin UI entered via a lasso toolbar button.
 </Note>
 
 ```ts
@@ -31,23 +30,23 @@ static modifyLassoText(textBox: {
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `textBox.textContentFull` | `string` | textcontent(required,non-empty) |
-| `textBox.textRect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
-| `textBox.fontSize` | `number` | font size(optional；must be positive) |
-| `textBox.fontPath` | `string` | fontpath(optional) |
-| `textBox.textDigestData` | `string` | summarydata(optional) |
-| `textBox.textAlign` | `number` | alignment(optional) |
-| `textBox.textBold` | `number` | bold(optional) |
-| `textBox.textItalics` | `number` | italic(optional) |
-| `textBox.textFrameWidthType` | `number` | border widthtype(optional) |
-| `textBox.textFrameWidth` | `number` | border width(optional) |
-| `textBox.textFrameStyle` | `number` | borderstyle(optional) |
-| `textBox.textEditable` | `number` | whethereditable(optional) |
+| `textBox.textContentFull` | `string` | Text content (required, non-empty) |
+| `textBox.textRect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | TextBox rectangle (required; must be non-zero area) |
+| `textBox.fontSize` | `number` | Font size (optional; must be positive) |
+| `textBox.fontPath` | `string` | Font path (optional) |
+| `textBox.textDigestData` | `string` | Digest data (optional) |
+| `textBox.textAlign` | `number` | Alignment (optional) |
+| `textBox.textBold` | `number` | Bold (optional) |
+| `textBox.textItalics` | `number` | Italic (optional) |
+| `textBox.textFrameWidthType` | `number` | Border width type (optional) |
+| `textBox.textFrameWidth` | `number` | Border width (optional) |
+| `textBox.textFrameStyle` | `number` | Border style (optional) |
+| `textBox.textEditable` | `number` | Editable state (optional) |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesModify success
+`result === true` indicates the modification succeeded
 
 ## Example
 
@@ -55,7 +54,7 @@ static modifyLassoText(textBox: {
 import { PluginNoteAPI, type TextBox } from 'sn-plugin-lib';
 
 /**
-* Example: modify a lasso-selected text box (read first, then update content).
+* Example: modify a lasso-selected TextBox (read first, then update content).
  */
 export async function exampleModifyLassoText() {
  const listRes = await PluginNoteAPI.getLassoText();

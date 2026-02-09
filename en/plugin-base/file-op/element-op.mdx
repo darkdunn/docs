@@ -3,7 +3,7 @@ title: "Element Operations"
 description: "Read, create, insert, modify, and replace Elements in NOTE/DOC files."
 ---
 
-`Element` is the unified data structure for “all visible elements” in NOTE/DOC: strokes, titles, links, text boxes, geometries, five-star elements, pictures, etc. are all represented as `Element`, and distinguished by `type`.
+`Element` is the unified data structure for “all visible elements” in NOTE/DOC: strokes, titles, links, TextBox elements, geometries, five-star elements, pictures, etc. are all represented as `Element`, and distinguished by `type`.
 
 - Element types and fields: [`Element`](/en/api-reference/supernote-plugin/types/trail)
 - Type constants: [`ElementType`](/en/api-reference/supernote-plugin/types/trail#elementtype)
@@ -35,7 +35,7 @@ Therefore, when creating a new element, it is recommended to call `PluginCommAPI
 
 ### 3) Document limitations
 
-Document files do not allow inserting **text boxes / titles / links**. Forcing insertion will be rejected by validation.
+Document files do not allow inserting **TextBox elements / titles / links**. Forcing insertion will be rejected by validation.
 
 ## Get Page Elements
 
@@ -112,7 +112,7 @@ export async function insertOneStroke(notePath: string, page: number) {
 ```
 
 <Warning>
-Text boxes/links/titles can only be operated on the main layer (`layer=0`). Before insertion, ensure `element.layerNum = 0`, otherwise validation fails.
+TextBox elements/links/titles can only be operated on the main layer (`layer=0`). Before insertion, ensure `element.layerNum = 0`, otherwise validation fails.
 </Warning>
 
 ## Modify Existing Elements

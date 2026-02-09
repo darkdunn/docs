@@ -1,6 +1,6 @@
-﻿---
+---
 title: "unregisterButton"
-description: "unregisterpluginbutton."
+description: "Unregister a plugin button."
 ---
 
 ```ts
@@ -11,11 +11,11 @@ unregisterButton(id: number): Promise<boolean>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `id` | `number` | buttonunique identifier(registerbuttonwhen Set id) |
+| `id` | `number` | Button ID (the `id` you used when registering the button) |
 
 **Returns**
 
-- `Promise<boolean>`:whethersuccessunregister
+- `Promise<boolean>`: whether the button was unregistered successfully
 
 ## Example
 
@@ -23,7 +23,7 @@ unregisterButton(id: number): Promise<boolean>;
 import { PluginManager } from 'sn-plugin-lib';
 
 /**
- * unregisterbutton example.
+ * Example: unregister a button.
  */
 export async function exampleUnregisterButton() {
  const ok = await PluginManager.unregisterButton(1);

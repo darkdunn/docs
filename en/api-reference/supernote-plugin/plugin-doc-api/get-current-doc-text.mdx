@@ -1,6 +1,6 @@
 ---
 title: "getCurrentDocText"
-description: "Get currentopenedDOCspecifiedpage textcontent."
+description: "Get text content of a page in the currently opened DOC."
 ---
 
 ```ts
@@ -11,12 +11,12 @@ static getCurrentDocText(page: number): Promise<APIResponse<string>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `page` | `number` | page number(starting from 0) |
+| `page` | `number` | Page index (starts from `0`) |
 
 **Returns**
 
 - [`APIResponse<string>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` is DOCspecifiedpage textcontent
+`result` is the text content of the specified page
 
 ## Example
 
@@ -24,7 +24,7 @@ static getCurrentDocText(page: number): Promise<APIResponse<string>>;
 import { PluginDocAPI } from 'sn-plugin-lib';
 
 /**
- * Get currentDOCa pagetext example.
+ * Example: get page text from the current document.
  */
 export async function exampleGetCurrentDocText() {
  const page = 1;

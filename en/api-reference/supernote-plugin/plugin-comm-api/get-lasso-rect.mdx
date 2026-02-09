@@ -1,6 +1,6 @@
 ---
 title: "getLassoRect"
-description: "Get lasso boxregionposition."
+description: "Get the lasso rectangle."
 ---
 
 <Note>
@@ -14,7 +14,7 @@ static getLassoRect(): Promise<APIResponse<Rect>>;
 **Returns**
 
 - [`APIResponse<Rect>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` is [`Rect`](/en/api-reference/supernote-plugin/types/rect),useispixelpoint coordinates.
+`result` is [`Rect`](/en/api-reference/supernote-plugin/types/rect) in pixel coordinates.
 
 ## Example
 
@@ -22,7 +22,7 @@ static getLassoRect(): Promise<APIResponse<Rect>>;
 import { PluginCommAPI, type Rect } from 'sn-plugin-lib';
 
 /**
- * Get lasso boxrectangle example.
+ * Example: get lasso rectangle.
  */
 export async function exampleGetLassoRect(): Promise<Rect> {
  const res = await PluginCommAPI.getLassoRect();

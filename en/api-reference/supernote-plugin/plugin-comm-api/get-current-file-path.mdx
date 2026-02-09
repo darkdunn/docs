@@ -1,6 +1,6 @@
-﻿---
+---
 title: "getCurrentFilePath"
-description: "Get currentopenedfilepath."
+description: "Get the file path of the currently opened file."
 ---
 
 ```ts
@@ -13,7 +13,7 @@ static getCurrentFilePath(): Promise<APIResponse<string>>;
 import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
- * Get currentfilepath example.
+ * Example: get current file path.
  */
 export async function exampleGetCurrentFilePath() {
  const res = await PluginCommAPI.getCurrentFilePath();

@@ -20,15 +20,15 @@ description: "笔记/文档中“可见元素”的统一数据结构。"
 
 | 类型 | 常量 | 值 | 说明 | 细分字段 |
 | --- | --- | ---| --- | --- |
-| 笔画 | `TYPE_STROKE` | `0` | 笔划（手写笔迹） | `stroke` |
-| 标题 | `TYPE_TITLE` | `100` | 标题元素 | `title` |
-| 图片 | `TYPE_PICTURE` | `200` | 图片元素 | `picture` |
-| 文本框 | `TYPE_TEXT` | `500` | 普通文本框 | `textBox` |
-| 摘录引用文本框 | `TYPE_TEXT_DIGEST_QUOTE` | `501` | 引用摘录 | `textBox` |
-| 摘录创建文本框 | `TYPE_TEXT_DIGEST_CREATE` | `502` | 在笔记中被创建为摘录 | `textBox` |
-| 链接 | `TYPE_LINK` | `600` | 文本链接/笔画链接 | `link` |
-| 几何图形 | `TYPE_GEO` | `700` | 几何图形 | `geometry` |
-| 五角星 | `TYPE_FIVE_STAR` | `800` | 五角星 | `fiveStar` |
+| 笔画 | `TYPE_STROKE` | `0` | 手写笔划：既能插入到主图层，也能插入到自定义图层，后续操作也都支持这两种层 | `stroke` |
+| 标题 | `TYPE_TITLE` | `100` | 标题元素：只能在主图层插入和操作，其他层不允许 | `title` |
+| 图片 | `TYPE_PICTURE` | `200` | 图片元素：既能插入到主图层，也能插入到自定义图层，后续操作也都支持这两种层 | `picture` |
+| 文本框 | `TYPE_TEXT` | `500` | 普通文本框：既能插入到主图层，也能插入到自定义图层，后续操作也都支持这两种层 | `textBox` |
+| 摘录引用文本框 | `TYPE_TEXT_DIGEST_QUOTE` | `501` | 引用摘录：只能在主图层插入和操作，其他层不允许 | `textBox` |
+| 摘录创建文本框 | `TYPE_TEXT_DIGEST_CREATE` | `502` | 创建类摘录文本框：只能在主图层插入和操作，其他层不允许 | `textBox` |
+| 链接 | `TYPE_LINK` | `600` | 文本链接/笔画链接：只能在主图层插入和操作，其他层不允许 | `link` |
+| 几何图形 | `TYPE_GEO` | `700` | 几何图形：既能插入到主图层，也能插入到自定义图层，后续操作也都支持这两种层 | `geometry` |
+| 五角星 | `TYPE_FIVE_STAR` | `800` | 五角星：只能在主图层插入和操作，其他层不允许| `fiveStar` |
 
 ## 字段
 

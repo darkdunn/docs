@@ -1,6 +1,6 @@
 ---
 title: "removeNotePage"
-description: "Delete NOTEfilespecifiedpage."
+description: "Delete a page from a note file."
 ---
 
 ```ts wrap
@@ -11,13 +11,13 @@ static removeNotePage(NOTEPath: string, page: number): Promise<APIResponse<boole
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTEfilepath |
-| `page` | `number` | to Delete page number(starting from 0) |
+| `NOTEPath` | `string` | NOTE file path |
+| `page` | `number` | Page index to delete (starts from `0`) |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesDelete success
+`result === true` indicates deletion succeeded
 
 ## Example
 
@@ -25,7 +25,7 @@ static removeNotePage(NOTEPath: string, page: number): Promise<APIResponse<boole
 import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
- * Delete specifiedpage example.
+ * Example: delete a page.
  */
 export async function exampleRemoveNotePage() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';
@@ -37,4 +37,3 @@ export async function exampleRemoveNotePage() {
  return res.result;
 }
 ```
-

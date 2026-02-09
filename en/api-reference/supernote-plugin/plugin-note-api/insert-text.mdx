@@ -1,10 +1,10 @@
 ---
 title: "insertText"
-description: "Insert text box."
+description: "Insert TextBox."
 ---
 
 <Note>
-text boxonlyInsert to main layer,cannotInsert to otherlayer.This APIsupportNOTEinundo/redooperation
+TextBox can only be inserted into the main layer. This API supports undo/redo in NOTE.
 </Note>
 
 ```ts
@@ -26,21 +26,21 @@ static insertText(textBox: {
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `textBox.textContentFull` | `string` | textcontent(required,non-empty) |
-| `textBox.textRect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | text boxrectangle(required,must be non-zero area) |
-| `textBox.fontSize` | `number` | font size(must be positive) |
-| `textBox.fontPath` | `string` | fontpath(optional) |
-| `textBox.textAlign` | `number` | alignment:0 left aligned,1 center,2 right aligned |
-| `textBox.textBold` | `number` | whetherbold:0 normal,1 bold |
-| `textBox.textItalics` | `number` | italic:0 normal,1 tilt |
-| `textBox.textFrameWidthType` | `number` | border widthtype:0 fixedwidth,1 auto width |
-| `textBox.textFrameStyle` | `number` | borderstyle:0 no border,3 stroke |
-| `textBox.textEditable` | `number` | editablestate:0 editable,1 non-editable |
+| `textBox.textContentFull` | `string` | Text content (required, non-empty) |
+| `textBox.textRect` | [`Rect`](/en/api-reference/supernote-plugin/types/rect) | TextBox rectangle (required; must be non-zero area) |
+| `textBox.fontSize` | `number` | Font size (must be positive) |
+| `textBox.fontPath` | `string` | Font path (optional) |
+| `textBox.textAlign` | `number` | Alignment: `0` left, `1` center, `2` right |
+| `textBox.textBold` | `number` | Bold: `0` normal, `1` bold |
+| `textBox.textItalics` | `number` | Italic: `0` normal, `1` italic |
+| `textBox.textFrameWidthType` | `number` | Border width type: `0` fixed width, `1` auto width |
+| `textBox.textFrameStyle` | `number` | Border style: `0` none, `3` stroke |
+| `textBox.textEditable` | `number` | Editable: `0` editable, `1` non-editable |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` is a boolean value, indicating whether insertion succeeds
+`result === true` indicates the insertion succeeded
 
 ## Example
 
@@ -48,7 +48,7 @@ static insertText(textBox: {
 import { PluginNoteAPI, type Rect } from 'sn-plugin-lib';
 
 /**
- * Insert text box example.
+ * Insert TextBox example.
  */
 export async function exampleInsertText() {
  const textRect: Rect = { left: 100, top: 100, right: 320, bottom: 180 };

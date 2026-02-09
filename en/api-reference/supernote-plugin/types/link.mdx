@@ -14,15 +14,15 @@ When [`Element`](/en/api-reference/supernote-plugin/types/trail) has `type === 6
 | `category` | `number` | Link category: `0` text link, `1` stroke link |
 | `X` | `number` | Top-left X (pixel coordinates) |
 | `Y` | `number` | Top-left Y (pixel coordinates) |
-| `width` | `number` | width(pixel) |
-| `height` | `number` | height(pixel) |
-| `page` | `number` | where it is locatedpage number |
-| `style` | `number` | style:`0` solid underline,`1` solid border,`2` dashed border |
-| `linkType` | `number` | type:`0` NOTEpage,`1` NOTEfile,`2` DOC,`3` image,`4` URL,`6` digest |
+| `width` | `number` | Width (pixels) |
+| `height` | `number` | Height (pixels) |
+| `page` | `number` | Page number where the link is located |
+| `style` | `number` | Style: `0` solid underline, `1` solid border, `2` dashed border |
+| `linkType` | `number` | Type: `0` note page, `1` note file, `2` document, `3` image, `4` URL, `6` digest |
 | `destPath` | `string` | Destination path (when `linkType === 4`, this is the URL) |
 | `destPage` | `number` | Destination page (mainly used when `linkType === 0`) |
-| `fontSize` | `number` | font size(textlink) |
-| `fullText` | `string` | fulltext(textlink) |
-| `showText` | `string` | displaytext(textlink) |
+| `fontSize` | `number` | Font size (text link) |
+| `fullText` | `string` | Full text (text link) |
+| `showText` | `string` | Display text (text link) |
 | `italic` | `number` | Italic: `0` no, `1` yes (text link) |
-| `controlTrailNums` | `number[]` | strokeindexlist(strokelink) |
+| `controlTrailNums` | `number[]` | Stroke index list (stroke link) |

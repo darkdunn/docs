@@ -1,6 +1,6 @@
 ---
 title: "getCurrentTotalPages"
-description: "Get currentopenedDOC total page count."
+description: "Get total page count of the currently opened DOC."
 ---
 
 ```ts
@@ -10,7 +10,7 @@ static getCurrentTotalPages(): Promise<APIResponse<number>>;
 **Returns**
 
 - [`APIResponse<number>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` is DOCtotal page count
+`result` is the total page count
 
 ## Example
 
@@ -18,7 +18,7 @@ static getCurrentTotalPages(): Promise<APIResponse<number>>;
 import { PluginDocAPI } from 'sn-plugin-lib';
 
 /**
- * Get currentDOCtotal pagesvalueexample.
+ * Example: get total page count of the current document.
  */
 export async function exampleGetCurrentTotalPages() {
  const res = await PluginDocAPI.getCurrentTotalPages();

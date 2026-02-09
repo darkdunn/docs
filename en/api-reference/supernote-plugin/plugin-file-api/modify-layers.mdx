@@ -1,10 +1,10 @@
 ---
 title: "modifyLayers"
-description: "Modify pagelayerdata(not exists layerwill notModify )."
+description: "Modify page layer data (non-existent layers are ignored)."
 ---
 
 <Note>
-onlyNOTEfileonly whenlayerdata,otherfilenonelayerdata.
+Only NOTE files have layer data; other file types do not.
 </Note>
 
 ```ts wrap
@@ -15,14 +15,14 @@ static modifyLayers(NOTEPath: string, page: number, layers: Layer[]): Promise<AP
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTEfilepath |
-| `page` | `number` | pageindex(starting from 0) |
-| `layers` | [`Layer[]`](/en/api-reference/supernote-plugin/types/layer) | existinglayerdataarray |
+| `NOTEPath` | `string` | NOTE file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `layers` | [`Layer[]`](/en/api-reference/supernote-plugin/types/layer) | Existing layer data array |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesModify success
+`result === true` indicates the modification succeeded
 
 ## Example
 
@@ -30,7 +30,7 @@ static modifyLayers(NOTEPath: string, page: number, layers: Layer[]): Promise<AP
 import { PluginFileAPI, type Layer } from 'sn-plugin-lib';
 
 /**
- * Modify pagelayerdata example.
+ * Example: modify page layer data.
  */
 export async function exampleModifyLayers() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';
@@ -61,4 +61,3 @@ export async function exampleModifyLayers() {
  return res.result;
 }
 ```
-

@@ -1,10 +1,10 @@
 ---
 title: "modifyLassoGeometry"
-description: "Modify lassogeometry."
+description: "Modify the lasso-selected geometry."
 ---
 
 <Note>
-You must create a lasso selection before calling this API; otherwise the call fails.andMustlassosinglegeometry,otherwisecannotsuccessModify geometry.
+You must create a lasso selection before calling this API. The lasso selection must contain exactly one geometry; otherwise the call fails.
 </Note>
 
 ```ts wrap
@@ -15,12 +15,12 @@ static modifyLassoGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `geometry` | [`Geometry`](/en/api-reference/supernote-plugin/types/geometry) | geometryparameter |
+| `geometry` | [`Geometry`](/en/api-reference/supernote-plugin/types/geometry) | Geometry data |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesModify geometrysuccess
+`result === true` indicates the modification succeeded
 
 ## Example
 
@@ -28,7 +28,7 @@ static modifyLassoGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 import { PluginCommAPI, type Geometry } from 'sn-plugin-lib';
 
 /**
- * Modify lassoinonegeometry example.
+ * Example: modify the lasso-selected geometry.
  */
 export async function exampleModifyLassoGeometry() {
  const listRes = await PluginCommAPI.getLassoGeometries();
@@ -39,7 +39,7 @@ export async function exampleModifyLassoGeometry() {
  const geometries = (listRes.result ?? []) as Geometry[];
 
  if (geometries.length !== 1) {
- throw new Error('make surecurrentlassoonly includeonegeometry');
+ throw new Error('Make sure the current lasso selection includes exactly one geometry');
  }
  const first = geometries[0];
  if (!first) {

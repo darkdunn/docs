@@ -1,6 +1,6 @@
 ---
 title: "generateNotePng"
-description: "Generate NOTEfilespecifiedpage PNG image."
+description: "Generate a PNG for a note page."
 ---
 
 ```ts wrap
@@ -17,16 +17,16 @@ static generateNotePng(params: {
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `params.notePath` | `string` | NOTEfilepath |
-| `params.page` | `number` | page number(starting from 0) |
+| `params.notePath` | `string` | NOTE file path |
+| `params.page` | `number` | Page index (starts from `0`) |
 | `params.times` | `number` | Image scale factor (usually `1` or `2`) |     
-| `params.pngPath` | `string` | PNG outputpath(must end with `.png` suffix) |
-| `params.type` | `number` | Generate type:`0` transparent backgroundimage,`1` white backgroundimage |
+| `params.pngPath` | `string` | Output PNG path (must end with `.png`) |
+| `params.type` | `number` | Output type: `0` transparent background, `1` white background |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesGenerate thumbnailsuccess
+`result === true` indicates generation succeeded
 
 ## Example
 

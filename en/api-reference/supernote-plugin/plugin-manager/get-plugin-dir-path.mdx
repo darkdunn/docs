@@ -1,6 +1,6 @@
-﻿---
+---
 title: "getPluginDirPath"
-description: "Get plugininstallation directory path."
+description: "Get the plugin installation directory path."
 ---
 
 ```ts
@@ -9,7 +9,7 @@ getPluginDirPath(): Promise<string | null | undefined>;
 
 **Returns**
 
-- `Promise<string | null | undefined>`:plugininstallation directory path
+- `Promise<string | null | undefined>`: plugin installation directory path
 
 ## Example
 
@@ -17,7 +17,7 @@ getPluginDirPath(): Promise<string | null | undefined>;
 import { PluginManager } from 'sn-plugin-lib';
 
 /**
- * Get plugindirectorypath example.
+ * Example: get plugin directory path.
  */
 export async function exampleGetPluginDirPath() {
  const dir = await PluginManager.getPluginDirPath();

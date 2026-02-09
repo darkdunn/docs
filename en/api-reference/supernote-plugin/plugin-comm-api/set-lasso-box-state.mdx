@@ -1,6 +1,6 @@
 ---
 title: "setLassoBoxState"
-description: "Set lasso boxstate."
+description: "Set lasso box state."
 ---
 
 <Note>
@@ -15,12 +15,12 @@ static setLassoBoxState(state: number): Promise<APIResponse<boolean>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `state` | `number` | `0` show,`1` hide,`2` remove completely |
+| `state` | `number` | `0` show, `1` hide, `2` remove completely |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesSet success
+`result === true` indicates the call succeeded
 
 ## Example
 
@@ -28,7 +28,7 @@ static setLassoBoxState(state: number): Promise<APIResponse<boolean>>;
 import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
- * Set lasso boxstate example.
+ * Example: set lasso box state.
  */
 export async function exampleSetLassoBoxState() {
  const res = await PluginCommAPI.setLassoBoxState(1);

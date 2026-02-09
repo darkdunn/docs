@@ -1,6 +1,6 @@
 ---
 title: "clearLayerElements"
-description: "Clear NOTEfileinpage specifiedlayeronelementdata."
+description: "Clear elements on a specific layer of a note page."
 ---
 
 ```ts wrap
@@ -11,14 +11,14 @@ static clearLayerElements(NOTEPath: string, page: number, layer: number): Promis
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTEfilepath |
-| `page` | `number` | NOTEfilepage number(starting from 0) |
-| `layer` | `number` | layerid(0-3) |
+| `NOTEPath` | `string` | NOTE file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `layer` | `number` | Layer ID (`0..3`) |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesClear layerdatasuccess
+`result === true` indicates clearing succeeded
 
 ## Example
 
@@ -26,7 +26,7 @@ static clearLayerElements(NOTEPath: string, page: number, layer: number): Promis
 import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
- * Clear specifiedlayerelementdata example.
+ * Example: clear elements on a layer.
  */
 export async function exampleClearLayerElements() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';

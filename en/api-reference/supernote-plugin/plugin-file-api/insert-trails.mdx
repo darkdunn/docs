@@ -1,6 +1,6 @@
 ---
 title: "insertElements"
-description: "Insert elementdata to NOTE/DOCfilepage in ."
+description: "Insert elements into a NOTE/DOC file page."
 ---
 
 ```ts wrap
@@ -11,13 +11,13 @@ static insertElements(NOTEPath: string, page: number, elements: Element[]): Prom
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTEfilepath |
-| `page` | `number` | pageindex(starting from 0) |
-| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | elementdataarray |
+| `NOTEPath` | `string` | NOTE file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | Element data array |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesInsert success
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response): `result === true` indicates the insertion succeeded
 
 ## Example
 
@@ -25,7 +25,7 @@ static insertElements(NOTEPath: string, page: number, elements: Element[]): Prom
 import { PluginFileAPI, PluginCommAPI, PointUtils, type Element } from 'sn-plugin-lib';
 
 /**
- * Create one Element andInsert to specifiedpage example.
+ * Example: create an element and insert it into a page.
  */
 export async function exampleInsertElements() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';
@@ -63,4 +63,3 @@ export async function exampleInsertElements() {
  return res.result;
 }
 ```
-

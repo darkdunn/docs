@@ -1,6 +1,6 @@
 ---
 title: "generateMarkThumbnails"
-description: "Generate DOC mark pagethumbnail."
+description: "Generate a thumbnail for a DOC mark page."
 ---
 
 ```ts wrap
@@ -16,15 +16,15 @@ static generateMarkThumbnails(
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `markPath` | `string` | DOCfilepath |
-| `page` | `number` | page number(starting from 0) |
-| `pngPath` | `string` | PNG outputpath(must end with `.png` suffix) |
-| `size` | [`Size`](/en/api-reference/supernote-plugin/types/size) | Generate imagesize |
+| `markPath` | `string` | DOC file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `pngPath` | `string` | Output PNG path (must end with `.png`) |
+| `size` | [`Size`](/en/api-reference/supernote-plugin/types/size) | Output image size |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesGenerate thumbnailsuccess
+`result === true` indicates generation succeeded
 
 ## Example
 
@@ -32,7 +32,7 @@ static generateMarkThumbnails(
 import { PluginFileAPI } from 'sn-plugin-lib';
 
 /**
- * Generate mark thumbnail example.
+ * Example: generate a mark thumbnail.
  */
 export async function exampleGenerateMarkThumbnails() {
  const markPath = '/storage/emulated/0/Note/demo.pdf';

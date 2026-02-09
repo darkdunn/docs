@@ -4,7 +4,7 @@ description: "Insert sticker."
 ---
 
 <Note>
-callThis APIwillstickerInsert to currentopenedfilecurrentpagecurrentlayer.
+This API inserts a sticker into the current page of the currently opened file.
 </Note>
 
 ```ts
@@ -15,12 +15,12 @@ static insertSticker(path: string): Promise<APIResponse<boolean>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `path` | `string` | stickerfile(.sticker)path |
+| `path` | `string` | Sticker file path (`.sticker`) |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesInsert stickersuccess
+`result === true` indicates the insertion succeeded
 
 ## Example
 
@@ -39,4 +39,3 @@ export async function exampleInsertSticker() {
  return res.result;
 }
 ```
-

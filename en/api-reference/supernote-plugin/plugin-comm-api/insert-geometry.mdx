@@ -4,7 +4,7 @@ description: "Insert geometry."
 ---
 
 <Note>
-callThis APIwillgeometryInsert to currentopenedfilecurrentpagecurrentlayer.
+This API inserts a geometry into the current page of the currently opened file.
 </Note>
 
 ```ts
@@ -15,12 +15,12 @@ static insertGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `geometry` | [`Geometry`](/en/api-reference/supernote-plugin/types/geometry) | geometryparameter |
+| `geometry` | [`Geometry`](/en/api-reference/supernote-plugin/types/geometry) | Geometry data |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesInsert geometrysuccess
+`result === true` indicates the insertion succeeded
 
 ## Example
 
@@ -28,7 +28,7 @@ static insertGeometry(geometry: Geometry): Promise<APIResponse<boolean>>;
 import { PluginCommAPI, type Geometry } from 'sn-plugin-lib';
 
 /**
- * Insert onesimplegeometry example.
+ * Example: insert a geometry into the current page.
  */
 export async function exampleInsertGeometry() {
  const geometry: Geometry = {

@@ -1,6 +1,6 @@
 ---
 title: "modifyElements"
-description: "Modify existingpageelementdata(Mustis existingdata,otherwisewill not take effect)."
+description: "Modify existing page elements (only existing elements can be modified)."
 ---
 
 ```ts wrap
@@ -11,13 +11,13 @@ static modifyElements(NOTEPath: string, page: number, elements: Element[]): Prom
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTE/DOCfilepath |
-| `page` | `number` | pageindex(starting from 0) |
-| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | requiredModify elementarray(Mustalready exists) |
+| `NOTEPath` | `string` | NOTE/DOC file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | Elements to modify (must already exist) |
 
 **Returns**
 
-- [`APIResponse<number[]>`](/en/api-reference/supernote-plugin/types/api-response):`result` is Modify success elementindexlist
+- [`APIResponse<number[]>`](/en/api-reference/supernote-plugin/types/api-response): `result` is the list of element indices modified successfully
 
 ## Example
 
@@ -25,7 +25,7 @@ static modifyElements(NOTEPath: string, page: number, elements: Element[]): Prom
 import { PluginFileAPI, ElementType, type Element } from 'sn-plugin-lib';
 
 /**
- * fetchpageelementandsubmitModify example.
+ * Example: fetch page elements and submit a modification.
  */
 export async function exampleModifyElements() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';
@@ -71,4 +71,3 @@ export async function exampleModifyElements() {
  return res.result;
 }
 ```
-

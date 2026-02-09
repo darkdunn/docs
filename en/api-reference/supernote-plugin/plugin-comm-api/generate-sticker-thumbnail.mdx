@@ -1,6 +1,6 @@
 ---
 title: "generateStickerThumbnail"
-description: "Generate stickerthumbnail."
+description: "Generate a sticker thumbnail."
 ---
 
 ```ts
@@ -17,12 +17,12 @@ static generateStickerThumbnail(
 | --- | --- | --- |
 | `stickerPath` | `string` | Sticker source file path |
 | `thumbnailPath` | `string` | Thumbnail output path (usually `.png`) |      
-| `size` | [`Size`](/en/api-reference/supernote-plugin/types/size) | thumbnailsize(keep the same aspect ratio as the original image),canvia [`getStickerSize`](/en/api-reference/supernote-plugin/plugin-comm-api/get-sticker-size)thisAPIGet sticker size|
+| `size` | [`Size`](/en/api-reference/supernote-plugin/types/size) | Thumbnail size (keep the original aspect ratio). You can get it via [`getStickerSize`](/en/api-reference/supernote-plugin/plugin-comm-api/get-sticker-size). |
 
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicatesGenerate thumbnailsuccess
+`result === true` indicates generation succeeded
 
 ## Example
 
@@ -30,7 +30,7 @@ static generateStickerThumbnail(
 import { PluginCommAPI } from 'sn-plugin-lib';
 
 /**
- * Generate stickerthumbnail example.
+ * Example: generate a sticker thumbnail.
  */
 export async function exampleGenerateStickerThumbnail() {
  const stickerPath = '/storage/emulated/0/Note/stickers/demo.sticker';

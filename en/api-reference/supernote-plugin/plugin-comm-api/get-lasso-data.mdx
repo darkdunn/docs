@@ -14,7 +14,7 @@ static getLassoElements(): Promise<APIResponse<Element[]>>;
 **Returns**
 
 - [`APIResponse<Element[]>`](/en/api-reference/supernote-plugin/types/api-response):
-`result` elementtype: see [`Element`](/en/api-reference/supernote-plugin/types/trail)
+See [`Element`](/en/api-reference/supernote-plugin/types/trail) for element types and fields.
 
 ## Example
 
@@ -22,7 +22,7 @@ static getLassoElements(): Promise<APIResponse<Element[]>>;
 import { PluginCommAPI, ElementType, type Element } from 'sn-plugin-lib';
 
 /**
- * Get lassoelementand bytypefilter example.
+ * Example: get lasso elements and filter by type.
  */
 export async function exampleGetLassoElements() {
  const res = await PluginCommAPI.getLassoElements();

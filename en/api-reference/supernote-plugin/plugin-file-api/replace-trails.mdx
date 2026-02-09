@@ -1,6 +1,6 @@
 ---
 title: "replaceElements"
-description: "replacespecifiedpageelementdata."
+description: "Replace all elements on a page."
 ---
 
 ```ts wrap
@@ -11,13 +11,13 @@ static replaceElements(NOTEPath: string, page: number, elements: Element[]): Pro
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `NOTEPath` | `string` | NOTE/DOCfilepath |
-| `page` | `number` | pageindex(starting from 0) |
-| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | elementdataarray |
+| `NOTEPath` | `string` | NOTE/DOC file path |
+| `page` | `number` | Page index (starts from `0`) |
+| `elements` | [`Element[]`](/en/api-reference/supernote-plugin/types/trail) | Element data array |
 
 **Returns**
 
-- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):`result === true` indicatesreplacesuccess
+- [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response): `result === true` indicates replacement succeeded
 
 ## Example
 
@@ -25,7 +25,7 @@ static replaceElements(NOTEPath: string, page: number, elements: Element[]): Pro
 import { PluginFileAPI, PluginCommAPI, ElementType, type Element } from 'sn-plugin-lib';
 
 /**
- * readpageelementandwrite back(replace) example.
+ * Example: read page elements and write back (replace).
  */
 export async function exampleReplaceElements() {
  const NOTEPath = '/storage/emulated/0/Note/demo.note';
@@ -44,7 +44,7 @@ export async function exampleReplaceElements() {
  }
  const textEl = createRes.result as Element;
  if (textEl.textBox) {
- textEl.textBox.textContentFull = 'replaceafterpagecontent';
+ textEl.textBox.textContentFull = 'Replaced content';
  textEl.textBox.fontSize = 16;
  textEl.textBox.textBold = 1;
  textEl.textBox.textAlign = 1;
