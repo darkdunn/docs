@@ -16,9 +16,9 @@ Fields:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `penColor` | `number` | Pen color, e.g. `0xFE` (white), `0x9D` (dark gray), `0xC9` (light gray) |
+| `penColor` | `number` | Pen color: `0x00` (black), `0x9D` (dark gray), `0xC9` (light gray), `0xFE` (white) |
 | `penType` | `number` | Pen type: `10` technical pen, `1` pressure pen, `11` marker pen |
-| `penWidth` | `number` | Pen width |
+| `penWidth` | `number` | Pen width (minimum `100`) |
 | `type` | `string` | Geometry type. See the table above |
 | `points` | [`Point[]`](/en/api-reference/supernote-plugin/types/point) | Polygon points (pixel coordinates) |
 | `ellipseCenterPoint` | [`Point \| null`](/en/api-reference/supernote-plugin/types/point) | Ellipse center point (pixel coordinates) |

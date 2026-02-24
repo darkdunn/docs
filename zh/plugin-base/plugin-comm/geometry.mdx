@@ -22,7 +22,7 @@ async function insertCircle() {
   const geometry = {
     penColor: 0x9d,     // 绘制几何图形的笔颜色
     penType: 10,        // 绘制几何图形的笔类型
-    penWidth: 3,        // 几何图形的线条粗细
+    penWidth: 200,      // 几何图形的线条粗细（最小值 100）
     type: 'GEO_circle', // 几何图形类型
     ellipseCenterPoint: { x: 300, y: 400 }, // 椭圆的中心点位置，使用屏幕坐标系
     ellipseMajorAxisRadius: 120,            // 椭圆长轴半径
