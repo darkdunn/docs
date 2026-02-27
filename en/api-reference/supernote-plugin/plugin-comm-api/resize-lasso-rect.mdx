@@ -1,12 +1,12 @@
 ---
-title: "updateLassoRect"
-description: "Update the lasso rectangle."
+title: "resizeLassoRect"
+description: "Resize the lasso rectangle."
 ---
 <Note>
 You must create a lasso selection before calling this API; otherwise the call fails.
 </Note>
 ```ts
-static updateLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
+static resizeLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
 ```
 
 **Parameters**
@@ -18,7 +18,7 @@ static updateLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
 **Returns**
 
 - [`APIResponse<boolean>`](/en/api-reference/supernote-plugin/types/api-response):
-`result === true` indicates the update succeeded
+`result === true` indicates the resize succeeded
 
 ## Example
 
@@ -26,9 +26,9 @@ static updateLassoRect(rect: Rect): Promise<APIResponse<boolean>>;
 import { PluginCommAPI, type Rect } from 'sn-plugin-lib';
 
 /**
- * Example: update the lasso rectangle (proportional scaling).
+ * Example: resize the lasso rectangle (proportional scaling).
  */
-export async function exampleUpdateLassoRect() {
+export async function exampleResizeLassoRect() {
  const current = await PluginCommAPI.getLassoRect();
  if (!current.success) {
  throw new Error(current.error?.message ?? 'getLassoRect call failed');
@@ -47,9 +47,9 @@ export async function exampleUpdateLassoRect() {
  bottom: cy + (h * scale) / 2,
  };
 
- const res = await PluginCommAPI.updateLassoRect(nextRect);
+ const res = await PluginCommAPI.resizeLassoRect(nextRect);
  if (!res.success) {
- throw new Error(res.error?.message ?? 'updateLassoRect call failed');
+ throw new Error(res.error?.message ?? 'resizeLassoRect call failed');
  }
  return res.result;
 }

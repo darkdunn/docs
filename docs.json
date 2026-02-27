@@ -8,11 +8,19 @@
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
+  "banner": {
+    "content": "SDK docs version: v0.1.25",
+    "dismissible": false
+  },
   "navigation": {
     "languages": [
       {
         "language": "zh",
         "default": true,
+        "banner": {
+          "content": "SDK 文档版本：v0.1.25",
+          "dismissible": false
+        },
         "tabs": [
           {
             "tab": "Guides",
@@ -88,12 +96,14 @@
                       "zh/api-reference/supernote-plugin/plugin-comm-api/insert-sticker",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect",
-                      "zh/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect",
+                      "zh/api-reference/supernote-plugin/plugin-comm-api/lasso-elements",
+                      "zh/api-reference/supernote-plugin/plugin-comm-api/resize-lasso-rect",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path",
+                      "zh/api-reference/supernote-plugin/plugin-comm-api/get-pen-info",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/reload-file",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/insert-geometry",
@@ -140,6 +150,7 @@
                       "zh/api-reference/supernote-plugin/plugin-file-api/replace-trails",
                       "zh/api-reference/supernote-plugin/plugin-file-api/insert-trails",
                       "zh/api-reference/supernote-plugin/plugin-file-api/modify-trails",
+                      "zh/api-reference/supernote-plugin/plugin-file-api/delete-elements",
                       "zh/api-reference/supernote-plugin/plugin-file-api/get-titles",
                       "zh/api-reference/supernote-plugin/plugin-file-api/get-key-words",
                       "zh/api-reference/supernote-plugin/plugin-file-api/insert-key-word",
@@ -209,6 +220,7 @@
                       "zh/api-reference/supernote-plugin/types/size",
                       "zh/api-reference/supernote-plugin/types/trail-data-accessor",
                       "zh/api-reference/supernote-plugin/types/stroke",
+                      "zh/api-reference/supernote-plugin/types/pen-info",
                       "zh/api-reference/supernote-plugin/types/recogn-data",
                       "zh/api-reference/supernote-plugin/types/recog-result-data",
                       "zh/api-reference/supernote-plugin/types/geometry",
@@ -234,6 +246,10 @@
       },
       {
         "language": "en",
+        "banner": {
+          "content": "SDK docs version: v0.1.25",
+          "dismissible": false
+        },
         "tabs": [
           {
             "tab": "Guides",
@@ -309,12 +325,14 @@
                       "en/api-reference/supernote-plugin/plugin-comm-api/insert-sticker",
                       "en/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect",
-                      "en/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect",
+                      "en/api-reference/supernote-plugin/plugin-comm-api/lasso-elements",
+                      "en/api-reference/supernote-plugin/plugin-comm-api/resize-lasso-rect",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data-type-counts",
                       "en/api-reference/supernote-plugin/plugin-comm-api/delete-lasso-data",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path",
+                      "en/api-reference/supernote-plugin/plugin-comm-api/get-pen-info",
                       "en/api-reference/supernote-plugin/plugin-comm-api/reload-file",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries",
                       "en/api-reference/supernote-plugin/plugin-comm-api/insert-geometry",
@@ -361,6 +379,7 @@
                       "en/api-reference/supernote-plugin/plugin-file-api/replace-trails",
                       "en/api-reference/supernote-plugin/plugin-file-api/insert-trails",
                       "en/api-reference/supernote-plugin/plugin-file-api/modify-trails",
+                      "en/api-reference/supernote-plugin/plugin-file-api/delete-elements",
                       "en/api-reference/supernote-plugin/plugin-file-api/get-titles",
                       "en/api-reference/supernote-plugin/plugin-file-api/get-key-words",
                       "en/api-reference/supernote-plugin/plugin-file-api/insert-key-word",
@@ -430,6 +449,7 @@
                       "en/api-reference/supernote-plugin/types/size",
                       "en/api-reference/supernote-plugin/types/trail-data-accessor",
                       "en/api-reference/supernote-plugin/types/stroke",
+                      "en/api-reference/supernote-plugin/types/pen-info",
                       "en/api-reference/supernote-plugin/types/recogn-data",
                       "en/api-reference/supernote-plugin/types/recog-result-data",
                       "en/api-reference/supernote-plugin/types/geometry",

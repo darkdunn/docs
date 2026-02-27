@@ -26,7 +26,8 @@ The selected element list can be obtained via [`PluginCommAPI.getLassoElements()
 | Goal | API | Description |
 | --- | --- | --- |
 | Get lasso rectangle | [`getLassoRect()`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-rect) | Returns lasso rectangle (`Rect`) |
-| Update lasso rectangle | [`updateLassoRect(rect)`](/en/api-reference/supernote-plugin/plugin-comm-api/update-lasso-rect) | Updates the lasso rectangle. Currently only proportional scaling is supported |
+| Create lasso selection | [`lassoElements(rect)`](/en/api-reference/supernote-plugin/plugin-comm-api/lasso-elements) | Creates a lasso selection from a rectangle (pixel coordinates) |
+| Resize lasso rectangle | [`resizeLassoRect(rect)`](/en/api-reference/supernote-plugin/plugin-comm-api/resize-lasso-rect) | Resizes the lasso rectangle. Currently only proportional scaling is supported |
 | Get selected elements | [`getLassoElements()`](/en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-data) | Returns `Element[]` (accessor fields are filled on success) |
 | Control lasso box | [`setLassoBoxState(state)`](/en/api-reference/supernote-plugin/plugin-comm-api/set-lasso-box-state) | `0` show, `1` hide, `2` remove completely |
 
@@ -80,12 +81,12 @@ export function scaleRectKeepAspect(rect: Rect, scale: number): Rect {
 }
 
 /**
- * Scale the lasso rectangle proportionally and submit the update.
+ * Scale the lasso rectangle proportionally and submit the resize.
  */
-export async function updateLassoRectByScale(scale: number): Promise<boolean> {
+export async function resizeLassoRectByScale(scale: number): Promise<boolean> {
   const rect = await fetchLassoRect();
   const nextRect = scaleRectKeepAspect(rect, scale);
-  const res = await PluginCommAPI.updateLassoRect(nextRect);
+  const res = await PluginCommAPI.resizeLassoRect(nextRect);
   return !!res?.success && !!res.result;
 }
 
@@ -135,6 +136,6 @@ export async function setLassoBoxState(state: 0 | 1 | 2): Promise<boolean> {
 
 ## Constraints and Recommendations
 
-- `updateLassoRect` currently only supports proportional scaling: call `getLassoRect` first, scale around the center, then submit the update
+- `resizeLassoRect` currently only supports proportional scaling: call `getLassoRect` first, scale around the center, then submit the resize
 - `getLassoElements` may return elements with accessor fields: do not assume point sets are fully in JS; use accessors to fetch data on demand
 - `setLassoBoxState(2)` removes the lasso state completely: typically used at the end of an operation; after removal, the lasso toolbar will close on the user side
