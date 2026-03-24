@@ -9,7 +9,7 @@
   },
   "favicon": "/favicon.svg",
   "banner": {
-    "content": "SDK docs version: v0.1.25",
+    "content": "SDK docs version: v0.1.28",
     "dismissible": false
   },
   "navigation": {
@@ -104,6 +104,7 @@
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-pen-info",
+                      "zh/api-reference/supernote-plugin/plugin-comm-api/recognize-elements",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/reload-file",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries",
                       "zh/api-reference/supernote-plugin/plugin-comm-api/insert-geometry",
@@ -333,6 +334,7 @@
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-current-page-num",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-current-file-path",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-pen-info",
+                      "en/api-reference/supernote-plugin/plugin-comm-api/recognize-elements",
                       "en/api-reference/supernote-plugin/plugin-comm-api/reload-file",
                       "en/api-reference/supernote-plugin/plugin-comm-api/get-lasso-geometries",
                       "en/api-reference/supernote-plugin/plugin-comm-api/insert-geometry",
